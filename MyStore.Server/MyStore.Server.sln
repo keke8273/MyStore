@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Server.WebApi", "MyStore.Server.WebApi\MyStore.Server.WebApi.csproj", "{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Server.WebApi.Tests", "MyStore.Server.WebApi.Tests\MyStore.Server.WebApi.Tests.csproj", "{A3D998C1-F2D9-411E-9135-86EEA2F7E066}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{F64D08E0-BFBA-43E5-9B64-0AFB0AD990B5}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{9DBA2206-EE95-4CAE-95FA-8234EF609EA2}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\MyStoreServerWebApi-WAWS-dev.json = PublishScripts\Configurations\MyStoreServerWebApi-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PriceTracker", "PriceTracker", "{2197F897-C157-49EF-BCCB-9F2BDF226681}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9DBA2206-EE95-4CAE-95FA-8234EF609EA2} = {F64D08E0-BFBA-43E5-9B64-0AFB0AD990B5}
+	EndGlobalSection
+EndGlobal
