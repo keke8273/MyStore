@@ -18,7 +18,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\MyStoreServerWebApi-WAWS-dev.json = PublishScripts\Configurations\MyStoreServerWebApi-WAWS-dev.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PriceTracker", "PriceTracker", "{2197F897-C157-49EF-BCCB-9F2BDF226681}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductMonitor", "ProductMonitor", "{2197F897-C157-49EF-BCCB-9F2BDF226681}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{1AD157C2-4719-4AF1-93D2-F7F50A7DFCD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CQSR", "CQSR", "{3759F211-F6C2-4318-89D2-122EB934CB62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product", "Product\Product.csproj", "{A7FB896E-A821-4117-BA47-1795AE190B08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Contracts", "Product.Contracts\Product.Contracts.csproj", "{1925163D-C864-4076-B77C-936FD697849B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4C05D755-5060-4CAD-941B-EE33FEEA9914} = {4C05D755-5060-4CAD-941B-EE33FEEA9914}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Infrastructure", "..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj", "{4C05D755-5060-4CAD-941B-EE33FEEA9914}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,11 +47,27 @@ Global
 		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3D998C1-F2D9-411E-9135-86EEA2F7E066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7FB896E-A821-4117-BA47-1795AE190B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FB896E-A821-4117-BA47-1795AE190B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FB896E-A821-4117-BA47-1795AE190B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FB896E-A821-4117-BA47-1795AE190B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1925163D-C864-4076-B77C-936FD697849B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1925163D-C864-4076-B77C-936FD697849B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1925163D-C864-4076-B77C-936FD697849B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1925163D-C864-4076-B77C-936FD697849B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C05D755-5060-4CAD-941B-EE33FEEA9914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C05D755-5060-4CAD-941B-EE33FEEA9914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C05D755-5060-4CAD-941B-EE33FEEA9914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C05D755-5060-4CAD-941B-EE33FEEA9914}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9DBA2206-EE95-4CAE-95FA-8234EF609EA2} = {F64D08E0-BFBA-43E5-9B64-0AFB0AD990B5}
+		{3759F211-F6C2-4318-89D2-122EB934CB62} = {1AD157C2-4719-4AF1-93D2-F7F50A7DFCD3}
+		{A7FB896E-A821-4117-BA47-1795AE190B08} = {2197F897-C157-49EF-BCCB-9F2BDF226681}
+		{1925163D-C864-4076-B77C-936FD697849B} = {2197F897-C157-49EF-BCCB-9F2BDF226681}
+		{4C05D755-5060-4CAD-941B-EE33FEEA9914} = {3759F211-F6C2-4318-89D2-122EB934CB62}
 	EndGlobalSection
 EndGlobal
