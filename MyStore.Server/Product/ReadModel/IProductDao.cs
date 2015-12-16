@@ -8,6 +8,8 @@ namespace Product.ReadModel
 {
     public interface IProductDao
     {
-        Guid? FindProduct(string name);
+        Product GetProduct(Guid productId);
+
+        Guid? LocateProduct(string name);
     }
 }

@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Product.ReadModel
 {
-    class ProductOnlineAvailibility
+    public class ProductOnlineAvailibility
     {
+        public Guid Id { get; set; }
+
+        public bool IsAvailable { get; set; }
+
+        public Guid ProductSourceId { get; set; }
+
+        public ProductSource ProductSource { get; set; }
     }
 }

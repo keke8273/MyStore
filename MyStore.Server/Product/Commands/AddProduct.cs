@@ -9,17 +9,19 @@ namespace Product.Commands
 {
     public class AddProduct : ICommand
     {
-        protected AddProduct()
+        public AddProduct()
         {
             Id = Guid.NewGuid();
         }
 
-        public AddProduct()
-            :this()
-        {
+        public Guid Id{get; private set;}
 
-        }
+        public Guid ProductId { get; set; }
 
-        public Guid Id{get; set;}
+        public Guid BrandId { get; set; }
+
+        public string ProductName { get; set; }
+
+        public Uri ImageUri { get; set; }  
     }
 }

@@ -19,7 +19,7 @@ namespace Product.ReadModel
         #region Navitgation
 		public virtual Product Product {get; set;}
 
-        public PriceSource PriceSource { get; set; }
+        public ProductSource ProductSource { get; set; }
 
         public ICollection<ProductPriceRecord> PriceHistory { get; set; }
         #endregion

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Product.ReadModel
+namespace MyStore.Common
 {
-    public class ProductStock
+    public class Class1
     {
-        public Guid ProductStockId { get; set; }
     }
 }

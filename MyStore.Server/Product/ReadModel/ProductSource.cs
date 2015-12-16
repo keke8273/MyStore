@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Product.ReadModel
 {
-    public class PriceSource
+    public class ProductSource
     {
-        public Guid PriceSourceId { get; set; }
+        public Guid ProductSourceId { get; set; }
 
         [Required]
         public string Name { get; set; }
