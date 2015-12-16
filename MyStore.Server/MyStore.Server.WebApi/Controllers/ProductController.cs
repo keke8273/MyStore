@@ -43,7 +43,7 @@ namespace MyStore.Server.WebApi.Controllers
             return Ok(productId.Value);
         }
 
-        public async Task<IHttpActionResult> CreateProduct(string name, Guid brandId, )
+        public async Task<IHttpActionResult> CreateProduct(string name, Guid brandId, Uri imageUri, )
         {
             var command = new CreateProduct
         }
