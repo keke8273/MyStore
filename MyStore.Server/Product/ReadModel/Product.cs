@@ -20,12 +20,13 @@ namespace Product.ReadModel
 
         public Guid BrandId { get; set; }
         
-        public virtual Brand Brand { get; set; }
-
         [Required]
         public string Name { get; set; }
 
-        public Uri ImageUri { get; set; }
+        [DataType(DataType.Url)]
+        public string ImageUri { get; set; }
+
+        public virtual Brand Brand { get; set; }
 
         public ICollection<ProductPrice> Prices { get; set; }
 

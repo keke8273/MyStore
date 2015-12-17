@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,9 @@ namespace Product.ReadModel.Implementation
             //modelBuilder.Entity<Product>().HasRequired(p => p.Brand).WithMany();
             //modelBuilder.Entity<ProductPrice>().HasMany(p => p.PriceHistory).WithRequired();
             //modelBuilder.Entity<ProductPrice>().HasRequired(p => p.ProductSource).WithMany();
+
+            //Conventions
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
         public DbSet<Brand> Brands { get; set; }
@@ -29,5 +33,7 @@ namespace Product.ReadModel.Implementation
         public DbSet<ProductPrice> ProductPrices { get; set; }
         public DbSet<ProductPriceRecord> ProductPriceRecords { get; set; }
         public DbSet<ProductSource> PriceSources { get; set; }
+        public DbSet<ProductOnlineAvailibility> ProductOnlineAvailibilities{ get; set; }
+        public DbSet<ProductStock> ProductStocks{ get; set; }
     }
 }

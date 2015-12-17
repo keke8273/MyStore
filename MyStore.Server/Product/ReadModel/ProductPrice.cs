@@ -12,6 +12,8 @@ namespace Product.ReadModel
 
         public decimal Value { get; set; }
 
+        public DateTime LastUpdated { get; set; }
+
         public Guid ProductId { get; private set; }
 
         public Guid ProductSourceId { get; private set; }
