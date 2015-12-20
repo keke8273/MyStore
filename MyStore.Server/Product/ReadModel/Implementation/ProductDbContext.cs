@@ -35,5 +35,25 @@ namespace Product.ReadModel.Implementation
         public DbSet<ProductSource> PriceSources { get; set; }
         public DbSet<ProductOnlineAvailibility> ProductOnlineAvailibilities{ get; set; }
         public DbSet<ProductStock> ProductStocks{ get; set; }
+
+        public T Find<T>(Guid id) where T : class
+        {
+            return Set<T>().Find(id);
+        }
+
+        public IQueryable<T> Query<T>() where T : class
+        {
+            return this.Set<T>();
+        }
+
+        public void Save<T>(T entity) where T : class
+        {
+            var entry = this.Entry(entity);
+
+            if (entry.State == EntityState.Detached)
+                this.Set<T>().Add(entity);
+
+            SaveChanges();
+        }
     }
 }

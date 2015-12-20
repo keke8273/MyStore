@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Product.Commands
 {
-    public class AddProduct : ICommand
+    public class CreateProduct : ICommand
     {
-        public AddProduct()
+        public CreateProduct()
         {
             Id = Guid.NewGuid();
         }

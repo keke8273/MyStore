@@ -6,7 +6,6 @@ using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Utils;
 using Product.Commands;
 using Product.ReadModel;
-using ICommand = System.Windows.Input.ICommand;
 
 namespace MyStore.Server.WebApi.Controllers
 {
@@ -35,7 +34,7 @@ namespace MyStore.Server.WebApi.Controllers
         }
 
         [ResponseType(typeof(Guid))]
-        public async Task<IHttpActionResult> LocateProductId(string name)
+        public async Task<IHttpActionResult> LocateProduct(string name)
         {
             var productId = productDao.LocateProduct(name);
 
@@ -50,7 +49,7 @@ namespace MyStore.Server.WebApi.Controllers
         [ResponseType(typeof(Guid))]
         public async Task<IHttpActionResult> CreateProduct(string name, Guid brandId, Uri imageUri)
         {
-            var command = new AddProduct
+            var command = new CreateProduct
             {
                 ProductId = GuidUtil.NewSequentialId(), 
                 ProductName = name,

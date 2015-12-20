@@ -6,8 +6,13 @@ namespace Product.ReadModel
 {
     public class Product
     {
-        public Product(Guid productId, Guid brandId)
-        { }
+        public Product(Guid productId, Guid brandId, string name, Uri imageUri)
+        {
+            ProductId = productId;
+            BrandId = brandId;
+            Name = name;
+            ImageUri = imageUri.ToString();
+        }
 
         protected Product()
         {
@@ -26,12 +31,14 @@ namespace Product.ReadModel
         [DataType(DataType.Url)]
         public string ImageUri { get; set; }
 
+        #region Navigational Properties
         public virtual Brand Brand { get; set; }
 
         public ICollection<ProductPrice> Prices { get; set; }
 
         public ICollection<ProductStock> Stocks { get; set; }
 
-        public ICollection<ProductOnlineAvailibility> OnlineAvailibilities { get; set; } 
+        public ICollection<ProductOnlineAvailibility> OnlineAvailibilities { get; set; }  
+        #endregion
     }
 }
