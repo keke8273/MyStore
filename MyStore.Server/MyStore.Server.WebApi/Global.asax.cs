@@ -4,7 +4,7 @@ using Microsoft.Practices.Unity;
 
 namespace MyStore.Server.WebApi
 {
-    public partial class WebApiApplication : HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         private IUnityContainer container;
 
@@ -13,11 +13,28 @@ namespace MyStore.Server.WebApi
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             container = CreateContainer();
+
+            this.OnStart();
+        }
+
+        protected void Application_Stop()
+        {
+            this.OnStop();
+
+            this.container.Dispose();
         }
 
         private static UnityContainer CreateContainer()
         {
             throw new System.NotImplementedException();
+        }
+
+        private void OnStart()
+        {
+        }
+
+        private void OnStop()
+        {
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Server.WebApi", "MyStore.Server.WebApi\MyStore.Server.WebApi.csproj", "{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}"
 EndProject
@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Common", "MyStore.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.DatabaseInitializer", "MyStore.DatabaseInitializer\MyStore.DatabaseInitializer.csproj", "{3EA9D35C-246F-4838-B084-4DAAD2493309}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Worker", "MyStore.Worker\MyStore.Worker.csproj", "{048234E1-6999-4D3D-A7BB-58BB2D53CA07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{3EA9D35C-246F-4838-B084-4DAAD2493309}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EA9D35C-246F-4838-B084-4DAAD2493309}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EA9D35C-246F-4838-B084-4DAAD2493309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048234E1-6999-4D3D-A7BB-58BB2D53CA07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048234E1-6999-4D3D-A7BB-58BB2D53CA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048234E1-6999-4D3D-A7BB-58BB2D53CA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048234E1-6999-4D3D-A7BB-58BB2D53CA07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
