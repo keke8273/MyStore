@@ -10,6 +10,8 @@ namespace Product.ReadModel.Implementation
 {
     public class ProductDbContext : DbContext
     {
+        public const string SchemaName = "Product";
+
         public ProductDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
