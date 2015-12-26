@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure.Sql\CQRS.Infrastructure.Sql.csproj">
+      <Project>{55E3A5A1-41C6-470F-82D4-3DBB93578181}</Project>
+      <Name>CQRS.Infrastructure.Sql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Product\Product.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
       <Name>Product</Name>

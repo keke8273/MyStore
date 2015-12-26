@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Server.WebApi", "MyStore.Server.WebApi\MyStore.Server.WebApi.csproj", "{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}"
 EndProject
@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\MyStoreServerWebApi-WAWS-dev.json = PublishScripts\Configurations\MyStoreServerWebApi-WAWS-dev.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductMonitor", "ProductMonitor", "{2197F897-C157-49EF-BCCB-9F2BDF226681}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreManagement", "StoreManagement", "{2197F897-C157-49EF-BCCB-9F2BDF226681}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{1AD157C2-4719-4AF1-93D2-F7F50A7DFCD3}"
 EndProject

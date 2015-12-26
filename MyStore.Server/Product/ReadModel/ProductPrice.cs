@@ -14,16 +14,16 @@ namespace Product.ReadModel
 
         public DateTime LastUpdated { get; set; }
 
-        public Guid ProductId { get; private set; }
+        public Guid ProductId { get; set; }
 
-        public Guid ProductSourceId { get; private set; }
+        public Guid ProductSourceId { get; set; }
 
         #region Navitgation
 		public virtual Product Product {get; set;}
 
-        public ProductSource ProductSource { get; set; }
+        public virtual ProductSource ProductSource { get; set; }
 
-        public ICollection<ProductPriceRecord> PriceHistory { get; set; }
+        public virtual ICollection<ProductPriceRecord> PriceHistory { get; set; }
         #endregion
     }
 }

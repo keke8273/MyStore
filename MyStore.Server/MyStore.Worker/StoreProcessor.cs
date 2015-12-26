@@ -18,7 +18,7 @@ namespace MyStore.Worker
 {
     public sealed partial class StoreProcessor : IDisposable
     {
-        private IUnityContainer container;
+        private readonly IUnityContainer _container;
         private CancellationTokenSource cancellationTokenSource;
         private List<IProcessor> processors;
         private bool instrumentationEnabled;
@@ -30,9 +30,9 @@ namespace MyStore.Worker
             //OnCreating();
 
             this.cancellationTokenSource = new CancellationTokenSource();
-            this.container = CreateContainer();
+            this._container = CreateContainer();
 
-            this.processors = container.ResolveAll<IProcessor>().ToList();
+            this.processors = _container.ResolveAll<IProcessor>().ToList();
         }
 
         public void Start()
@@ -49,7 +49,7 @@ namespace MyStore.Worker
 
         public void Dispose()
         {
-            this.container.Dispose();
+            this._container.Dispose();
             this.cancellationTokenSource.Dispose();
         }
 

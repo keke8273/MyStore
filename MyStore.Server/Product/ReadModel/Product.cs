@@ -34,11 +34,11 @@ namespace Product.ReadModel
         #region Navigational Properties
         public virtual Brand Brand { get; set; }
 
-        public ICollection<ProductPrice> Prices { get; set; }
+        public virtual ICollection<ProductPrice> Prices { get; set; }
 
-        public ICollection<ProductStock> Stocks { get; set; }
+        public virtual ICollection<ProductStock> Stocks { get; set; }
 
-        public ICollection<ProductOnlineAvailibility> OnlineAvailibilities { get; set; }  
+        public virtual ICollection<ProductOnlineAvailibility> OnlineAvailibilities { get; set; }  
         #endregion
     }
 }

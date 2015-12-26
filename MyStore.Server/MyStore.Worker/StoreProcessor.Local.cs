@@ -1,8 +1,11 @@
 ﻿using CQRS.Infrastructure;
+using CQRS.Infrastructure.EventSourcing;
 using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Messaging.Handling;
 using CQRS.Infrastructure.Misc;
 using CQRS.Infrastructure.Serialization;
+using CQRS.Infrastructure.Sql.EventSourcing;
+using CQRS.Infrastructure.Sql.MessageLog;
 using CQRS.Infrastructure.Sql.Messaging;
 using CQRS.Infrastructure.Sql.Messaging.Handling;
 using CQRS.Infrastructure.Sql.Messaging.Implementation;
@@ -13,6 +16,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Product.Handlers;
 
 namespace MyStore.Worker
 {
@@ -36,8 +40,37 @@ namespace MyStore.Worker
             container.RegisterInstance<IEventHandlerRegistery>(eventProcessor);
             container.RegisterInstance<IProcessor>("EventProcessor", eventProcessor);
 
+            // Event logger
             container.RegisterType<SqlMessageLog>(new InjectionConstructor("MessageLog", serializer, metadata));
-            container.RegisterType();
+            container.RegisterType<IEventHandler, SqlMessageLogHandler>("SqlMessageLogHandler");
+            container.RegisterType<ICommandHandler, SqlMessageLogHandler>("SqlMessageLogHandler");
+
+            RegisterRepository(container);
+            RegisterEventHandlers(container, eventProcessor);
+            RegisterCommandHandlers(container);
+        }
+        private void RegisterRepository(UnityContainer container)
+        {
+            // repositories
+            container.RegisterType<EventStoreDbContext>(new TransientLifetimeManager(),
+                new InjectionConstructor("EventStore"));
+            container.RegisterType(typeof (IEventSourcedRepository<>), typeof (SqlEventSourcedRepository<>),
+                new ContainerControlledLifetimeManager());
+        }
+
+        private void RegisterEventHandlers(UnityContainer container, EventProcessor eventProcessor)
+        {
+            eventProcessor.Register(container.Resolve<ProductViewModelGenerator>());
+        }
+
+        private void RegisterCommandHandlers(UnityContainer container)
+        {
+            var commandHandlerRegistry = container.Resolve<ICommandHandlerRegistry>();
+
+            foreach (var commandHandler in container.ResolveAll<ICommandHandler>())
+            {
+                commandHandlerRegistry.Register(commandHandler);
+            }
         }
     }
 }

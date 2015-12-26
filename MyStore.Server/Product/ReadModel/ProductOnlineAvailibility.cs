@@ -10,6 +10,10 @@ namespace Product.ReadModel
 
         public Guid ProductSourceId { get; set; }
 
-        public ProductSource ProductSource { get; set; }
+        public Guid ProductId { get; set; }
+
+        virtual public ProductSource ProductSource { get; set; }
+
+        virtual public Product Product { get; set; }
     }
 }
