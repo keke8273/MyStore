@@ -19,7 +19,7 @@ namespace Product
             LoadFrom(history);  
         }
 
-        public Product(Guid id, Guid brandId, string name, Uri imageUri) :
+        public Product(Guid id, Guid brandId, string name, Uri imageUrl) :
             this(id)
         {
             Update(new ProductCreated
@@ -27,7 +27,7 @@ namespace Product
                 SourceId = id,
                 BrandId = brandId,
                 ProductName = name,
-                ImageUri = imageUri
+                ImageUrl = imageUrl
             });
         }
 

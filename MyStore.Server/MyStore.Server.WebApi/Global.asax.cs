@@ -16,6 +16,8 @@ namespace MyStore.Server.WebApi
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
+            DatabaseSetup.Initialize();
+
             _container = CreateContainer();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityResolver(_container);
@@ -35,7 +37,7 @@ namespace MyStore.Server.WebApi
             var container = new UnityContainer();
             try
             {
-                container.RegisterType<ProductDbContext>(new TransientLifetimeManager(), new InjectionConstructor("ProductView"));
+                container.RegisterType<ProductDbContext>(new TransientLifetimeManager(), new InjectionConstructor("StoreManagement"));
 
                 container.RegisterType<IProductDao, ProductDao>();
 

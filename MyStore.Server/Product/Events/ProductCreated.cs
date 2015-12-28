@@ -9,6 +9,6 @@ namespace Product.Events
 
         public string ProductName { get; set; }
 
-        public Uri ImageUri { get; set; }
+        public Uri ImageUrl { get; set; }
     }
 }

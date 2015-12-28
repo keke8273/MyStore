@@ -20,7 +20,12 @@ namespace Product.ReadModel.Implementation
         {
             using (var context = _contextFactory.Invoke())
             {
-                return context.Query<Product>().Include(p => p.Prices).FirstOrDefault(dto => dto.ProductId == productId);
+                return context.Query<Product>().
+                    Include(p => p.Brand).
+                    Include(p =>p.Prices).
+                    Include(p => p.OnlineAvailibilities).
+                    Include(p => p.Stocks).
+                    FirstOrDefault(dto => dto.ProductId == productId);
             }
         }
 

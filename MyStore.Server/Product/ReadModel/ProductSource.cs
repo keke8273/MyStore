@@ -10,6 +10,7 @@ namespace Product.ReadModel
         [Required]
         public string Name { get; set; }
 
-        public Uri LogoUri { get; set; }
+        [DataType(DataType.Url)]
+        public string LogoUrl { get; set; }
     }
 }

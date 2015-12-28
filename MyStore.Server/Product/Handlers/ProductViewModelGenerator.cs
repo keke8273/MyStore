@@ -31,7 +31,7 @@ namespace Product.Handlers
                 else
                 {
                     repository.Set<ReadModel.Product>().Add(
-                        new ReadModel.Product(@event.SourceId, @event.BrandId, @event.ProductName, @event.ImageUri)
+                        new ReadModel.Product(@event.SourceId, @event.BrandId, @event.ProductName, @event.ImageUrl)
                         );
 
                     repository.SaveChanges();

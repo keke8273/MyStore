@@ -6,12 +6,13 @@ namespace Product.ReadModel
 {
     public class Product
     {
-        public Product(Guid productId, Guid brandId, string name, Uri imageUri)
+        public Product(Guid productId, Guid brandId, string name, Uri imageUrl)
+            :this()
         {
             ProductId = productId;
             BrandId = brandId;
             Name = name;
-            ImageUri = imageUri.ToString();
+            ImageUrl = imageUrl.ToString();
         }
 
         protected Product()
@@ -23,13 +24,13 @@ namespace Product.ReadModel
 
         public Guid ProductId { get; set; }
 
-        public Guid BrandId { get; set; }
-        
+        [DataType(DataType.Url)]
+        public string ImageUrl { get; set; }
+
         [Required]
         public string Name { get; set; }
 
-        [DataType(DataType.Url)]
-        public string ImageUri { get; set; }
+        public Guid BrandId { get; set; }
 
         #region Navigational Properties
         public virtual Brand Brand { get; set; }

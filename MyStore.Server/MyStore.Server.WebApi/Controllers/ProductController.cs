@@ -11,19 +11,19 @@ namespace MyStore.Server.WebApi.Controllers
 {
     public class ProductController : ApiController
     {
-        private readonly IProductDao productDao;
+        private readonly IProductDao _productDao;
         private readonly ICommandBus _bus;
 
         public ProductController(IProductDao productDao, ICommandBus bus)
         {
             _bus = bus;
-            productDao = productDao;
+            _productDao = productDao;
         }
 
         [ResponseType(typeof(Product.ReadModel.Product))]
-        public async Task<IHttpActionResult> GetProduct(Guid productId)
+        public async Task<IHttpActionResult> GetProduct(Guid id)
         {
-            var product = productDao.GetProduct(productId);
+            var product = _productDao.GetProduct(id);
 
             if (product == null)
             {
@@ -36,7 +36,7 @@ namespace MyStore.Server.WebApi.Controllers
         [ResponseType(typeof(Guid))]
         public async Task<IHttpActionResult> LocateProduct(string name)
         {
-            var productId = productDao.LocateProduct(name);
+            var productId = _productDao.LocateProduct(name);
 
             if (!productId.HasValue)
             {
