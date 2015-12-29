@@ -2,9 +2,11 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using AutoMapper;
 using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Utils;
 using Product.Commands;
+using Product.Dto;
 using Product.ReadModel;
 
 namespace MyStore.Server.WebApi.Controllers
@@ -20,7 +22,7 @@ namespace MyStore.Server.WebApi.Controllers
             _productDao = productDao;
         }
 
-        [ResponseType(typeof(Product.ReadModel.Product))]
+        [ResponseType(typeof(ProductDto))]
         public async Task<IHttpActionResult> GetProduct(Guid id)
         {
             var product = _productDao.GetProduct(id);
@@ -30,7 +32,7 @@ namespace MyStore.Server.WebApi.Controllers
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(Mapper.Map<Product.ReadModel.Product, ProductDto>(product));
         }
 
         [ResponseType(typeof(Guid))]

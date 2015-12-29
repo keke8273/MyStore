@@ -16,7 +16,11 @@ namespace MyStore.Server.WebApi
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
+            //Database intializer
             DatabaseSetup.Initialize();
+
+            //Automapper initializer
+            AutomapperConfiguration.Configure();
 
             _container = CreateContainer();
 
