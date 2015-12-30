@@ -58,6 +58,8 @@
     <Compile Include="ProductPrice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadModel\Brand.cs" />
+    <Compile Include="ReadModel\IBrandDao.cs" />
+    <Compile Include="ReadModel\Implementation\BrandDao.cs" />
     <Compile Include="ReadModel\Implementation\ProductDao.cs" />
     <Compile Include="ReadModel\Implementation\ProductDbContext.cs" />
     <Compile Include="ReadModel\IProductDao.cs" />

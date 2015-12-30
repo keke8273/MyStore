@@ -21,7 +21,7 @@ namespace Product.Handlers
 
             if (product == null)
             {
-                product = new Product(command.ProductId, command.BrandId, command.ProductName, command.ImageUri);
+                product = new Product(command.ProductId, command.BrandId, command.ProductName, command.ImageUrl);
             }
             else
             {

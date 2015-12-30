@@ -44,6 +44,7 @@ namespace MyStore.Server.WebApi
                 container.RegisterType<ProductDbContext>(new TransientLifetimeManager(), new InjectionConstructor("StoreManagement"));
 
                 container.RegisterType<IProductDao, ProductDao>();
+                container.RegisterType<IBrandDao, BrandDao>();
 
                 OnCreateContainer(container);
             }

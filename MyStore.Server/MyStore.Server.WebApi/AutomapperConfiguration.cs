@@ -9,18 +9,19 @@ namespace MyStore.Server.WebApi
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfile(new ProductProfile());
+                cfg.AddProfile(new StoreManagementProfile());
             });
             
             Mapper.AssertConfigurationIsValid();
         }
     }
 
-    public class ProductProfile : Profile
+    public class StoreManagementProfile : Profile
     {
         protected override void Configure()
         {
             Mapper.CreateMap<Product.ReadModel.Product, ProductDto>();
+            Mapper.CreateMap<Product.ReadModel.Brand, BrandDto>();
         }
     }
 }

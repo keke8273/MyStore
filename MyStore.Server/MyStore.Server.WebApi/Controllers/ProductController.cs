@@ -11,6 +11,7 @@ using Product.ReadModel;
 
 namespace MyStore.Server.WebApi.Controllers
 {
+    [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
         private readonly IProductDao _productDao;
@@ -48,15 +49,17 @@ namespace MyStore.Server.WebApi.Controllers
             return Ok(productId.Value);
         }
 
+        [Route("")]
+        [HttpPost]
         [ResponseType(typeof(Guid))]
-        public async Task<IHttpActionResult> CreateProduct(string name, Guid brandId, Uri imageUri)
+        public async Task<IHttpActionResult> CreateProduct(ProductDto product)
         {
             var command = new CreateProduct
             {
-                ProductId = GuidUtil.NewSequentialId(), 
-                ProductName = name,
-                BrandId = brandId, 
-                ImageUri = imageUri
+                ProductId = GuidUtil.NewSequentialId(),
+                ProductName = product.Name,
+                BrandId = product.BrandId, 
+                ImageUrl = product.ImageUrl
             };
 
             _bus.Send(command);
