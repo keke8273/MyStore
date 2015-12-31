@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using CQRS.Infrastructure.Messaging.Handling;
-using Product.Events;
-using Product.ReadModel.Implementation;
+using Store.Events;
+using Store.ReadModel.Implementation;
 
-namespace Product.Handlers
+namespace Store.Handlers
 {
     public class ProductViewModelGenerator : IEventHandler<ProductCreated>
     {

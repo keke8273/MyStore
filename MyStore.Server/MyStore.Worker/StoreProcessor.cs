@@ -5,16 +5,14 @@ using CQRS.Infrastructure.Serialization;
 using Microsoft.Practices.Unity;
 using MyStore.Common;
 using MyStore.Common.Implementation;
-using Product.Handlers;
-using Product.ReadModel;
-using Product.ReadModel.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using Store.Handlers;
+using Store.ReadModel;
+using Store.ReadModel.Implementation;
 
 namespace MyStore.Worker
 {

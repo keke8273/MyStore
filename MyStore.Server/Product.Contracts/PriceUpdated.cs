@@ -1,9 +1,9 @@
 ﻿
-namespace Product.Contracts
-{
-    using System;
-    using CQRS.Infrastructure.Messaging;
+using System;
+using CQRS.Infrastructure.Messaging;
 
+namespace Store.Contracts
+{
     public class PriceUpdated : ProductEvent, ITimeStampedEvent
     {
         public Guid ProductSourceId { get; set; }

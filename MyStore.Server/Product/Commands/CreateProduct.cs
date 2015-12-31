@@ -1,11 +1,7 @@
-﻿using CQRS.Infrastructure.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using CQRS.Infrastructure.Messaging;
 
-namespace Product.Commands
+namespace Store.Commands
 {
     public class CreateProduct : ICommand
     {

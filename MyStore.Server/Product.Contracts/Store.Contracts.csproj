@@ -7,8 +7,8 @@
     <ProjectGuid>{1925163D-C864-4076-B77C-936FD697849B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Product.Contracts</RootNamespace>
-    <AssemblyName>Product.Contracts</AssemblyName>
+    <RootNamespace>Store.Contracts</RootNamespace>
+    <AssemblyName>Store.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,7 +43,6 @@
     <Compile Include="ProductEvent.cs" />
     <Compile Include="OnlineAvailabilityUpdated.cs" />
     <Compile Include="PriceUpdated.cs" />
-    <Compile Include="Source.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockChanged.cs" />
   </ItemGroup>

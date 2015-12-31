@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Product.Dto;
+using Store.Dto;
+using Store.ReadModel;
 
 namespace MyStore.Server.WebApi
 {
@@ -20,8 +21,8 @@ namespace MyStore.Server.WebApi
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Product.ReadModel.Product, ProductDto>();
-            Mapper.CreateMap<Product.ReadModel.Brand, BrandDto>();
+            Mapper.CreateMap<Product, ProductDto>();
+            Mapper.CreateMap<Brand, BrandDto>();
         }
     }
 }

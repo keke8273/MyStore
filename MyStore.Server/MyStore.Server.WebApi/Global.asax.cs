@@ -3,8 +3,8 @@ using System.Data.SqlTypes;
 using System.Web;
 using System.Web.Http;
 using Microsoft.Practices.Unity;
-using Product.ReadModel;
-using Product.ReadModel.Implementation;
+using Store.ReadModel;
+using Store.ReadModel.Implementation;
 
 namespace MyStore.Server.WebApi
 {

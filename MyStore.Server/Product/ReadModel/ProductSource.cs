@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Product.ReadModel
+namespace Store.ReadModel
 {
     public class ProductSource
     {

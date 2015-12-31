@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Product.ReadModel
+namespace Store.ReadModel
 {
     public class ProductStock
     {

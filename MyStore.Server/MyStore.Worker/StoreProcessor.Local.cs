@@ -10,13 +10,8 @@ using CQRS.Infrastructure.Sql.Messaging;
 using CQRS.Infrastructure.Sql.Messaging.Handling;
 using CQRS.Infrastructure.Sql.Messaging.Implementation;
 using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Product.Handlers;
+using Store.Handlers;
 
 namespace MyStore.Worker
 {

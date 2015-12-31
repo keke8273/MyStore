@@ -1,6 +1,6 @@
 ﻿using CQRS.Infrastructure.EventSourcing;
 
-namespace Product.Contracts
+namespace Store.Contracts
 {
     public abstract class ProductEvent : VersionedEvent
     {

@@ -1,11 +1,12 @@
-﻿
-namespace Product.Contracts
+﻿using System;
+using CQRS.Infrastructure.Messaging;
+
+namespace Store.Contracts
 {
-    using System;
-    using CQRS.Infrastructure.Messaging;
-    public class StockChanged : ProductEvent
+    public class StockChanged : ProductEvent, ITimeStampedEvent
     {
+        public Guid ProductSourceId { get; set; }
         public int Quantity { get; set; }
-        public Source Source { get; set; }
+        public DateTime TimeStamp  { get; set; }
     }
 }

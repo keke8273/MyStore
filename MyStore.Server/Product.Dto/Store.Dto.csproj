@@ -7,8 +7,8 @@
     <ProjectGuid>{A2BBC0FD-9259-429A-8163-2B622D57C157}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Product.Dto</RootNamespace>
-    <AssemblyName>Product.Dto</AssemblyName>
+    <RootNamespace>Store.Dto</RootNamespace>
+    <AssemblyName>Store.Dto</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

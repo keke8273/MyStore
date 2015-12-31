@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Web.Http;
 using AutoMapper;
 using CQRS.Infrastructure.Utils;
-using Product.Dto;
-using Product.ReadModel;
+using Store.Dto;
+using Store.ReadModel;
 
 namespace MyStore.Server.WebApi.Controllers
 {

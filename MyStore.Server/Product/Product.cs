@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using CQRS.Infrastructure.EventSourcing;
 using MyStore.Common;
-using Product.Contracts;
+using Store.Contracts;
 
-namespace Product
+namespace Store
 {
     public class Product : EventSourced
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using Product.Contracts;
+using Store.Contracts;
 
-namespace Product.Events
+namespace Store.Events
 {
     public class ProductCreated : ProductEvent
     {

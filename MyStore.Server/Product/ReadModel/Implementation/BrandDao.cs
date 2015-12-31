@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Product.ReadModel.Implementation
+namespace Store.ReadModel.Implementation
 {
     public class BrandDao : IBrandDao
     {

@@ -85,9 +85,9 @@
       <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
       <Name>MyStore.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Product\Product.csproj">
+    <ProjectReference Include="..\Product\Store.csproj">
       <Project>{a7fb896e-a821-4117-ba47-1795ae190b08}</Project>
-      <Name>Product</Name>
+      <Name>Store</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

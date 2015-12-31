@@ -4,7 +4,7 @@ using System.Data.Entity.Infrastructure;
 using CQRS.Infrastructure.Sql.EventSourcing;
 using CQRS.Infrastructure.Sql.MessageLog;
 using CQRS.Infrastructure.Sql.Messaging.Implementation;
-using Product.ReadModel.Implementation;
+using Store.ReadModel.Implementation;
 
 namespace MyStore.DatabaseInitializer
 {

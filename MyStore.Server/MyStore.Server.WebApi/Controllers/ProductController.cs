@@ -6,9 +6,9 @@ using System.Web.Http.Description;
 using AutoMapper;
 using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Utils;
-using Product.Commands;
-using Product.Dto;
-using Product.ReadModel;
+using Store.Commands;
+using Store.Dto;
+using Store.ReadModel;
 
 namespace MyStore.Server.WebApi.Controllers
 {
@@ -34,7 +34,7 @@ namespace MyStore.Server.WebApi.Controllers
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<Product.ReadModel.Product, ProductDto>(product));
+            return Ok(Mapper.Map<Product, ProductDto>(product));
         }
 
         [Route("{name}")]

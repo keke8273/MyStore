@@ -2,9 +2,9 @@
 using CQRS.Infrastructure.EventSourcing;
 using CQRS.Infrastructure.Messaging.Handling;
 using MyStore.Common;
-using Product.Commands;
+using Store.Commands;
 
-namespace Product.Handlers
+namespace Store.Handlers
 {
     public class ProductCommandHandler:
         ICommandHandler<CreateProduct>,

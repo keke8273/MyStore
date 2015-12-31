@@ -65,9 +65,9 @@
       <Project>{55E3A5A1-41C6-470F-82D4-3DBB93578181}</Project>
       <Name>CQRS.Infrastructure.Sql</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Product\Product.csproj">
+    <ProjectReference Include="..\Product\Store.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
-      <Name>Product</Name>
+      <Name>Store</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

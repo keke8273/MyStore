@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using CQRS.Infrastructure.Serialization;
 
-namespace Product.ReadModel.Implementation
+namespace Store.ReadModel.Implementation
 {
     public class ProductDao : IProductDao
     {

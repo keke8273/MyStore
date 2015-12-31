@@ -1,7 +1,7 @@
 ﻿using System;
 using CQRS.Infrastructure.Messaging;
 
-namespace Product.Commands
+namespace Store.Commands
 {
     public class UpdateProductPrice : ICommand
     {

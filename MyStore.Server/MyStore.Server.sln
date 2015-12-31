@@ -24,9 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CQSR", "CQSR", "{3759F211-F6C2-4318-89D2-122EB934CB62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product", "Product\Product.csproj", "{A7FB896E-A821-4117-BA47-1795AE190B08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Product\Store.csproj", "{A7FB896E-A821-4117-BA47-1795AE190B08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Contracts", "Product.Contracts\Product.Contracts.csproj", "{1925163D-C864-4076-B77C-936FD697849B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Contracts", "Product.Contracts\Store.Contracts.csproj", "{1925163D-C864-4076-B77C-936FD697849B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4C05D755-5060-4CAD-941B-EE33FEEA9914} = {4C05D755-5060-4CAD-941B-EE33FEEA9914}
 	EndProjectSection
@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Infrastructure.Sql", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{86E358E8-786E-4801-B715-31CA2D3D65E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Dto", "Product.Dto\Product.Dto.csproj", "{A2BBC0FD-9259-429A-8163-2B622D57C157}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "Product.Dto\Store.Dto.csproj", "{A2BBC0FD-9259-429A-8163-2B622D57C157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

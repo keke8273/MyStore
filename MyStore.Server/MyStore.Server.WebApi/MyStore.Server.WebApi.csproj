@@ -165,13 +165,13 @@
       <Project>{4C05D755-5060-4CAD-941B-EE33FEEA9914}</Project>
       <Name>CQRS.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Product.Dto\Product.Dto.csproj">
+    <ProjectReference Include="..\Product.Dto\Store.Dto.csproj">
       <Project>{A2BBC0FD-9259-429A-8163-2B622D57C157}</Project>
-      <Name>Product.Dto</Name>
+      <Name>Store.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Product\Product.csproj">
+    <ProjectReference Include="..\Product\Store.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
-      <Name>Product</Name>
+      <Name>Store</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

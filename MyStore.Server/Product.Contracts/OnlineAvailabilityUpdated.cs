@@ -1,7 +1,6 @@
 ﻿using System;
-using CQRS.Infrastructure.Messaging;
 
-namespace Product.Contracts
+namespace Store.Contracts
 {
     public class OnlineAvailabilityUpdated : ProductEvent
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Product.Contracts
+namespace Store.Contracts
 {
     public class ProductCreated : ProductEvent
     {

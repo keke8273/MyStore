@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Product.Dto
+namespace Store.Dto
 {
     public class ProductDto
     {
