@@ -21,14 +21,31 @@ namespace Product.ReadModel.Implementation
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Product>().ToTable("ProductView", SchemaName);
-            //modelBuilder.Entity<Product>().HasMany(p => p.Prices).WithRequired().HasForeignKey(p => p.ProductId);
             modelBuilder.Entity<Brand>().ToTable("Brand", SchemaName);
+            modelBuilder.Entity<Product>().ToTable("ProductView", SchemaName);
+            
             modelBuilder.Entity<ProductPrice>().ToTable("ProductPrice", SchemaName);
+            modelBuilder.Entity<ProductPrice>().HasKey(p => new {p.ProductId, p.ProductSourceId});
+            //modelBuilder.Entity<ProductPrice>()
+            //    .HasRequired(p => p.Product)
+            //    .WithMany(p => p.Prices)
+            //    .HasForeignKey(p => new {p.ProductId, p.ProductSourceId});
+
             modelBuilder.Entity<ProductPriceRecord>().ToTable("ProductPriceRecord", SchemaName);
             modelBuilder.Entity<ProductSource>().ToTable("ProductSource", SchemaName);
             modelBuilder.Entity<ProductOnlineAvailibility>().ToTable("ProductOnlineAvailibility", SchemaName);
+            modelBuilder.Entity<ProductOnlineAvailibility>().HasKey(p => new { p.ProductId, p.ProductSourceId });
+            //modelBuilder.Entity<ProductOnlineAvailibility>()
+            //    .HasRequired(a => a.Product)
+            //    .WithMany(p => p.OnlineAvailibilities)
+            //    .HasForeignKey(p => new {p.ProductId, p.ProductSourceId});
+
             modelBuilder.Entity<ProductStock>().ToTable("ProductStock", SchemaName);
+            modelBuilder.Entity<ProductStock>().HasKey(s => new { s.ProductId, s.StockLocationId });
+            //modelBuilder.Entity<ProductStock>()
+            //    .HasRequired(s => s.Product)
+            //    .WithMany(p => p.Stocks)
+            //    .HasForeignKey(s => new {s.ProductId, s.StockLocationId});
 
             //Conventions
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

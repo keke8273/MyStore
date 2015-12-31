@@ -41,8 +41,8 @@
   <ItemGroup>
     <Compile Include="ProductCreated.cs" />
     <Compile Include="ProductEvent.cs" />
-    <Compile Include="OnlineAvailabilityChanged.cs" />
-    <Compile Include="PriceChanged.cs" />
+    <Compile Include="OnlineAvailabilityUpdated.cs" />
+    <Compile Include="PriceUpdated.cs" />
     <Compile Include="Source.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockChanged.cs" />

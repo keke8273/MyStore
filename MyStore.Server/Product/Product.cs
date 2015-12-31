@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 using CQRS.Infrastructure.EventSourcing;
-using Product.Events;
+using MyStore.Common;
+using Product.Contracts;
 
 namespace Product
 {
     public class Product : EventSourced
     {
+        private readonly List<ProductPrice> _prices = new List<ProductPrice>();
+        private readonly List<ProductOnlineAvailibility> _onlineAvailibilities = new List<ProductOnlineAvailibility>();
+
         protected Product(Guid id) 
             : base(id)
         {
             base.RegisterHandler<ProductCreated>(OnProductCreated);
+            base.RegisterHandler<PriceUpdated>(OnPriceUpdated);
+            base.RegisterHandler<OnlineAvailabilityUpdated>(OnOnlineAvailabilityUpdated);
         }
 
         public Product(Guid id, IEnumerable<IVersionedEvent> history)
@@ -24,10 +32,35 @@ namespace Product
         {
             Update(new ProductCreated
             {
-                SourceId = id,
                 BrandId = brandId,
-                ProductName = name,
+                Name = name,
                 ImageUrl = imageUrl
+            });
+        }
+
+        public void UpdatePrice(Guid productSourceId, decimal price, IDateTimeService dateTimeService)
+        {
+            var currentPrice = _prices.FirstOrDefault(p => p.PriceSourceId == productSourceId);
+
+            Update(new PriceUpdated
+            {
+                ProductSourceId = productSourceId,
+                NewPrice = price,
+                PreviousPrice = currentPrice == null? 0M : currentPrice.Price,
+                TimeStamp = dateTimeService.GetCurrentDateTimeUtc()
+            });
+        }
+
+        public void UpdateOnlineAvailibility(Guid productSourceId, bool isAvailable, IDateTimeService dateTimeService)
+        {
+            var currentAvailability = _onlineAvailibilities.FirstOrDefault(o => o.PriceSourceId == productSourceId);
+
+            Update(new OnlineAvailabilityUpdated
+            {
+                ProductSourceId = productSourceId,
+                NewAvailability = isAvailable,
+                PreviousAvailability = currentAvailability != null && currentAvailability.IsAvailable,
+                TimeStamp = dateTimeService.GetCurrentDateTimeUtc()
             });
         }
 
@@ -35,5 +68,26 @@ namespace Product
         {
             //todo::do something with the event.
         }
+
+        private void OnPriceUpdated(PriceUpdated e)
+        {
+            var price = _prices.FirstOrDefault(p => p.PriceSourceId == e.ProductSourceId);
+
+            if (price == null)
+                _prices.Add(new ProductPrice(e.ProductSourceId, e.NewPrice));
+            else
+                price.Price = e.NewPrice;
+        }
+
+        private void OnOnlineAvailabilityUpdated(OnlineAvailabilityUpdated e)
+        {
+            var onlineAvailability = _onlineAvailibilities.FirstOrDefault(p => p.PriceSourceId == e.ProductSourceId);
+
+            if (onlineAvailability == null)
+                _onlineAvailibilities.Add(new ProductOnlineAvailibility(e.ProductSourceId, e.NewAvailability));
+            else
+                onlineAvailability.IsAvailable = e.NewAvailability;
+        }
+
     }
 }

@@ -15,7 +15,9 @@ namespace Product.ReadModel
         
         public DateTime TimeStamp { get; set; }
 
-        public Guid ProductPriceId { get; set; }
+        public Guid ProductId { get; set; }
+
+        public Guid ProducetSourceId { get; set; }
 
         public virtual ProductPrice ProductPrice { get; set; }
     }

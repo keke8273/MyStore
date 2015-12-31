@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Product.Contracts
 {
@@ -12,6 +8,6 @@ namespace Product.Contracts
 
         public Guid BrandId { get; set; }
 
-        public Uri ImageUri { get; set; }
+        public Uri ImageUrl { get; set; }
     }
 }

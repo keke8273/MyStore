@@ -81,6 +81,10 @@
       <Project>{4c05d755-5060-4cad-941b-ee33feea9914}</Project>
       <Name>CQRS.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyStore.Common\MyStore.Common.csproj">
+      <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
+      <Name>MyStore.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Product\Product.csproj">
       <Project>{a7fb896e-a821-4117-ba47-1795ae190b08}</Project>
       <Name>Product</Name>

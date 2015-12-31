@@ -1,11 +1,8 @@
-﻿using System;
-using CQRS.Infrastructure.EventSourcing;
-using CQRS.Infrastructure.Messaging;
+﻿using CQRS.Infrastructure.EventSourcing;
 
 namespace Product.Contracts
 {
     public abstract class ProductEvent : VersionedEvent
     {
-        public Guid ProductId { get; set; }
     }
 }

@@ -3,6 +3,8 @@ using CQRS.Infrastructure.Messaging.Handling;
 using CQRS.Infrastructure.Misc;
 using CQRS.Infrastructure.Serialization;
 using Microsoft.Practices.Unity;
+using MyStore.Common;
+using MyStore.Common.Implementation;
 using Product.Handlers;
 using Product.ReadModel;
 using Product.ReadModel.Implementation;
@@ -56,6 +58,9 @@ namespace MyStore.Worker
         private UnityContainer CreateContainer()
         {
             var container = new UnityContainer();
+
+            //Services
+            container.RegisterType<IDateTimeService, DateTimeService>(new ContainerControlledLifetimeManager());
 
             //Utility classes
             container.RegisterInstance<ITextSerializer>(new JsonTextSerializer());

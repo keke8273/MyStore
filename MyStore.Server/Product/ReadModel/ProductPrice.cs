@@ -8,8 +8,6 @@ namespace Product.ReadModel
 {
     public class ProductPrice
     {
-        public Guid ProductPriceId { get; set; }
-
         public decimal Value { get; set; }
 
         public DateTime LastUpdated { get; set; }

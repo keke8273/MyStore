@@ -1,9 +1,9 @@
 ﻿using System;
-using CQRS.Infrastructure.EventSourcing;
+using Product.Contracts;
 
 namespace Product.Events
 {
-    public class ProductCreated : VersionedEvent
+    public class ProductCreated : ProductEvent
     {
         public Guid BrandId { get; set; }
 

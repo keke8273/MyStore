@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -36,6 +37,8 @@ namespace MyStore.Server.WebApi.Controllers
             return Ok(Mapper.Map<Product.ReadModel.Product, ProductDto>(product));
         }
 
+        [Route("{name}")]
+        [HttpGet]
         [ResponseType(typeof(Guid))]
         public async Task<IHttpActionResult> LocateProduct(string name)
         {
@@ -65,6 +68,30 @@ namespace MyStore.Server.WebApi.Controllers
             _bus.Send(command);
 
             return Ok(command.ProductId);
+        }
+
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdateProductInfo(ProductInfoDto status)
+        {
+            var commands = new List<ICommand>
+            {
+                new UpdateProductPrice
+                {
+                    ProductId = status.ProductId,
+                    ProductSourceId = status.ProductSourceId,
+                    Price = status.Price,
+                },
+                new UpdateProductOnlineAvailibility
+                {
+                    ProductId = status.ProductId,
+                    ProductSourceId = status.ProductSourceId,
+                    IsAvailalbe = status.IsAvailableOnline
+                }
+            };
+
+            _bus.Send(commands);
+
+            return Ok();
         }
     }
 }

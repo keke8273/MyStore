@@ -2,15 +2,15 @@
 
 namespace Product
 {
-    public class ProductPrice
+    public class ProductOnlineAvailibility
     {
         private Guid _priceSourceId;
-        private decimal _price;
+        private bool _isAvailable;
 
-        public ProductPrice(Guid sourceId, decimal price)
+        public ProductOnlineAvailibility(Guid sourceId, bool isAvailable)
         {
             _priceSourceId = sourceId;
-            _price = price;
+            _isAvailable = isAvailable;
         }
 
         public Guid PriceSourceId
@@ -19,10 +19,10 @@ namespace Product
             set { _priceSourceId = value; }
         }
 
-        public decimal Price
+        public bool IsAvailable
         {
-            get { return _price; } 
-            set { _price = value; }
+            get { return _isAvailable; } 
+            set { _isAvailable = value; }
         }
     }
 }
