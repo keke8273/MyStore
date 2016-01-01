@@ -53,7 +53,6 @@
     <Compile Include="Commands\CreateProduct.cs" />
     <Compile Include="Commands\UpdateProductOnlineAvailbility.cs" />
     <Compile Include="Commands\UpdateProductPrice.cs" />
-    <Compile Include="Events\ProductCreated.cs" />
     <Compile Include="Handlers\ProductCommandHandler.cs" />
     <Compile Include="Handlers\ProductViewModelGenerator.cs" />
     <Compile Include="Product.cs" />
@@ -87,7 +86,9 @@
       <Name>Store.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

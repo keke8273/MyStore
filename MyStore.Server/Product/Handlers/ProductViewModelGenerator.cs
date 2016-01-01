@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using CQRS.Infrastructure.Messaging.Handling;
-using Store.Events;
+using Store.Contracts;
 using Store.ReadModel.Implementation;
 
 namespace Store.Handlers
@@ -31,7 +31,7 @@ namespace Store.Handlers
                 else
                 {
                     repository.Set<ReadModel.Product>().Add(
-                        new ReadModel.Product(@event.SourceId, @event.BrandId, @event.ProductName, @event.ImageUrl)
+                        new ReadModel.Product(@event.SourceId, @event.BrandId, @event.Name, @event.ImageUrl)
                         );
 
                     repository.SaveChanges();
