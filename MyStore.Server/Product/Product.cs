@@ -26,12 +26,12 @@ namespace Store
             LoadFrom(history);  
         }
 
-        public Product(Guid id, Guid brandId, string name, Uri imageUrl) :
+        public Product(Guid id, string brand, string name, string imageUrl) :
             this(id)
         {
             Update(new ProductCreated
             {
-                BrandId = brandId,
+                Brand = brand,
                 Name = name,
                 ImageUrl = imageUrl
             });

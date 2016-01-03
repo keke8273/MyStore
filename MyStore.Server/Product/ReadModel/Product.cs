@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Store.ReadModel
 {
     public class Product
     {
-        public Product(Guid productId, Guid brandId, string name, Uri imageUrl)
+        public Product(Guid id, string brand, string name, string imageUrl)
             :this()
         {
-            ProductId = productId;
-            BrandId = brandId;
+            Id = id;
+            Brand = brand;
             Name = name;
-            ImageUrl = imageUrl.ToString();
+            ImageUrl = imageUrl;
         }
 
         protected Product()
         {
-            Prices = new List<ProductPrice>();
-            Stocks = new List<ProductStock>();
-            OnlineAvailibilities = new List<ProductOnlineAvailibility>();
+            Prices = new List<Price>();
+            Stocks = new List<Stock>();
+            OnlineAvailibilities = new List<OnlineAvailability>();
+            Categories = new List<Category>();
         }
 
-        public Guid ProductId { get; set; }
+        public Guid Id { get; set; }
 
         [DataType(DataType.Url)]
         public string ImageUrl { get; set; }
@@ -30,16 +32,17 @@ namespace Store.ReadModel
         [Required]
         public string Name { get; set; }
 
-        public Guid BrandId { get; set; }
+        public string Brand { get; set; }
 
         #region Navigational Properties
-        public virtual Brand Brand { get; set; }
+        public ICollection<Category> Categories { get; set; } 
 
-        public virtual ICollection<ProductPrice> Prices { get; set; }
+        public virtual ICollection<Price> Prices { get; set; }
 
-        public virtual ICollection<ProductStock> Stocks { get; set; }
+        public virtual ICollection<Stock> Stocks { get; set; }
 
-        public virtual ICollection<ProductOnlineAvailibility> OnlineAvailibilities { get; set; }  
+        public virtual ICollection<OnlineAvailability> OnlineAvailibilities { get; set; }
+
         #endregion
     }
 }

@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using CQRS.Infrastructure.Serialization;
+using CQRS.Infrastructure.Utils;
 
 namespace Store.ReadModel.Implementation
 {
@@ -22,7 +23,7 @@ namespace Store.ReadModel.Implementation
             {
                 return context.Query<Product>().
                     Include(p => p.Brand).
-                    FirstOrDefault(dto => dto.ProductId == productId);
+                    FirstOrDefault(dto => dto.Id == productId);
             }
         }
 
@@ -30,15 +31,15 @@ namespace Store.ReadModel.Implementation
         {
             using (var context = _contextFactory.Invoke())
             {
-                var projectProjection = context
+                var product = context
                     .Query<Product>()
                     .Where(p => p.Name == name)
-                    .Select(m => new {m.ProductId})
+                    .Select(m => new {ProductId = m.Id})
                     .FirstOrDefault();
 
-                if (projectProjection != null)
+                if (product != null)
                 {
-                    return projectProjection.ProductId;
+                    return product.ProductId;
                 }
 
                 return null;

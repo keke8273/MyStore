@@ -2,7 +2,7 @@
 
 namespace Store.ReadModel
 {
-    public class ProductStock
+    public class Stock
     {
         public Guid ProductId { get; set; }
         public Guid StockLocationId { get; set; }

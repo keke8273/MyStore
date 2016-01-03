@@ -7,7 +7,6 @@ using Store.Commands;
 namespace Store.Handlers
 {
     public class ProductCommandHandler:
-        ICommandHandler<CreateProduct>,
         ICommandHandler<UpdateProductPrice>,
         ICommandHandler<UpdateProductOnlineAvailibility>
     {
@@ -18,22 +17,6 @@ namespace Store.Handlers
         {
             this._repository = repository;
             _dateTimeService = dateTimeService;
-        }
-
-        public void Handle(CreateProduct command)
-        {
-            var product = _repository.Find(command.ProductId);
-
-            if (product == null)
-            {
-                product = new Product(command.ProductId, command.BrandId, command.ProductName, command.ImageUrl);
-            }
-            else
-            {
-                Trace.TraceWarning("Product {0}, {1} was already created.", command.ProductId, command.ProductName);
-            }
-
-            _repository.Save(product, command.Id.ToString());
         }
 
         public void Handle(UpdateProductPrice command)

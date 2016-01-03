@@ -11,7 +11,7 @@ namespace Store.Tests
     public class given_no_product
     {
         private static readonly Guid ProductId = Guid.NewGuid();
-        private static readonly Guid BrandId = Guid.NewGuid();
+        private const string BrandName = "TestBrandName";
         private const string ProductName = "TestProductName";
         private static readonly Uri ImageUrl = new Uri("http://TestProductImageUrl");
         private readonly Mock<IDateTimeService> _dateTimeSerive;
@@ -24,24 +24,16 @@ namespace Store.Tests
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_now);
             sut = new EventSourcingTestHelper<Product>();
             sut.Setup(new ProductCommandHandler(sut.Repository, _dateTimeSerive.Object));
-        }
-        
-        [Fact()]
-        public void when_creating_product_then_is_placed_with_specified_id()
-        {
-            sut.When(new CreateProduct{BrandId = BrandId, ProductId = ProductId, ProductName = ProductName, ImageUrl = ImageUrl});
-
-            Assert.Equal(ProductId, sut.ThenHasOne<ProductCreated>().SourceId);
-        }
+        }        
     }
 
     public class given_new_product
     {
         private static readonly Guid ProductId = Guid.NewGuid();
-        private static readonly Guid BrandId = Guid.NewGuid();
+        private static readonly string BrandName = "TestBrandName";
         private static readonly Guid ProductSourceId = Guid.NewGuid();
         private static readonly string ProductName = "TestProductName";
-        private static readonly Uri ImageUrl = new Uri("http://TestProductImageUrl");
+        private static readonly string ImageUrl = "http://TestProductImageUrl";
         private readonly Mock<IDateTimeService> _dateTimeSerive;
         private DateTime _testTime = DateTime.UtcNow;
         private EventSourcingTestHelper<Product> sut;
@@ -57,7 +49,7 @@ namespace Store.Tests
             sut.Given(
                 new ProductCreated
                 {
-                    BrandId = BrandId,
+                    Brand = BrandName,
                     SourceId = ProductId,
                     Name = ProductName,
                     ImageUrl = ImageUrl
@@ -96,10 +88,10 @@ namespace Store.Tests
     public class given_existing_product
     {
         private static readonly Guid ProductId = Guid.NewGuid();
-        private static readonly Guid BrandId = Guid.NewGuid();
+        private const string BrandName = "TestBrandName";
         private static readonly Guid ProductSourceId = Guid.NewGuid();
         private static readonly string ProductName = "TestProductName";
-        private static readonly Uri ImageUrl = new Uri("http://TestProductImageUrl");
+        private const string ImageUrl = "http://TestProductImageUrl";
         private readonly Mock<IDateTimeService> _dateTimeSerive;
         private DateTime _testTime = DateTime.UtcNow;
         private EventSourcingTestHelper<Product> sut;
@@ -115,7 +107,7 @@ namespace Store.Tests
             sut.Given(
                 new ProductCreated
                 {
-                    BrandId = BrandId,
+                    Brand = BrandName,
                     SourceId = ProductId,
                     Name = ProductName,
                     ImageUrl = ImageUrl

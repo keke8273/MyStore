@@ -18,43 +18,53 @@ namespace Store.ReadModel.Implementation
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Brand>().ToTable("Brand", SchemaName);
             modelBuilder.Entity<Product>().ToTable("ProductView", SchemaName);
+            modelBuilder.Entity<Category>().ToTable("Categories", SchemaName);
+            modelBuilder.Entity<Source>().ToTable("Source", SchemaName);
+
+            modelBuilder.Entity<Product>().HasMany<Category>(p => p.Categories)
+                .WithMany(c => c.Products).Map(
+                    pc =>
+                    {
+                        pc.MapLeftKey("ProductRefId");
+                        pc.MapRightKey("CategoryRefId");
+                        pc.ToTable("ProductCategory", SchemaName);
+                    });
             
-            modelBuilder.Entity<ProductPrice>().ToTable("ProductPrice", SchemaName);
-            modelBuilder.Entity<ProductPrice>().HasKey(p => new {p.ProductId, p.ProductSourceId});
-            //modelBuilder.Entity<ProductPrice>()
+            modelBuilder.Entity<Price>().ToTable("Price", SchemaName);
+            modelBuilder.Entity<Price>().HasKey(p => new {p.ProductId, p.ProductSourceId});
+            modelBuilder.Entity<PriceRecord>().ToTable("PriceRecord", SchemaName);
+            //modelBuilder.Entity<Price>()
             //    .HasRequired(p => p.Product)
             //    .WithMany(p => p.Prices)
-            //    .HasForeignKey(p => new {p.ProductId, p.ProductSourceId});
+            //    .HasForeignKey(p => new {p.Id, p.Id});
 
-            modelBuilder.Entity<ProductPriceRecord>().ToTable("ProductPriceRecord", SchemaName);
-            modelBuilder.Entity<ProductSource>().ToTable("ProductSource", SchemaName);
-            modelBuilder.Entity<ProductOnlineAvailibility>().ToTable("ProductOnlineAvailibility", SchemaName);
-            modelBuilder.Entity<ProductOnlineAvailibility>().HasKey(p => new { p.ProductId, p.ProductSourceId });
-            //modelBuilder.Entity<ProductOnlineAvailibility>()
+            modelBuilder.Entity<OnlineAvailability>().ToTable("OnlineAvailability", SchemaName);
+            modelBuilder.Entity<OnlineAvailability>().HasKey(p => new { p.ProductId, p.ProductSourceId });
+            modelBuilder.Entity<OnlineAvailabilityRecord>().ToTable("OnlineAvailabilityRecord", SchemaName);
+            //modelBuilder.Entity<OnlineAvailability>()
             //    .HasRequired(a => a.Product)
             //    .WithMany(p => p.OnlineAvailibilities)
-            //    .HasForeignKey(p => new {p.ProductId, p.ProductSourceId});
+            //    .HasForeignKey(p => new {p.Id, p.Id});
 
-            modelBuilder.Entity<ProductStock>().ToTable("ProductStock", SchemaName);
-            modelBuilder.Entity<ProductStock>().HasKey(s => new { s.ProductId, s.StockLocationId });
-            //modelBuilder.Entity<ProductStock>()
+            modelBuilder.Entity<Stock>().ToTable("Stock", SchemaName);
+            modelBuilder.Entity<Stock>().HasKey(s => new { s.ProductId, s.StockLocationId });
+            //modelBuilder.Entity<Stock>()
             //    .HasRequired(s => s.Product)
             //    .WithMany(p => p.Stocks)
-            //    .HasForeignKey(s => new {s.ProductId, s.StockLocationId});
+            //    .HasForeignKey(s => new {s.Id, s.StockLocationId});
 
             //Conventions
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public DbSet<Brand> Brands { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductPrice> ProductPrices { get; set; }
-        public DbSet<ProductPriceRecord> ProductPriceRecords { get; set; }
-        public DbSet<ProductSource> PriceSources { get; set; }
-        public DbSet<ProductOnlineAvailibility> ProductOnlineAvailibilities{ get; set; }
-        public DbSet<ProductStock> ProductStocks{ get; set; }
+        public DbSet<Category> Categories{ get; set; }
+        public DbSet<Price> Prices { get; set; }
+        public DbSet<PriceRecord> PriceRecords { get; set; }
+        public DbSet<Source> Sources { get; set; }
+        public DbSet<OnlineAvailability> OnlineAvailabilities{ get; set; }
+        public DbSet<Stock> Stocks{ get; set; }
 
         public T Find<T>(Guid id) where T : class
         {

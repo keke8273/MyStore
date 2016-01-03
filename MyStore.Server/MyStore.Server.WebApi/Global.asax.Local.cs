@@ -17,6 +17,11 @@ namespace MyStore.Server.WebApi
                 new InjectionConstructor(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Command"));
             container.RegisterType<ICommandBus, CommandBus>(new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(new ResolvedParameter<IMessageSender>("Commands"), serializer));
+
+            container.RegisterType<IMessageSender, MessageSender>("Events", new TransientLifetimeManager(),
+                new InjectionConstructor(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Events"));
+            container.RegisterType<IEventBus, EventBus>(new ContainerControlledLifetimeManager(),
+                new InjectionConstructor(new ResolvedParameter<IMessageSender>("Events"), serializer));
         }
     }
 }

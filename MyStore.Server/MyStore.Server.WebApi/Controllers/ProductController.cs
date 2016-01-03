@@ -6,21 +6,32 @@ using System.Web.Http.Description;
 using AutoMapper;
 using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Utils;
+using Store;
 using Store.Commands;
 using Store.Dto;
 using Store.ReadModel;
+using Product = Store.ReadModel.Product;
 
 namespace MyStore.Server.WebApi.Controllers
 {
-    [RoutePrefix("api/product")]
+    [RoutePrefix("api/productDto")]
     public class ProductController : ApiController
     {
         private readonly IProductDao _productDao;
         private readonly ICommandBus _bus;
+        private readonly IEventBus _eventBus;
 
-        public ProductController(IProductDao productDao, ICommandBus bus)
+        private ProductService _productService;
+
+        private ProductService Service
+        {
+            get { return _productService ?? (_productService = new ProductService(_eventBus)); }
+        }
+
+        public ProductController(IProductDao productDao, ICommandBus bus, IEventBus eventBus)
         {
             _bus = bus;
+            _eventBus = eventBus;
             _productDao = productDao;
         }
 
@@ -52,40 +63,29 @@ namespace MyStore.Server.WebApi.Controllers
             return Ok(productId.Value);
         }
 
-        [Route("")]
         [HttpPost]
-        [ResponseType(typeof(Guid))]
-        public async Task<IHttpActionResult> CreateProduct(ProductDto product)
+        public async Task<IHttpActionResult> UpdateProduct(SourceBasedProductDto productDto)
         {
-            var command = new CreateProduct
-            {
-                ProductId = GuidUtil.NewSequentialId(),
-                ProductName = product.Name,
-                BrandId = product.BrandId, 
-                ImageUrl = product.ImageUrl
-            };
+            var productId = _productDao.LocateProduct(productDto.Name);
 
-            _bus.Send(command);
+            if (!productId.HasValue)
+                productId = Service.CreateProduct(Mapper.Map<ProductInfo>(productDto));
 
-            return Ok(command.ProductId);
-        }
+            var productSource = Service.FindSource(productDto.SourceName) ?? Service.CreateSource(productDto.SourceName);
 
-        [HttpPut]
-        public async Task<IHttpActionResult> UpdateProductInfo(ProductInfoDto status)
-        {
             var commands = new List<ICommand>
             {
                 new UpdateProductPrice
                 {
-                    ProductId = status.ProductId,
-                    ProductSourceId = status.ProductSourceId,
-                    Price = status.Price,
+                    ProductId = productId.Value,
+                    ProductSourceId =productSource.Id,
+                    Price = productDto.Price,
                 },
                 new UpdateProductOnlineAvailibility
                 {
-                    ProductId = status.ProductId,
-                    ProductSourceId = status.ProductSourceId,
-                    IsAvailalbe = status.IsAvailableOnline
+                    ProductId = productId.Value,
+                    ProductSourceId = productSource.Id,
+                    IsAvailalbe = productDto.IsAvailableOnline
                 }
             };
 

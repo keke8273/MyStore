@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateProduct.cs" />
     <Compile Include="Commands\UpdateProductOnlineAvailbility.cs" />
     <Compile Include="Commands\UpdateProductPrice.cs" />
     <Compile Include="Handlers\ProductCommandHandler.cs" />
@@ -58,19 +57,17 @@
     <Compile Include="Product.cs" />
     <Compile Include="ProductOnlineAvailibility.cs" />
     <Compile Include="ProductPrice.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadModel\Brand.cs" />
-    <Compile Include="ReadModel\IBrandDao.cs" />
-    <Compile Include="ReadModel\Implementation\BrandDao.cs" />
     <Compile Include="ReadModel\Implementation\ProductDao.cs" />
     <Compile Include="ReadModel\Implementation\ProductDbContext.cs" />
     <Compile Include="ReadModel\IProductDao.cs" />
-    <Compile Include="ReadModel\ProductSource.cs" />
+    <Compile Include="ReadModel\Category.cs" />
+    <Compile Include="ReadModel\Source.cs" />
     <Compile Include="ReadModel\Product.cs" />
-    <Compile Include="ReadModel\ProductOnlineAvailibility.cs" />
-    <Compile Include="ReadModel\ProductPrice.cs" />
-    <Compile Include="ReadModel\ProductPriceRecord.cs" />
-    <Compile Include="ReadModel\ProductStock.cs" />
+    <Compile Include="ReadModel\OnlineAvailability.cs" />
+    <Compile Include="ReadModel\Price.cs" />
+    <Compile Include="ReadModel\Stock.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">
@@ -84,6 +81,10 @@
     <ProjectReference Include="..\Product.Contracts\Store.Contracts.csproj">
       <Project>{1925163D-C864-4076-B77C-936FD697849B}</Project>
       <Name>Store.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Product.Dto\Store.Dto.csproj">
+      <Project>{A2BBC0FD-9259-429A-8163-2B622D57C157}</Project>
+      <Name>Store.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

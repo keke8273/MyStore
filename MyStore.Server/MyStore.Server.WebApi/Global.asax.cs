@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Data.SqlTypes;
 using System.Web;
 using System.Web.Http;
+using CQRS.Infrastructure.Messaging;
 using Microsoft.Practices.Unity;
 using Store.ReadModel;
 using Store.ReadModel.Implementation;
@@ -44,7 +44,6 @@ namespace MyStore.Server.WebApi
                 container.RegisterType<ProductDbContext>(new TransientLifetimeManager(), new InjectionConstructor("StoreManagement"));
 
                 container.RegisterType<IProductDao, ProductDao>();
-                container.RegisterType<IBrandDao, BrandDao>();
 
                 OnCreateContainer(container);
             }
