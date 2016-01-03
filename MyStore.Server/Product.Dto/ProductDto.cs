@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Store.Dto
 {
@@ -20,7 +21,7 @@ namespace Store.Dto
 
         protected bool Equals(ProductDto other)
         {
-            return string.Equals(Brand, other.Brand) && Equals(Categories, other.Categories) &&
+            return string.Equals(Brand, other.Brand) && Categories.SequenceEqual(other.Categories) &&
                    string.Equals(Name, other.Name) && string.Equals(ImageUrl, other.ImageUrl);
         }
 

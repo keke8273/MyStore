@@ -14,12 +14,12 @@ namespace MyStore.Server.WebApi
             container.RegisterInstance<ITextSerializer>(serializer);
 
             container.RegisterType<IMessageSender, MessageSender>("Commands", new TransientLifetimeManager(),
-                new InjectionConstructor(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Command"));
+                new InjectionConstructor(Database.DefaultConnectionFactory, "MyStore", "SqlBus.Commands"));
             container.RegisterType<ICommandBus, CommandBus>(new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(new ResolvedParameter<IMessageSender>("Commands"), serializer));
 
             container.RegisterType<IMessageSender, MessageSender>("Events", new TransientLifetimeManager(),
-                new InjectionConstructor(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Events"));
+                new InjectionConstructor(Database.DefaultConnectionFactory, "MyStore", "SqlBus.Events"));
             container.RegisterType<IEventBus, EventBus>(new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(new ResolvedParameter<IMessageSender>("Events"), serializer));
         }

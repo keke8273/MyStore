@@ -22,11 +22,11 @@ namespace MyStore.Worker
             var serializer = container.Resolve<ITextSerializer>();
             var metadata = container.Resolve<IMetadataProvider>();
 
-            var commandBus = new CommandBus(new MessageSender(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Commands"), serializer);
-            var eventBus = new EventBus(new MessageSender(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Events"), serializer);
+            var commandBus = new CommandBus(new MessageSender(Database.DefaultConnectionFactory, "MyStore", "SqlBus.Commands"), serializer);
+            var eventBus = new EventBus(new MessageSender(Database.DefaultConnectionFactory, "MyStore", "SqlBus.Events"), serializer);
 
-            var commandProcessor = new CommandProcessor(new MessageReceiver(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Commands"), serializer);
-            var eventProcessor = new EventProcessor(new MessageReceiver(Database.DefaultConnectionFactory, "SqlBus", "SqlBus.Events"), serializer);
+            var commandProcessor = new CommandProcessor(new MessageReceiver(Database.DefaultConnectionFactory, "MyStore", "SqlBus.Commands"), serializer);
+            var eventProcessor = new EventProcessor(new MessageReceiver(Database.DefaultConnectionFactory, "MyStore", "SqlBus.Events"), serializer);
 
             container.RegisterInstance<ICommandBus>(commandBus);
             container.RegisterInstance<IEventBus>(eventBus);

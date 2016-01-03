@@ -1,4 +1,6 @@
-﻿namespace MyStore.Worker
+﻿using System;
+
+namespace MyStore.Worker
 {
     class Program
     {
@@ -6,7 +8,12 @@
         {
             using (var processor = new StoreProcessor())
             {
-                
+                processor.Start();
+                Console.WriteLine("Worker started");
+                Console.WriteLine("Press enter to exit");
+                Console.ReadLine();
+
+                processor.Stop();
             }
         }
     }

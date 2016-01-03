@@ -65,7 +65,6 @@ namespace Store
 
         private void OnProductCreated(ProductCreated e)
         {
-            //todo::do something with the event.
         }
 
         private void OnPriceUpdated(PriceUpdated e)
