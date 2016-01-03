@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.PriceTracker.Client", "MyStore.PriceTracker.Client\MyStore.PriceTracker.Client.csproj", "{2F4D98EA-E841-4094-9041-3B4B508BCD88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.PriceTracker.ClientTests", "MyStore.PriceTracker.ClientTests\MyStore.PriceTracker.ClientTests.csproj", "{C9F007D1-5C0F-4D4B-8237-2E0BF076088E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "..\MyStore.Server\Product.Dto\Store.Dto.csproj", "{A2BBC0FD-9259-429A-8163-2B622D57C157}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2F4D98EA-E841-4094-9041-3B4B508BCD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F4D98EA-E841-4094-9041-3B4B508BCD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F4D98EA-E841-4094-9041-3B4B508BCD88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F007D1-5C0F-4D4B-8237-2E0BF076088E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F007D1-5C0F-4D4B-8237-2E0BF076088E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F007D1-5C0F-4D4B-8237-2E0BF076088E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F007D1-5C0F-4D4B-8237-2E0BF076088E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BBC0FD-9259-429A-8163-2B622D57C157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BBC0FD-9259-429A-8163-2B622D57C157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BBC0FD-9259-429A-8163-2B622D57C157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BBC0FD-9259-429A-8163-2B622D57C157}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
