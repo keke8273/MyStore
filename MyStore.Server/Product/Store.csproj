@@ -11,6 +11,7 @@
     <AssemblyName>Store</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>bb7e4be9</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,24 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\UpdateProductOnlineAvailbility.cs" />
-    <Compile Include="Commands\UpdateProductPrice.cs" />
-    <Compile Include="Handlers\ProductCommandHandler.cs" />
-    <Compile Include="Handlers\ProductViewModelGenerator.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductOnlineAvailibility.cs" />
-    <Compile Include="ProductPrice.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadModel\Implementation\ProductDao.cs" />
     <Compile Include="ReadModel\Implementation\ProductDbContext.cs" />
     <Compile Include="ReadModel\IProductDao.cs" />
     <Compile Include="ReadModel\Category.cs" />
-    <Compile Include="ReadModel\Source.cs" />
     <Compile Include="ReadModel\Product.cs" />
-    <Compile Include="ReadModel\OnlineAvailability.cs" />
-    <Compile Include="ReadModel\Price.cs" />
-    <Compile Include="ReadModel\Stock.cs" />
+    <Compile Include="ReadModel\ProductSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">
@@ -88,7 +79,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\" />
     <Folder Include="Events\" />
+    <Folder Include="Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

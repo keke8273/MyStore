@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
-using Store.Handlers;
+using ProductTracking.Handlers;
 using Store.ReadModel;
 using Store.ReadModel.Implementation;
 
@@ -71,7 +71,8 @@ namespace MyStore.Worker
             container.RegisterType<IProductDao, ProductDao>(new ContainerControlledLifetimeManager());
 
             //handlers
-            container.RegisterType<ICommandHandler, ProductCommandHandler>("ProductCommandHandler");
+            container.RegisterType<ICommandHandler, ProductPriceCommandHandler>("ProductPriceCommandHandler");
+            container.RegisterType<ICommandHandler, OnlineAvailabilityCommandHandler>("OnlineAvailabilityCommandHandler");
 
             OnCreateContainer(container);
 

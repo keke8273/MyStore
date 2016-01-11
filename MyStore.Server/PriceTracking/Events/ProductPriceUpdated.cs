@@ -1,10 +1,10 @@
-﻿
-using System;
+﻿using System;
+using CQRS.Infrastructure.EventSourcing;
 using CQRS.Infrastructure.Messaging;
 
-namespace Store.Contracts
+namespace ProductTracking.Events
 {
-    public class PriceUpdated : ProductEvent, ITimeStampedEvent
+    public class ProductPriceUpdated : VersionedEvent, ITimeStampedEvent
     {
         public Guid ProductSourceId { get; set; }
         public decimal NewPrice { get; set; }

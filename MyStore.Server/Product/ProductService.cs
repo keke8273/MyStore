@@ -12,18 +12,18 @@ namespace Store
 {
     public class ProductService
     {
-        private readonly IEventBus eventBus;
-        private readonly string nameOrConnectionString;
+        private readonly IEventBus _eventBus;
+        private readonly string _nameOrConnectionString;
 
         public ProductService(IEventBus eventBus, string nameOrConnectionString ="StoreManagement")
         {
-            this.eventBus = eventBus;
-            this.nameOrConnectionString = nameOrConnectionString;
+            this._eventBus = eventBus;
+            this._nameOrConnectionString = nameOrConnectionString;
         }
 
         public Guid CreateProduct(ProductInfo productInfo)
         {
-            using (var context = new ProductDbContext(nameOrConnectionString))
+            using (var context = new ProductDbContext(_nameOrConnectionString))
             {
                 var existingProduct = context.Products.Any(p => p.Name == productInfo.Name);
 
@@ -45,7 +45,7 @@ namespace Store
 
                 context.SaveChanges();
 
-                eventBus.Publish(new ProductCreated
+                _eventBus.Publish(new ProductCreated
                 {
                     SourceId = productInfo.Id,
                     Brand = productInfo.Brand,
@@ -57,23 +57,26 @@ namespace Store
             }
         }
 
-        public Source FindSource(string sourceName)
+        public Guid? FindSource(string sourceName)
         {
-            using (var context = new ProductDbContext(nameOrConnectionString))
+            using (var context = new ProductDbContext(_nameOrConnectionString))
             {
-                return context.Sources.FirstOrDefault(s => s.Name == sourceName);
+                var productSource = context.Sources.FirstOrDefault(s => s.Name == sourceName);
+                return productSource != null ? productSource.Id : (Guid?) null;
             }
         }
 
-        public Source CreateSource(string sourceName)
+        public Guid CreateSource(string sourceName)
         {
-            using (var context = new ProductDbContext(nameOrConnectionString))
+            using (var context = new ProductDbContext(_nameOrConnectionString))
             {
-                var source = new Source {Id = GuidUtil.NewSequentialId(), Name = sourceName};
+                var source = new ProductSource {Id = GuidUtil.NewSequentialId(), Name = sourceName};
 
                 context.Sources.Add(source);
+
                 context.SaveChanges();
-                return source;
+
+                return source.Id;
             }
         }
     }

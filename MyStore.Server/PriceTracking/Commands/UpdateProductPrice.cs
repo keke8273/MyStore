@@ -1,11 +1,11 @@
 ﻿using System;
 using CQRS.Infrastructure.Messaging;
 
-namespace Store.Commands
+namespace ProductTracking.Commands
 {
-    public class UpdateProductOnlineAvailibility : ICommand
+    public class UpdateProductPrice : ICommand
     {
-        public UpdateProductOnlineAvailibility()
+        public UpdateProductPrice()
         {
             Id = Guid.NewGuid();
         }
@@ -13,6 +13,6 @@ namespace Store.Commands
         public Guid Id { get; private set; }
         public Guid ProductId { get; set; }
         public Guid ProductSourceId { get; set; }
-        public bool IsAvailalbe { get; set; }
+        public decimal Price { get; set; }
     }
 }

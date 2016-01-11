@@ -2,12 +2,12 @@
 
 namespace Store
 {
-    public class ProductOnlineAvailibility
+    public class ProductOnlineAvailability
     {
         private Guid _priceSourceId;
         private bool _isAvailable;
 
-        public ProductOnlineAvailibility(Guid sourceId, bool isAvailable)
+        public ProductOnlineAvailability(Guid sourceId, bool isAvailable)
         {
             _priceSourceId = sourceId;
             _isAvailable = isAvailable;

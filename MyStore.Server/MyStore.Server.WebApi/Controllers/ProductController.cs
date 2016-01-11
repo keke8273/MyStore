@@ -5,9 +5,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using CQRS.Infrastructure.Messaging;
-using CQRS.Infrastructure.Utils;
+using ProductTracking.Commands;
 using Store;
-using Store.Commands;
 using Store.Dto;
 using Store.ReadModel;
 using Product = Store.ReadModel.Product;
@@ -71,21 +70,24 @@ namespace MyStore.Server.WebApi.Controllers
             if (!productId.HasValue)
                 productId = Service.CreateProduct(Mapper.Map<ProductInfo>(productDto));
 
-            var productSource = Service.FindSource(productDto.SourceName) ?? Service.CreateSource(productDto.SourceName);
+            var productSourceId = Service.FindSource(productDto.SourceName);
+
+            if(!productSourceId.HasValue)
+                productSourceId = Service.CreateSource(productDto.SourceName);
 
             var commands = new List<ICommand>
             {
                 new UpdateProductPrice
                 {
                     ProductId = productId.Value,
-                    ProductSourceId =productSource.Id,
+                    ProductSourceId =productSourceId.Value,
                     Price = productDto.Price,
                 },
-                new UpdateProductOnlineAvailibility
+                new UpdateProductOnlineAvailability
                 {
                     ProductId = productId.Value,
-                    ProductSourceId = productSource.Id,
-                    IsAvailalbe = productDto.IsAvailableOnline
+                    ProductSourceId = productSourceId.Value,
+                    IsAvailable = productDto.IsAvailableOnline
                 }
             };
 

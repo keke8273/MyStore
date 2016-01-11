@@ -1,10 +1,10 @@
 ﻿using System;
 using Moq;
 using MyStore.Common;
+using MyStore.Common.Utils;
 using Store.Commands;
 using Store.Contracts;
 using Store.Handlers;
-using Store.Tests.Utils;
 using Xunit;
 namespace Store.Tests
 {
@@ -74,7 +74,7 @@ namespace Store.Tests
         public void when_updating_online_availability_then_add_new_product_online_availability()
         {
             const bool expectedAvailability = true;
-            sut.When(new UpdateProductOnlineAvailibility{IsAvailalbe = true, ProductId = ProductId, ProductSourceId = ProductSourceId});
+            sut.When(new UpdateProductOnlineAvailability{IsAvailalbe = true, ProductId = ProductId, ProductSourceId = ProductSourceId});
 
             var @event = sut.ThenHasOne<OnlineAvailabilityUpdated>();
             Assert.Equal(ProductId, @event.SourceId);
@@ -146,10 +146,10 @@ namespace Store.Tests
         }
 
         [Fact]
-        public void when_availibility_from_same_source_changed_then_update_availibility()
+        public void when_Availability_from_same_source_changed_then_update_Availability()
         {
             const bool expectedAvailability = false;
-            sut.When(new UpdateProductOnlineAvailibility { IsAvailalbe = false, ProductId = ProductId, ProductSourceId = ProductSourceId });
+            sut.When(new UpdateProductOnlineAvailability { IsAvailalbe = false, ProductId = ProductId, ProductSourceId = ProductSourceId });
 
             var @event = sut.ThenHasOne<OnlineAvailabilityUpdated>();
             Assert.Equal(ProductId, @event.SourceId);

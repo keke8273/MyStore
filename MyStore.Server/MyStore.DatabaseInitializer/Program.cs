@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using CQRS.Infrastructure.Sql.EventSourcing;
 using CQRS.Infrastructure.Sql.MessageLog;
 using CQRS.Infrastructure.Sql.Messaging.Implementation;
+using ProductTracking.ReadModel.Implementation;
 using Store.ReadModel.Implementation;
 
 namespace MyStore.DatabaseInitializer
@@ -24,12 +25,14 @@ namespace MyStore.DatabaseInitializer
 
             Database.SetInitializer<EventStoreDbContext>(null);
             Database.SetInitializer<MessageLogDbContext>(null);
+            Database.SetInitializer<ProductStatusDbContext>(null);
 
             var contexts =
                 new DbContext[]
                 {
                     new EventStoreDbContext(connectionString),
                     new MessageLogDbContext(connectionString),
+                    new ProductStatusDbContext(connectionString),
                 };
 
             foreach (var context in contexts)

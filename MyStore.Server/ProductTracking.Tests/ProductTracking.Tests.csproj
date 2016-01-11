@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B30F3366-3141-4727-A4EA-8386370329A7}</ProjectGuid>
+    <ProjectGuid>{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Store.Tests</RootNamespace>
-    <AssemblyName>Store.Tests</AssemblyName>
+    <RootNamespace>ProductTracking.Tests</RootNamespace>
+    <AssemblyName>ProductTracking.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,7 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <NuGetPackageImportStamp>ec8018f4</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>3b8efc16</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,7 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
@@ -56,12 +55,13 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="OnlineAvaliablilityFixtures.cs" />
+    <Compile Include="ProductPriceFixtures.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -73,13 +73,9 @@
       <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
       <Name>MyStore.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Product.Contracts\Store.Contracts.csproj">
-      <Project>{1925163D-C864-4076-B77C-936FD697849B}</Project>
-      <Name>Store.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Product\Store.csproj">
-      <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
-      <Name>Store</Name>
+    <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
+      <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
+      <Name>ProductTracking</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

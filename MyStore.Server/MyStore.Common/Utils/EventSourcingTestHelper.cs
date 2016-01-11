@@ -20,7 +20,7 @@ using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Messaging.Handling;
 using Xunit;
 
-namespace Store.Tests.Utils
+namespace MyStore.Common.Utils
 {
     public class EventSourcingTestHelper<T> where T : IEventSourced
     {

@@ -11,7 +11,7 @@ using CQRS.Infrastructure.Sql.Messaging.Handling;
 using CQRS.Infrastructure.Sql.Messaging.Implementation;
 using Microsoft.Practices.Unity;
 using System.Data.Entity;
-using Store.Handlers;
+using ProductTracking.Handlers;
 
 namespace MyStore.Worker
 {
@@ -55,7 +55,7 @@ namespace MyStore.Worker
 
         private void RegisterEventHandlers(UnityContainer container, EventProcessor eventProcessor)
         {
-            eventProcessor.Register(container.Resolve<ProductViewModelGenerator>());
+            eventProcessor.Register(container.Resolve<ProductStatusViewModelGenerator>());
         }
 
         private void RegisterCommandHandlers(UnityContainer container)

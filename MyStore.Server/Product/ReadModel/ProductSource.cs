@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Store.ReadModel
 {
-    public class Source
+    public class ProductSource
     {
         public Guid Id { get; set; }
 

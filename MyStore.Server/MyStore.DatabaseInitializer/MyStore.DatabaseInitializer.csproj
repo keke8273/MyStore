@@ -11,6 +11,7 @@
     <AssemblyName>MyStore.DatabaseInitializer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>3142175b</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,6 +65,10 @@
     <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure.Sql\CQRS.Infrastructure.Sql.csproj">
       <Project>{55E3A5A1-41C6-470F-82D4-3DBB93578181}</Project>
       <Name>CQRS.Infrastructure.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
+      <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
+      <Name>ProductTracking</Name>
     </ProjectReference>
     <ProjectReference Include="..\Product\Store.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>

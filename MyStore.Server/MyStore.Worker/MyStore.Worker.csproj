@@ -11,6 +11,7 @@
     <AssemblyName>MyStore.Worker</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>fc486d6a</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,7 +70,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\MyStore.Common\MyStore.Common.csproj">
       <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
       <Name>MyStore.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
+      <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
+      <Name>ProductTracking</Name>
     </ProjectReference>
     <ProjectReference Include="..\Product\Store.csproj">
       <Project>{a7fb896e-a821-4117-ba47-1795ae190b08}</Project>
