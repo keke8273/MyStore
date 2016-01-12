@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Server.WebApi", "MyStore.Server.WebApi\MyStore.Server.WebApi.csproj", "{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}"
 EndProject
@@ -54,6 +54,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTracking", "PriceTracking\ProductTracking.csproj", "{D73BA17E-F5D1-46C5-BB92-E33474B38113}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTracking.Tests", "ProductTracking.Tests\ProductTracking.Tests.csproj", "{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTracking.Contracts", "ProductTracking.Contracts\ProductTracking.Contracts.csproj", "{D86EF8DD-4881-456F-BA9A-647BC7B56562}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ParcelTracking", "ParcelTracking", "{4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking", "ParcelTracking\ParcelTracking.csproj", "{FC76D51C-F02D-4765-A4CF-9A77FE855286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking.Contacts", "ParcelTracking.Contacts\ParcelTracking.Contacts.csproj", "{41EDE6BA-A318-4B77-891B-65B98E96D836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +121,18 @@ Global
 		{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D86EF8DD-4881-456F-BA9A-647BC7B56562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D86EF8DD-4881-456F-BA9A-647BC7B56562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D86EF8DD-4881-456F-BA9A-647BC7B56562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D86EF8DD-4881-456F-BA9A-647BC7B56562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC76D51C-F02D-4765-A4CF-9A77FE855286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC76D51C-F02D-4765-A4CF-9A77FE855286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC76D51C-F02D-4765-A4CF-9A77FE855286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC76D51C-F02D-4765-A4CF-9A77FE855286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,5 +149,8 @@ Global
 		{B30F3366-3141-4727-A4EA-8386370329A7} = {2197F897-C157-49EF-BCCB-9F2BDF226681}
 		{D73BA17E-F5D1-46C5-BB92-E33474B38113} = {EAC6C5BF-E01C-4CA6-A152-1AB4118C6F9F}
 		{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E} = {EAC6C5BF-E01C-4CA6-A152-1AB4118C6F9F}
+		{D86EF8DD-4881-456F-BA9A-647BC7B56562} = {EAC6C5BF-E01C-4CA6-A152-1AB4118C6F9F}
+		{FC76D51C-F02D-4765-A4CF-9A77FE855286} = {4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}
+		{41EDE6BA-A318-4B77-891B-65B98E96D836} = {4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}
 	EndGlobalSection
 EndGlobal

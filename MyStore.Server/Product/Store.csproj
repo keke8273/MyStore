@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\ProductViewModelGenerator.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadModel\Implementation\ProductDao.cs" />
@@ -81,7 +82,6 @@
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Events\" />
-    <Folder Include="Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

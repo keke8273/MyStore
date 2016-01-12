@@ -2,7 +2,7 @@
 using CQRS.Infrastructure.EventSourcing;
 using CQRS.Infrastructure.Messaging;
 
-namespace ProductTracking.Events
+namespace ProductTracking.Contracts.Events
 {
     public class ProductPriceUpdated : VersionedEvent, ITimeStampedEvent
     {
