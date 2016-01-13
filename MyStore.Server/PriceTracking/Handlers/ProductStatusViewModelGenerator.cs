@@ -1,6 +1,6 @@
 ﻿using System;
 using CQRS.Infrastructure.Messaging.Handling;
-using ProductTracking.Events;
+using ProductTracking.Contracts.Events;
 using ProductTracking.ReadModel;
 using ProductTracking.ReadModel.Implementation;
 

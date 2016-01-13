@@ -1,7 +1,7 @@
 ﻿using CQRS.Infrastructure.EventSourcing;
 using CQRS.Infrastructure.Messaging.Handling;
 using MyStore.Common;
-using ProductTracking.Commands;
+using ProductTracking.Contracts.Commands;
 
 namespace ProductTracking.Handlers
 {

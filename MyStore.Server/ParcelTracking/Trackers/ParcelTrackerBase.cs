@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CQRS.Infrastructure.Messaging;
+using ParcelTracking.ReadModel;
 
-namespace ParcelTracking.Implementation
+namespace ParcelTracking.Trackers
 {
-    abstract public class ParcelTrackerBase : IParcelTracker
+    public abstract class ParcelTrackerBase : IParcelTracker
     {
         private readonly string _name;
         private readonly IParcelStatusDao _parcelStatusDao;
@@ -20,5 +17,8 @@ namespace ParcelTracking.Implementation
         }
 
         public string Name { get { return _name;}}
+
+        public abstract void Start();
+        public abstract void Stop();
     }
 }

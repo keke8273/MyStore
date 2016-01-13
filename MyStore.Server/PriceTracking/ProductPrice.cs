@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CQRS.Infrastructure.EventSourcing;
 using MyStore.Common;
-using ProductTracking.Events;
+using ProductTracking.Contracts.Events;
 
 namespace ProductTracking
 {

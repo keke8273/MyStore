@@ -43,6 +43,12 @@
     <Compile Include="Events\ParcelStatusUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">
+      <Project>{4C05D755-5060-4CAD-941B-EE33FEEA9914}</Project>
+      <Name>CQRS.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

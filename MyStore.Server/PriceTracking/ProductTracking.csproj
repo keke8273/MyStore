@@ -71,6 +71,10 @@
       <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
       <Name>MyStore.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProductTracking.Contracts\ProductTracking.Contracts.csproj">
+      <Project>{D86EF8DD-4881-456F-BA9A-647BC7B56562}</Project>
+      <Name>ProductTracking.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CQRS.Infrastructure.Messaging.Handling;
+using ParcelTracking.Contacts.Events;
 
 namespace ParcelTracking.Handlers
 {
@@ -10,5 +8,10 @@ namespace ParcelTracking.Handlers
         IEventHandler<ParcelStatusUpdated>
     {
         private readonly Func<>
+
+        public void Handle(ParcelStatusUpdated @event)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
