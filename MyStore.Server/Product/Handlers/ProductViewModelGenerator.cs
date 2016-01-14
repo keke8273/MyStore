@@ -1,10 +1,5 @@
 ﻿using CQRS.Infrastructure.Messaging.Handling;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProductPriceTracking.Events;
+using ProductTracking.Contracts.Events;
 
 namespace Store.Handlers
 {
@@ -12,6 +7,14 @@ namespace Store.Handlers
         IEventHandler<ProductPriceUpdated>,
         IEventHandler<OnlineAvailabilityUpdated>
     {
+        public void Handle(ProductPriceUpdated @event)
+        {
+            throw new System.NotImplementedException();
+        }
 
+        public void Handle(OnlineAvailabilityUpdated @event)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

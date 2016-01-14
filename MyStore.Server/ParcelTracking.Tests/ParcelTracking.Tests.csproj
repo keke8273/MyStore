@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{85FC0C7E-2E60-40A5-970E-F8E60FBBE75E}</ProjectGuid>
+    <ProjectGuid>{24D22015-C054-4DC4-9850-BF3648910146}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProductTracking.Tests</RootNamespace>
-    <AssemblyName>ProductTracking.Tests</AssemblyName>
+    <RootNamespace>ParcelTracking.Tests</RootNamespace>
+    <AssemblyName>ParcelTracking.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,7 +16,6 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <NuGetPackageImportStamp>3b8efc16</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,14 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.4.2.1\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\packages\FluentAssertions.4.2.1\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="xunit, Version=1.9.1.1600, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -55,33 +61,22 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="OnlineAvaliablilityFixtures.cs" />
-    <Compile Include="ProductPriceFixtures.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Parsers\EmmsHtmlParserFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">
-      <Project>{4C05D755-5060-4CAD-941B-EE33FEEA9914}</Project>
-      <Name>CQRS.Infrastructure</Name>
+    <ProjectReference Include="..\ParcelTracking\ParcelTracking.csproj">
+      <Project>{FC76D51C-F02D-4765-A4CF-9A77FE855286}</Project>
+      <Name>ParcelTracking</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyStore.Common\MyStore.Common.csproj">
-      <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
-      <Name>MyStore.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
-      <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
-      <Name>ProductTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProductTracking.Contracts\ProductTracking.Contracts.csproj">
-      <Project>{D86EF8DD-4881-456F-BA9A-647BC7B56562}</Project>
-      <Name>ProductTracking.Contracts</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\ems_success.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

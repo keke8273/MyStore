@@ -2,8 +2,8 @@
 using Moq;
 using MyStore.Common;
 using MyStore.Common.Utils;
-using ProductTracking.Commands;
-using ProductTracking.Events;
+using ProductTracking.Contracts.Commands;
+using ProductTracking.Contracts.Events;
 using ProductTracking.Handlers;
 using Xunit;
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CQRS.Infrastructure;
 
 namespace ParcelTracking
 {
@@ -32,7 +33,7 @@ namespace ParcelTracking
             if(_trackers.Any( t => t.Name == parcelTracker.Name))
                 throw new ArgumentException(String.Format("The tracker for {0} is already registered", parcelTracker.Name));
 
-            _trackers.Add(parcelTracker)
+            _trackers.Add(parcelTracker);
         }
     }
 }

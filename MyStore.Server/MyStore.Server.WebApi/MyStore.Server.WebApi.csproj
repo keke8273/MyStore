@@ -178,6 +178,10 @@
       <Project>{A2BBC0FD-9259-429A-8163-2B622D57C157}</Project>
       <Name>Store.Dto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProductTracking.Contracts\ProductTracking.Contracts.csproj">
+      <Project>{D86EF8DD-4881-456F-BA9A-647BC7B56562}</Project>
+      <Name>ProductTracking.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Product\Store.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
       <Name>Store</Name>

@@ -7,9 +7,9 @@ using ParcelTracking.ReadModel;
 
 namespace ParcelTracking.Trackers
 {
-    public class EmmsTracker : ParcelTrackerBase
+    public class EmmsTracker : BaseParcelTracker
     {
-        private const string Name = "EmmsTracker";
+        private const string name = "EmmsTracker";
         private const string Provider = "auexp";
         private const string Type = "1000";
         private const string BaseAddress = @"http://120.25.248.148";
@@ -17,7 +17,7 @@ namespace ParcelTracking.Trackers
         private CancellationTokenSource _cancellationTokenSource;
 
         public EmmsTracker(IParcelStatusDao parcelStatusDao, ICommandBus commandBus) 
-            : base(Name, parcelStatusDao, commandBus)
+            : base(name, parcelStatusDao, commandBus)
         {
         }
 

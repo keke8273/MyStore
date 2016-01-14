@@ -5,11 +5,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using CQRS.Infrastructure.Messaging;
-using ProductTracking.Commands;
+using ProductTracking.Contracts.Commands;
 using Store;
 using Store.Dto;
 using Store.ReadModel;
-using Product = Store.ReadModel.Product;
 
 namespace MyStore.Server.WebApi.Controllers
 {

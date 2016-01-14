@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking", "ParcelTra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking.Contacts", "ParcelTracking.Contacts\ParcelTracking.Contacts.csproj", "{41EDE6BA-A318-4B77-891B-65B98E96D836}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking.Tests", "ParcelTracking.Tests\ParcelTracking.Tests.csproj", "{24D22015-C054-4DC4-9850-BF3648910146}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41EDE6BA-A318-4B77-891B-65B98E96D836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D22015-C054-4DC4-9850-BF3648910146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D22015-C054-4DC4-9850-BF3648910146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D22015-C054-4DC4-9850-BF3648910146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D22015-C054-4DC4-9850-BF3648910146}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,5 +158,6 @@ Global
 		{D86EF8DD-4881-456F-BA9A-647BC7B56562} = {EAC6C5BF-E01C-4CA6-A152-1AB4118C6F9F}
 		{FC76D51C-F02D-4765-A4CF-9A77FE855286} = {4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}
 		{41EDE6BA-A318-4B77-891B-65B98E96D836} = {4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}
+		{24D22015-C054-4DC4-9850-BF3648910146} = {4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}
 	EndGlobalSection
 EndGlobal

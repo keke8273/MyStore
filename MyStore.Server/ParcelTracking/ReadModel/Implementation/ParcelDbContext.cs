@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,9 +38,9 @@ namespace ParcelTracking.ReadModel.Implementation
 
         public void Save<T>(T entity) where T : class
         {
-            var entry = this.Entity(entity);
+            var entry = this.Entry(entity);
 
-            if (entry.State == System.Data.EntityState.Detached)
+            if (entry.State == EntityState.Detached)
                 this.Set<T>().Add(entity);
 
             this.SaveChanges();

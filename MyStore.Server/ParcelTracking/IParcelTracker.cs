@@ -10,5 +10,7 @@ namespace ParcelTracking
         void Start();
 
         void Stop();
+
+        string Name { get; }
     }
 }

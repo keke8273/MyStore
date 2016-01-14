@@ -7,7 +7,7 @@ namespace ParcelTracking.Handlers
     public class ParcelViewModelGenerator : 
         IEventHandler<ParcelStatusUpdated>
     {
-        private readonly Func<>
+        //private readonly Func<>
 
         public void Handle(ParcelStatusUpdated @event)
         {

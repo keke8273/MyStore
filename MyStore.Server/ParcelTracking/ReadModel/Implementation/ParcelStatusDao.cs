@@ -20,7 +20,12 @@ namespace ParcelTracking.ReadModel.Implementation
             throw new NotImplementedException();
         }
 
-        public IList<Parcel> FindParcelByUserId(Guid userId)
+        public IList<Parcel> FindParcelByUser(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Parcel> FindParcelByExpressProvider(string providerName)
         {
             throw new NotImplementedException();
         }
