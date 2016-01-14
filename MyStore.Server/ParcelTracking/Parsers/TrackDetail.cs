@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 
 namespace ParcelTracking.Parsers
 {
+    [DebuggerDisplay("TimeStamp = {TimeStamp}, Location = {Location}, Message = {Message}" )]
     public class TrackDetail
     {
         public DateTime TimeStamp { get; set; }
