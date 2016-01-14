@@ -11,7 +11,10 @@ namespace ParcelTracking.Parsers
         {
             var trackInfo = new TrackInfo();
 
-            trackInfo.TrackingNumber = htmlDoc.DocumentNode.SelectSingleNode("//td[@id='theTrackInfo']").SelectSingleNode("//span[@id='HeaderNum']").InnerText.Extract(@"[^\uff1a]+$");
+            var trackInfoNode = htmlDoc.DocumentNode.SelectSingleNode("//td[@id='theTrackInfo']");
+            trackInfo.TrackingNumber = trackInfoNode.SelectSingleNode("//span[@id='HeaderNum']").InnerText.Extract(@"[^\uff1a]+$");
+            trackInfo.Origin = trackInfoNode.SelectSingleNode("//span[@id='HeaderFrom']").InnerText.Extract(@"[^\uff1a]+$");
+            trackInfo.Destination = trackInfoNode.SelectSingleNode("//span[@id='HeaderDes']").InnerText.Extract(@"[^\uff1a]+$");
 
             return trackInfo;
         }

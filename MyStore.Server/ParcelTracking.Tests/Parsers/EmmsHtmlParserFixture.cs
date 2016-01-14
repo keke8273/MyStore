@@ -26,6 +26,7 @@ namespace ParcelTracking.Tests.Parsers
             var expected = new TrackInfo
             {
                 TrackingNumber = "H6000042536",
+                Origin = "澳洲",
                 Destination = "四川省",
                 ChineseExpressProvider = "EMS",
                 ChineseExpressProviderTrackingNumber = "BE993634263AU",
