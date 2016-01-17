@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41EDE6BA-A318-4B77-891B-65B98E96D836}</ProjectGuid>
+    <ProjectGuid>{E683F0DF-C3DC-433B-8B0C-8F52A25F41EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ParcelTracking.Contacts</RootNamespace>
-    <AssemblyName>ParcelTracking.Contacts</AssemblyName>
+    <RootNamespace>Subscription.Contracts</RootNamespace>
+    <AssemblyName>Subscription.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,11 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateParcel.cs" />
-    <Compile Include="Commands\ParcelCommand.cs" />
-    <Compile Include="Events\ParcelCreated.cs" />
-    <Compile Include="Events\ParcelEvent.cs" />
-    <Compile Include="Events\ParcelStatusUpdated.cs" />
+    <Compile Include="ParcelSubscriptionCreated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

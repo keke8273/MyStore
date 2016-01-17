@@ -8,12 +8,12 @@ namespace ParcelTracking.ReadModel
 {
     public interface IParcelStatusDao
     {
-        IList<ParcelRecord> GetParcelHistory(Guid id);
+        IList<ParcelStatusRecord> GetParcelHistory(Guid id);
 
-        IList<Parcel> FindParcelByUser(Guid userId);
+        IList<ParcelStatus> FindParcelByUser(Guid userId);
 
-        IList<Parcel> FindParcelByExpressProvider(string providerName);
+        IList<ParcelStatus> FindParcelByExpressProvider(string providerName);
 
-        Parcel GetParcel(Guid id);
+        ParcelStatus GetParcel(Guid id);
     }
 }

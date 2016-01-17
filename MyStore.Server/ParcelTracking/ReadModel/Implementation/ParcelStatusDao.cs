@@ -8,29 +8,29 @@ namespace ParcelTracking.ReadModel.Implementation
 {
     public class ParcelStatusDao : IParcelStatusDao
     {
-        private readonly Func<ParcelTrackingDbContext> _contextFactory;
+        private readonly Func<ParcelStatusDbContext> _contextFactory;
 
-        public ParcelStatusDao(Func<ParcelTrackingDbContext> contextFactory)
+        public ParcelStatusDao(Func<ParcelStatusDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }
 
-        public IList<ParcelRecord> GetParcelHistory(Guid id)
+        public IList<ParcelStatusRecord> GetParcelHistory(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Parcel> FindParcelByUser(Guid userId)
+        public IList<ParcelStatus> FindParcelByUser(Guid userId)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Parcel> FindParcelByExpressProvider(string providerName)
+        public IList<ParcelStatus> FindParcelByExpressProvider(string providerName)
         {
             throw new NotImplementedException();
         }
 
-        public Parcel GetParcel(Guid id)
+        public ParcelStatus GetParcel(Guid id)
         {
             throw new NotImplementedException();
         }

@@ -2,7 +2,7 @@
 
 namespace ParcelTracking.Contacts.Events
 {
-    public class ParcelStatusUpdated : VersionedEvent
+    public class ParcelStatusUpdated : ParcelEvent
     {
 
     }

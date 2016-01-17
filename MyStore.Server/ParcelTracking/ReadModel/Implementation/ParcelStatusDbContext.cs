@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ParcelTracking.ReadModel.Implementation
 {
-    public class ParcelTrackingDbContext : DbContext
+    public class ParcelStatusDbContext : DbContext
     {
         public const string SchemaName = "ParcelTracking";
 
-        public ParcelTrackingDbContext(string nameOrConnectionString)
+        public ParcelStatusDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
 
@@ -21,9 +18,9 @@ namespace ParcelTracking.ReadModel.Implementation
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Parcel>().ToTable("ParcelView", SchemaName);
-            modelBuilder.Entity<Parcel>().HasMany(p => p.ParcelRecords).WithRequired();
-            modelBuilder.Entity<ParcelRecord>().ToTable("ParcelRecord", SchemaName);
+            modelBuilder.Entity<ParcelStatus>().ToTable("ParcelView", SchemaName);
+            modelBuilder.Entity<ParcelStatus>().HasMany(p => p.ParcelStatusHistory).WithRequired();
+            modelBuilder.Entity<ParcelStatusRecord>().ToTable("ParcelStatusRecord", SchemaName);
         }
 
         public T Find<T>(Guid id) where T: class
