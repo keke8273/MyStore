@@ -7,9 +7,7 @@ namespace ParcelTracking
 {
     public interface IParcelTracker
     {
-        void Start();
-
-        void Stop();
+        public string Track(string trackNumber);
 
         string Name { get; }
     }

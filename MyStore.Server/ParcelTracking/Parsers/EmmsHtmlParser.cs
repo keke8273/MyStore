@@ -5,9 +5,9 @@ using MyStore.Common;
 
 namespace ParcelTracking.Parsers
 {
-    public class EmmsHtmlParser
+    public static class EmmsHtmlParser
     {
-        public TrackInfo GetTrackInfo(HtmlDocument htmlDoc)
+        public static TrackInfo GetTrackInfo(HtmlDocument htmlDoc)
         {
             var trackInfo = new TrackInfo();
 
@@ -21,7 +21,7 @@ namespace ParcelTracking.Parsers
             return trackInfo;
         }
 
-        public IEnumerable<TrackDetail> GetTrackDetail(HtmlDocument htmlDoc)
+        public static IEnumerable<TrackDetail> GetTrackDetail(HtmlDocument htmlDoc)
         {
             var trackDetails = new List<TrackDetail>();
 

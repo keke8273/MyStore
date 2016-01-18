@@ -22,17 +22,6 @@ namespace ParcelTracking
         public Guid ParcelId { get; set; }
         public IEnumerable<Envelope<ICommand>> Commands { get { return this.commands; } }
 
-        private void AddCommand<T>(T command)
-            where T : ICommand
-        {
-            commands.Add(Envelope.Create<ICommand>(command));
-        }
-
-        private void AddCommand(Envelope<ICommand> envelope)
-        {
-            commands.Add(envelope);
-        }
-
         public void Handle(ParcelSubscriptionCreated @event)
         {
             ParcelId = @event.SourceId;
@@ -46,6 +35,17 @@ namespace ParcelTracking
                 };
 
             AddCommand(new Envelope<ICommand>(createParcelCommand));
+        }
+
+        private void AddCommand<T>(T command)
+            where T : ICommand
+        {
+            commands.Add(Envelope.Create<ICommand>(command));
+        }
+
+        private void AddCommand(Envelope<ICommand> envelope)
+        {
+            commands.Add(envelope);
         }
     }
 }

@@ -9,9 +9,8 @@ namespace ProductTracking.Handlers
         ICommandHandler<UpdateProductOnlineAvailability>
     {
         private readonly IEventSourcedRepository<ProductOnlineAvailability> _repository;
-        private readonly IDateTimeService _dateTimeService;
 
-        public OnlineAvailabilityCommandHandler(IEventSourcedRepository<ProductOnlineAvailability> repository, IDateTimeService dateTimeService)
+        public OnlineAvailabilityCommandHandler(IEventSourcedRepository<ProductOnlineAvailability> repository)
         {
             this._repository = repository;
             _dateTimeService = dateTimeService;
@@ -24,7 +23,7 @@ namespace ProductTracking.Handlers
             if (availability == null)
                 availability = new ProductOnlineAvailability(command.ProductId);
 
-            availability.UpdateOnlineAvailability(command.ProductSourceId, command.IsAvailable, _dateTimeService);
+            availability.UpdateOnlineAvailability(command.ProductSourceId, command.IsAvailable);
 
             _repository.Save(availability, command.Id.ToString());
         }

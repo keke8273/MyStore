@@ -14,18 +14,12 @@ namespace ParcelTracking
 
         public void Start()
         {
-            foreach (var tracker in _trackers)
-            {
-                tracker.Start();
-            }
+
         }
 
         public void Stop()
         {
-            foreach(var tracker in _trackers)
-            {
-                tracker.Stop();
-            }
+
         }
 
         public void Register(IParcelTracker parcelTracker)

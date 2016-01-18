@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.Server.WebApi", "MyStore.Server.WebApi\MyStore.Server.WebApi.csproj", "{3A2F1474-FB55-41FC-8EC2-C1A247FC8815}"
 EndProject
@@ -68,6 +68,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{8FF5582A-6C8C-4B4D-87C6-3D76320BDEC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscription.Contracts", "Subscription.Contract\Subscription.Contracts.csproj", "{E683F0DF-C3DC-433B-8B0C-8F52A25F41EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{9EA28A02-A652-43D1-BDEE-F1A7EEB3F48F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Commands\CreateParcel.cs" />
     <Compile Include="Commands\ParcelCommand.cs" />
+    <Compile Include="Commands\RefreshParcelStatus.cs" />
     <Compile Include="Events\ParcelCreated.cs" />
     <Compile Include="Events\ParcelEvent.cs" />
     <Compile Include="Events\ParcelStatusUpdated.cs" />

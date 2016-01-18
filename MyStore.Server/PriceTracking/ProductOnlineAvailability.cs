@@ -22,7 +22,7 @@ namespace ProductTracking
             LoadFrom(history);
         }
 
-        public void UpdateOnlineAvailability(Guid productSourceId, bool isAvailable, IDateTimeService dateTimeService)
+        public void UpdateOnlineAvailability(Guid productSourceId, bool isAvailable)
         {
             bool currentAvailability;
 

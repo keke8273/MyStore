@@ -4,24 +4,20 @@ using System.Net.Http;
 using System.Threading;
 using CQRS.Infrastructure.Messaging;
 using ParcelTracking.ReadModel;
+using ParcelTracking.Parsers;
+using HtmlAgilityPack;
 
 namespace ParcelTracking.Trackers
 {
-    public class EmmsTracker : BaseParcelTracker
+    public class EmmsTracker : IParcelTracker
     {
-        private const string name = "EmmsTracker";
+        private const string name = "Emms";
         private const string Provider = "auexp";
         private const string Type = "1000";
         private const string BaseAddress = @"http://120.25.248.148";
         private const string RequestUri = @"/cgi-bin/GInfo.dll?EmmisTrack";
-        private CancellationTokenSource _cancellationTokenSource;
 
-        public EmmsTracker(IParcelStatusDao parcelStatusDao, ICommandBus commandBus) 
-            : base(name, parcelStatusDao, commandBus)
-        {
-        }
-
-        public void Track(string trackNumber)
+        public string Track(string trackNumber)
         {
             using (var httpClient = new HttpClient())
             {
@@ -35,31 +31,20 @@ namespace ParcelTracking.Trackers
                     new KeyValuePair<string, string>("ntype", Type)
                 });
 
-
+                //todo::make async http request to make it more efficient?
                 //Get the Response
                 var response = httpClient.PostAsync(RequestUri, formContent).Result;
 
                 //Check the track number if not match the provided number then it is an error.
                 var htmlAsString = response.Content.ReadAsStringAsync().Result;
 
-                //Check the track number if not match the provided number then it is an error.
-
-                //Parse the "theTrackInfo" section for origin, destination, chineseTrackNumber, chineseExpProvider
-
-                //Parse the oDetail section for details.
-
-
+                return htmlAsString;
             }
         }
 
-        public override void Start()
+        public string Name
         {
-            throw new NotImplementedException();
-        }
-
-        public override void Stop()
-        {
-            throw new NotImplementedException();
+            get { return _name; }
         }
     }
 }
