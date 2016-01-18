@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using CQRS.Infrastructure.Messaging;
 using ParcelTracking.ReadModel;
@@ -11,13 +12,13 @@ namespace ParcelTracking.Trackers
 {
     public class EmmsTracker : IParcelTracker
     {
-        private const string name = "Emms";
+        private const string _name = "Emms";
         private const string Provider = "auexp";
         private const string Type = "1000";
         private const string BaseAddress = @"http://120.25.248.148";
         private const string RequestUri = @"/cgi-bin/GInfo.dll?EmmisTrack";
 
-        public string Track(string trackNumber)
+        public TrackInfo Track(string trackNumber)
         {
             using (var httpClient = new HttpClient())
             {
@@ -38,7 +39,12 @@ namespace ParcelTracking.Trackers
                 //Check the track number if not match the provided number then it is an error.
                 var htmlAsString = response.Content.ReadAsStringAsync().Result;
 
-                return htmlAsString;
+                var htmlDoc = new HtmlDocument();
+                htmlDoc.Load(htmlAsString, Encoding.GetEncoding(936));
+
+                var trackInfo = EmmsHtmlParser.GetTrackInfo(htmlDoc);
+
+                return trackInfo;
             }
         }
 

@@ -71,7 +71,7 @@
     <Compile Include="IParcelTracker.cs" />
     <Compile Include="ParcelTrackingProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Trackers\TrackerContainer.cs" />
+    <Compile Include="Trackers\TrackingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ParcelTracking.Parsers;
 
 namespace ParcelTracking
 {
     public interface IParcelTracker
     {
-        public string Track(string trackNumber);
+        TrackInfo Track(string trackNumber);
 
         string Name { get; }
     }

@@ -7,6 +7,7 @@ using CQRS.Infrastructure.Database;
 using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Utils;
 using ParcelTracking.Contacts.Events;
+using ParcelTracking.Parsers;
 
 namespace ParcelTracking
 {
@@ -44,6 +45,10 @@ namespace ParcelTracking
             });
         }
 
+        public void ProcessTrackInfo(TrackInfo trackInfo)
+        {
+            throw new NotImplementedException();
+        }
 
         public Guid Id { get; private set; }
         public Guid ExpressProviderId { get; set; }
