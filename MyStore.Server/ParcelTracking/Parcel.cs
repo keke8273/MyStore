@@ -52,6 +52,11 @@ namespace ParcelTracking
         public int MessageReceived { get; set; }
         public IEnumerable<IEvent> Events { get { return _events; }}
 
+        public void UpdateParcelState(Parcel.States newState, )
+        {
+ 
+        }
+
         protected void AddEvent(IEvent @event)
         {
             _events.Add(@event);
