@@ -7,10 +7,12 @@ using CQRS.Infrastructure.Messaging;
 using ParcelTracking.ReadModel;
 using ParcelTracking.Parsers;
 using HtmlAgilityPack;
+using System.Threading.Tasks;
+using ParcelTracking.Events;
 
 namespace ParcelTracking.Trackers
 {
-    public class EmmsTracker : IParcelTracker
+    public class EmmsTracker : BaseParcelTracker
     {
         private const string _name = "Emms";
         private const string Provider = "auexp";
@@ -18,7 +20,11 @@ namespace ParcelTracking.Trackers
         private const string BaseAddress = @"http://120.25.248.148";
         private const string RequestUri = @"/cgi-bin/GInfo.dll?EmmisTrack";
 
-        public TrackInfo Track(string trackNumber)
+        public EmmsTracker(IEventBus eventBus) : base(eventBus)
+        {
+        }
+
+        public async Task TrackAsync(Parcel parcel)
         {
             using (var httpClient = new HttpClient())
             {
@@ -28,24 +34,49 @@ namespace ParcelTracking.Trackers
                 {
                     new KeyValuePair<string, string>("w", Provider),
                     new KeyValuePair<string, string>("cmodel", string.Empty),
-                    new KeyValuePair<string, string>("cno", trackNumber),
+                    new KeyValuePair<string, string>("cno", parcel.TrackingNumber),
                     new KeyValuePair<string, string>("ntype", Type)
                 });
 
-                //todo::make async http request to make it more efficient?
                 //Get the Response
-                var response = httpClient.PostAsync(RequestUri, formContent).Result;
+                var response = await httpClient.PostAsync(RequestUri, formContent);
 
                 //Check the track number if not match the provided number then it is an error.
-                var htmlAsString = response.Content.ReadAsStringAsync().Result;
+                var htmlAsString = response.Result.Content.ReadAsStringAsync().Result;
 
                 var htmlDoc = new HtmlDocument();
                 htmlDoc.Load(htmlAsString, Encoding.GetEncoding(936));
 
                 var trackInfo = EmmsHtmlParser.GetTrackInfo(htmlDoc);
 
-                return trackInfo;
+                var parcelEvents = BuildParcelEvents(parcel, trackInfo);
+
+                _eventBus.Publish(parcelEvents);
             }
+        }
+
+        private IEnumerable<ParcelEvent> BuildParcelEvents(Parcel parcel, TrackInfo trackInfo)
+        {
+            var events = new List<ParcelEvent>();
+
+            if(trackInfo.Origin != parcel.Origin)
+                events.Add(new ParcelOriginUpdated(parcel.Id){Origin == trackInfo.Origin});
+
+            if(trackInfo.Destination != parcel.Destination)
+                events.Add(new ParcelDestinationUpdated(parcel.Id){Destination == trackInfo.Destination});
+
+            if(trackInfo.ChineseExpressProvider != parcel.ChineseExpressProvider)
+                events.Add(new ChineseExpressProviderUpdated(trackInfo.ChineseExpressProvider));
+
+            if (trackInfo.ChineseExpressProviderTrackingNumber != parcel.ChineseExpressProviderTrackingNumber)
+                events.Add(new ChineseExpressProviderTrackingNumberUpdated(trackInfo.ChineseExpressProviderTrackingNumber));
+
+            for (int i = parcel.MessageReceived; i < trackInfo.TrackDetails.Count; i++)
+            {
+                events.Add(EmmsInterpreter.Translate(trackInfo.TrackDetails[i]));
+            }
+
+            return events;
         }
 
         public string Name

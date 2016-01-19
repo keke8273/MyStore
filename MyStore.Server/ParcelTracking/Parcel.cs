@@ -45,15 +45,11 @@ namespace ParcelTracking
             });
         }
 
-        public void ProcessTrackInfo(TrackInfo trackInfo)
-        {
-            throw new NotImplementedException();
-        }
-
         public Guid Id { get; private set; }
         public Guid ExpressProviderId { get; set; }
         public string TrackingNumber { get; set; }
         public Guid UserId { get; set; }
+        public int MessageReceived { get; set; }
         public IEnumerable<IEvent> Events { get { return _events; }}
 
         protected void AddEvent(IEvent @event)

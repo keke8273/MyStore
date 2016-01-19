@@ -50,8 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\TrackInfoReceived.cs" />
-    <Compile Include="Events\TrackDetailsReceived.cs" />
     <Compile Include="Handlers\ParcelCommandHandler.cs" />
     <Compile Include="Handlers\ParcelViewModelGenerator.cs" />
     <Compile Include="Interpreters\EmmsInterpreter.cs" />
@@ -67,6 +65,7 @@
     <Compile Include="ReadModel\IParcelStatusDao.cs" />
     <Compile Include="ReadModel\ParcelStatus.cs" />
     <Compile Include="ReadModel\ParcelStatusRecord.cs" />
+    <Compile Include="Trackers\BaseParcelTracker.cs" />
     <Compile Include="Trackers\EmmsParcelTracker.cs" />
     <Compile Include="IParcelTracker.cs" />
     <Compile Include="ParcelTrackingProcessor.cs" />
@@ -94,6 +93,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

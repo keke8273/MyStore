@@ -5,6 +5,7 @@ using CQRS.Infrastructure.Processes;
 using CQRS.Infrastructure.Utils;
 using ParcelTracking.Contacts.Commands;
 using Subscription.Contracts;
+using ParcelTracking.Events;
 
 namespace ParcelTracking
 {
@@ -35,6 +36,17 @@ namespace ParcelTracking
                 };
 
             AddCommand(new Envelope<ICommand>(createParcelCommand));
+        }
+
+        public void Handle(ParcelEvent @event)
+        {
+            var updateParcelCommand = new UpdateParcel
+            {
+                ParcelId = @event.SourceId,
+                TrackInfoReceived = @event.TrackInfo
+            };
+
+            AddCommand(new Envelope<ICommand>(updateParcelCommand));
         }
 
         private void AddCommand<T>(T command)

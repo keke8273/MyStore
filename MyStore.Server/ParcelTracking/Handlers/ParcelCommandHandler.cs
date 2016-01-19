@@ -38,9 +38,7 @@ namespace ParcelTracking.Handlers
                 var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
 
                 //todo::make this async. tracking parcel takes a long time.
-                var trackInfo = tracker.Track(parcel.TrackingNumber);
-
-                parcel.ProcessTrackInfo(trackInfo);
+                var trackInfo = tracker.TrackAsync(parcel.TrackingNumber);
 
                 context.Save(parcel);
             }
