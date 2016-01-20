@@ -1,6 +1,7 @@
 ﻿using System;
 using CQRS.Infrastructure.Database;
 using CQRS.Infrastructure.Messaging.Handling;
+using ParcelTracking.Commands;
 using ParcelTracking.Contacts.Commands;
 using ParcelTracking.Trackers;
 

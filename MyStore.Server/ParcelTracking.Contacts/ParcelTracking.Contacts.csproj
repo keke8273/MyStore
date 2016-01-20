@@ -42,9 +42,13 @@
     <Compile Include="Commands\CreateParcel.cs" />
     <Compile Include="Commands\ParcelCommand.cs" />
     <Compile Include="Commands\RefreshParcelStatus.cs" />
-    <Compile Include="Commands\UpdateParcelStatus.cs" />
+    <Compile Include="Events\ChineseExpressProviderTrackingNumberUpdated.cs" />
+    <Compile Include="Events\ChineseExpressProviderUpdated.cs" />
     <Compile Include="Events\ParcelCreated.cs" />
+    <Compile Include="Events\ParcelDestinationUpdated.cs" />
     <Compile Include="Events\ParcelEvent.cs" />
+    <Compile Include="Events\ParcelOriginUpdated.cs" />
+    <Compile Include="ParcelState.cs" />
     <Compile Include="Events\ParcelStatusUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

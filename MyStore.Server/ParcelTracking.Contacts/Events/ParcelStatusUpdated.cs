@@ -1,13 +1,10 @@
-﻿using CQRS.Infrastructure.EventSourcing;
-using System;
+﻿using System;
 
 namespace ParcelTracking.Contacts.Events
 {
     public class ParcelStatusUpdated : ParcelEvent
     {
-        public Guid ParcelId { get; set; }
-
-        public Parcel.State State { get; set; }
+        public ParcelState State { get; set; }
 
         public DateTime TimeStamp { get; set; }
 

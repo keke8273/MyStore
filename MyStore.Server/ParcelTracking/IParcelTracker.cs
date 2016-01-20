@@ -9,8 +9,8 @@ namespace ParcelTracking
 {
     public interface IParcelTracker
     {
-        async Task TrackAsync(Parcel parcel);
+        Task TrackAsync(Parcel parcel);
 
-        string Name { get; }
+        string GetName();
     }
 }

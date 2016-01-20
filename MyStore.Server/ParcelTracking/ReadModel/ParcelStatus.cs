@@ -23,9 +23,9 @@ namespace ParcelTracking.ReadModel
         public ICollection<ParcelStatusRecord> ParcelStatusHistory { get; set; }
         
         [NotMapped]
-        public Parcel.States State
+        public ParcelState State
         {
-            get { return (Parcel.States)this.StateValue; }
+            get { return (ParcelState)this.StateValue; }
             set{ this.StateValue = (int)value;}
         }
 

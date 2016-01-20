@@ -15,5 +15,8 @@ namespace ParcelTracking.Trackers
         {
             _commandBus = commandBus;
         }
+
+        public abstract Task TrackAsync(Parcel parcel);
+        public abstract string GetName();
     }
 }

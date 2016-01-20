@@ -28,7 +28,7 @@ namespace ParcelTracking.Handlers
                     parcel = new ParcelStatus(@event.SourceId, @event.ExpressProviderId, @event.UserId,
                         @event.TrackingNumber)
                     {
-                        State = Parcel.States.Created,
+                        State = ParcelState.Created,
                         LastUpdated = @event.TimeStamp
                     };
 
@@ -41,7 +41,7 @@ namespace ParcelTracking.Handlers
 
         public void Handle(ParcelStatusUpdated @event)
         {
-            throw new NotImplementedException();
+
         }
 
     }

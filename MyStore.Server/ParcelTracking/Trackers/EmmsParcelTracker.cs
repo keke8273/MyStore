@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using CQRS.Infrastructure.Messaging;
-using ParcelTracking.ReadModel;
+using ParcelTracking.Commands;
 using ParcelTracking.Parsers;
 using HtmlAgilityPack;
 using System.Threading.Tasks;
-using ParcelTracking.Events;
-using ParcelTracking.Contacts.Commands;
-using ParcelTracking.Interpreters;
 
 namespace ParcelTracking.Trackers
 {
@@ -22,11 +18,11 @@ namespace ParcelTracking.Trackers
         private const string BaseAddress = @"http://120.25.248.148";
         private const string RequestUri = @"/cgi-bin/GInfo.dll?EmmisTrack";
 
-        public EmmsTracker(IEventBus eventBus) : base(eventBus)
+        public EmmsTracker(ICommandBus commandBus) : base(commandBus)
         {
         }
 
-        public async Task TrackAsync(Parcel parcel)
+        public override async Task TrackAsync(Parcel parcel)
         {
             using (var httpClient = new HttpClient())
             {
@@ -44,7 +40,7 @@ namespace ParcelTracking.Trackers
                 var response = await httpClient.PostAsync(RequestUri, formContent);
 
                 //Check the track number if not match the provided number then it is an error.
-                var htmlAsString = response.Result.Content.ReadAsStringAsync().Result;
+                var htmlAsString = response.Content.ReadAsStringAsync().Result;
 
                 var htmlDoc = new HtmlDocument();
                 htmlDoc.Load(htmlAsString, Encoding.GetEncoding(936));
@@ -55,9 +51,9 @@ namespace ParcelTracking.Trackers
             }
         }
 
-        public string Name
+        public override string GetName()
         {
-            get { return _name; }
+            return _name;
         }
     }
 }
