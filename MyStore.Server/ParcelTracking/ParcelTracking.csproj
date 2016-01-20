@@ -53,6 +53,8 @@
     <Compile Include="Handlers\ParcelCommandHandler.cs" />
     <Compile Include="Handlers\ParcelViewModelGenerator.cs" />
     <Compile Include="Interpreters\EmmsInterpreter.cs" />
+    <Compile Include="Interpreters\TrackingService.cs" />
+    <Compile Include="IInterpreter.cs" />
     <Compile Include="Parcel.cs" />
     <Compile Include="ParcelTrackingProcessManager.cs" />
     <Compile Include="ParcelTrackingProcessManagerRouter.cs" />
@@ -94,9 +96,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,6 +9,8 @@ using ParcelTracking.Parsers;
 using HtmlAgilityPack;
 using System.Threading.Tasks;
 using ParcelTracking.Events;
+using ParcelTracking.Contacts.Commands;
+using ParcelTracking.Interpreters;
 
 namespace ParcelTracking.Trackers
 {
@@ -49,34 +51,8 @@ namespace ParcelTracking.Trackers
 
                 var trackInfo = EmmsHtmlParser.GetTrackInfo(htmlDoc);
 
-                var parcelEvents = BuildParcelEvents(parcel, trackInfo);
-
-                _eventBus.Publish(parcelEvents);
+                _commandBus.Send(new UpdateParcelStatus(parcel.Id, trackInfo));
             }
-        }
-
-        private IEnumerable<ParcelEvent> BuildParcelEvents(Parcel parcel, TrackInfo trackInfo)
-        {
-            var events = new List<ParcelEvent>();
-
-            if(trackInfo.Origin != parcel.Origin)
-                events.Add(new ParcelOriginUpdated(parcel.Id){Origin == trackInfo.Origin});
-
-            if(trackInfo.Destination != parcel.Destination)
-                events.Add(new ParcelDestinationUpdated(parcel.Id){Destination == trackInfo.Destination});
-
-            if(trackInfo.ChineseExpressProvider != parcel.ChineseExpressProvider)
-                events.Add(new ChineseExpressProviderUpdated(trackInfo.ChineseExpressProvider));
-
-            if (trackInfo.ChineseExpressProviderTrackingNumber != parcel.ChineseExpressProviderTrackingNumber)
-                events.Add(new ChineseExpressProviderTrackingNumberUpdated(trackInfo.ChineseExpressProviderTrackingNumber));
-
-            for (int i = parcel.MessageReceived; i < trackInfo.TrackDetails.Count; i++)
-            {
-                events.Add(EmmsInterpreter.Translate(trackInfo.TrackDetails[i]));
-            }
-
-            return events;
         }
 
         public string Name

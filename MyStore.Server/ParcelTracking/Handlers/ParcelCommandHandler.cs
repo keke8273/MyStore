@@ -8,15 +8,18 @@ namespace ParcelTracking.Handlers
 {
     public class ParcelCommandHandler 
         : ICommandHandler<CreateParcel>,
-        ICommandHandler<RefreshParcelStatus>
+        ICommandHandler<RefreshParcelStatus>,
+        ICommandHandler<UpdateParcelStatus>
     {
         private Func<IDataContext<Parcel>> _contextFactory;
         private readonly ITrackingService _trackingService;
+        private readonly IInterpretingService _interpretingService;
 
-        public ParcelCommandHandler(Func<IDataContext<Parcel>> contextFactory, ITrackingService trackingService)
+        public ParcelCommandHandler(Func<IDataContext<Parcel>> contextFactory, ITrackingService trackingService, IInterpretingService interpretingService)
         {
             _contextFactory = contextFactory;
             _trackingService = trackingService;
+            _interpretingService = interpretingService;
         }
 
         public void Handle(CreateParcel command)
@@ -37,8 +40,21 @@ namespace ParcelTracking.Handlers
 
                 var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
 
-                //todo::make this async. tracking parcel takes a long time.
                 var trackInfo = tracker.TrackAsync(parcel.TrackingNumber);
+
+                context.Save(parcel);
+            }
+        }
+
+        public void Handle(UpdateParcelStatus command)
+        {
+            using (var context = _contextFactory.Invoke())
+            {
+                var parcel = context.Find(command.ParcelId);
+
+                var interpreter = _interpretingService.FindInterpreter(parcel.ExpressProviderId);
+
+                parcel.UpdateParcelStatus(command.TrackInfo, interpreter);
 
                 context.Save(parcel);
             }

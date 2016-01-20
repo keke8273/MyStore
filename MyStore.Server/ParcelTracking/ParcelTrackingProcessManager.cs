@@ -38,17 +38,6 @@ namespace ParcelTracking
             AddCommand(new Envelope<ICommand>(createParcelCommand));
         }
 
-        public void Handle(ParcelEvent @event)
-        {
-            var updateParcelCommand = new UpdateParcel
-            {
-                ParcelId = @event.SourceId,
-                TrackInfoReceived = @event.TrackInfo
-            };
-
-            AddCommand(new Envelope<ICommand>(updateParcelCommand));
-        }
-
         private void AddCommand<T>(T command)
             where T : ICommand
         {

@@ -1,4 +1,5 @@
-﻿using ParcelTracking.Contacts.Events;
+﻿using ParcelTracking.Contacts.Commands;
+using ParcelTracking.Contacts.Events;
 using ParcelTracking.Events;
 using ParcelTracking.Parsers;
 using System;
@@ -9,11 +10,19 @@ using System.Threading.Tasks;
 
 namespace ParcelTracking.Interpreters
 {
-    public static class EmmsInterpreter
+    public class EmmsInterpreter : IInterpreter
     {
-        public static ParcelCommand Translate(TrackDetail trackDetail)
+        private const string _name = "Emms";
+
+        public State Translate(string message)
         {
 
+        }
+
+
+        public string Name
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

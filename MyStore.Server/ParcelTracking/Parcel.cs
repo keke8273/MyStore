@@ -52,9 +52,26 @@ namespace ParcelTracking
         public int MessageReceived { get; set; }
         public IEnumerable<IEvent> Events { get { return _events; }}
 
-        public void UpdateParcelState(Parcel.States newState, )
+        public void UpdateParcelStatus(TrackInfo trackInfo, IInterpreter interpreter)
         {
- 
+            if(trackInfo.Origin != Origin)
+                commands.Add(new ParcelOriginUpdated(Id){Origin == trackInfo.Origin});
+
+            if(trackInfo.Destination != Destination)
+                commands.Add(new UpdateParcelDestination(parcel.Id) { Destination == trackInfo.Destination });
+
+            if(trackInfo.ChineseExpressProvider != ChineseExpressProvider)
+                commands.Add(new UpdatedChineseExpressProvider(trackInfo.ChineseExpressProvider));
+
+            if (trackInfo.ChineseExpressProviderTrackingNumber != ChineseExpressProviderTrackingNumber)
+                commands.Add(new UpdateChineseExpressProviderTrackingNumber(trackInfo.ChineseExpressProviderTrackingNumber));
+
+            for (int i = parcel.MessageReceived; i < trackInfo.TrackDetails.Count; i++)
+            {
+                commands.Add(interpreter.Translate(trackInfo.TrackDetails[i].));
+            }
+
+            return commands;
         }
 
         protected void AddEvent(IEvent @event)

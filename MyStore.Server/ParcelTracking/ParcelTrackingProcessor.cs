@@ -4,30 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CQRS.Infrastructure;
+using ParcelTracking.Trackers;
+using System.Threading;
 
 namespace ParcelTracking
 {
     public class ParcelTrackingProcessor: IProcessor 
     {
-        private readonly List<IParcelTracker> _trackers = new List<IParcelTracker>();
+        private readonly ITrackingService _trackingService;
+        private CancellationTokenSource cancellationSource;
+
+        public ParcelTrackingProcessor(ITrackingService trackingService)
+        {
+            _trackingService = trackingService;
+        }
 
 
         public void Start()
         {
-
+            if (cancellationSource == null)
+            {
+                cancellationSource = new CancellationTokenSource();
+                Task.Factory.StartNew(
+                    () => TrackParcels(cancellationSource.Token),
+                    cancellationSource.Token,
+                    TaskCreationOptions.LongRunning,
+                    TaskScheduler.Current);
+            }
         }
 
         public void Stop()
         {
-
+            using (cancellationSource)
+            {
+                if (cancellationSource != null)
+                {
+                    cancellationSource.Cancel();
+                    cancellationSource = null;
+                }
+            }
         }
 
-        public void Register(IParcelTracker parcelTracker)
+        private object TrackParcels(CancellationToken cancellationToken)
         {
-            if(_trackers.Any( t => t.Name == parcelTracker.Name))
-                throw new ArgumentException(String.Format("The tracker for {0} is already registered", parcelTracker.Name));
+            while (!cancellationSource.IsCancellationRequested)
+            {
 
-            _trackers.Add(parcelTracker);
+            }
         }
     }
 }

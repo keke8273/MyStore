@@ -5,7 +5,9 @@ namespace ParcelTracking.Contacts.Events
 {
     public class ParcelStatusUpdated : ParcelEvent
     {
-        public ParceState State { get; set; }
+        public Guid ParcelId { get; set; }
+
+        public Parcel.State State { get; set; }
 
         public DateTime TimeStamp { get; set; }
 
@@ -13,6 +15,5 @@ namespace ParcelTracking.Contacts.Events
 
         public string Message { get; set; }
 
-        public Guid ParcelId { get; set; }
     }
 }
