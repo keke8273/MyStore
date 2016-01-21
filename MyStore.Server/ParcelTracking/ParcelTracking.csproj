@@ -50,17 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChineseExpressProviderTrackingNumberUpdated.cs" />
-    <Compile Include="ChineseExpressProviderUpdated.cs" />
     <Compile Include="Commands\UpdateParcelStatus.cs" />
     <Compile Include="Handlers\ParcelCommandHandler.cs" />
     <Compile Include="Handlers\ParcelViewModelGenerator.cs" />
     <Compile Include="Interpreters\EmmsInterpreter.cs" />
-    <Compile Include="Interpreters\TrackingService.cs" />
+    <Compile Include="Interpreters\IInterpretingService.cs" />
+    <Compile Include="Interpreters\InterpretingService.cs" />
     <Compile Include="IInterpreter.cs" />
     <Compile Include="Parcel.cs" />
-    <Compile Include="ParcelDestinationUpdated.cs" />
-    <Compile Include="ParcelState.cs" />
     <Compile Include="ParcelTrackingProcessManager.cs" />
     <Compile Include="ParcelTrackingProcessManagerRouter.cs" />
     <Compile Include="Parsers\EmmsHtmlParser.cs" />
@@ -72,7 +69,6 @@
     <Compile Include="ReadModel\IParcelStatusDao.cs" />
     <Compile Include="ReadModel\ParcelStatus.cs" />
     <Compile Include="ReadModel\ParcelStatusRecord.cs" />
-    <Compile Include="Trackers\BaseParcelTracker.cs" />
     <Compile Include="Trackers\EmmsParcelTracker.cs" />
     <Compile Include="IParcelTracker.cs" />
     <Compile Include="ParcelTrackingProcessor.cs" />

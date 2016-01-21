@@ -2,7 +2,6 @@
 using CQRS.Infrastructure.Messaging.Handling;
 using CQRS.Infrastructure.Processes;
 using Subscription.Contracts;
-using ParcelTracking.Events;
 
 namespace ParcelTracking
 {

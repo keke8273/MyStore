@@ -5,7 +5,6 @@ using CQRS.Infrastructure.Processes;
 using CQRS.Infrastructure.Utils;
 using ParcelTracking.Contacts.Commands;
 using Subscription.Contracts;
-using ParcelTracking.Events;
 
 namespace ParcelTracking
 {
@@ -27,9 +26,8 @@ namespace ParcelTracking
         {
             ParcelId = @event.SourceId;
 
-            var createParcelCommand = new CreateParcel
+            var createParcelCommand = new CreateParcel(@event.SourceId)
                 {
-                    ParcelId = @event.SourceId,
                     ExpressProviderId = @event.ExpressProviderId,
                     TrackingNumber = @event.TrackingNumber,
                     UserId = @event.UserId

@@ -34,5 +34,10 @@ namespace ParcelTracking.ReadModel.Implementation
         {
             throw new NotImplementedException();
         }
+
+        public ExpressProvider FindExpressProvider(Guid expressProviderId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

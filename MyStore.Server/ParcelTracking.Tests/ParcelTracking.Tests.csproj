@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ParcelTracking.Contacts\ParcelTracking.Contacts.csproj">
+      <Project>{41EDE6BA-A318-4B77-891B-65B98E96D836}</Project>
+      <Name>ParcelTracking.Contacts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ParcelTracking\ParcelTracking.csproj">
       <Project>{FC76D51C-F02D-4765-A4CF-9A77FE855286}</Project>
       <Name>ParcelTracking</Name>

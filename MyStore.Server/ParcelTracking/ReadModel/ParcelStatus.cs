@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using ParcelTracking.Contacts;
 
 namespace ParcelTracking.ReadModel
 {
@@ -20,6 +21,11 @@ namespace ParcelTracking.ReadModel
         public string TrackingNumber { get; private set; }
         public int StateValue { get; private set; }
         public DateTime LastUpdated { get; set; }
+        public string LastKnownLocation { get; set; }
+        public string ChineseExpressProviderTrackingNumber { get; set; }
+        public string ChineseExpressProvider { get; set; }
+        public string Origin { get; set; }
+        public string Destination { get; set; }
         public ICollection<ParcelStatusRecord> ParcelStatusHistory { get; set; }
         
         [NotMapped]

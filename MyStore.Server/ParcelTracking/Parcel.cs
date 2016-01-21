@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CQRS.Infrastructure.Database;
 using CQRS.Infrastructure.Messaging;
 using CQRS.Infrastructure.Utils;
+using ParcelTracking.Contacts;
 using ParcelTracking.Contacts.Events;
 using ParcelTracking.Parsers;
 
@@ -14,7 +14,7 @@ namespace ParcelTracking
     public class Parcel : IAggregateRoot, IEventPublisher
     {
         private readonly List<IEvent> _events = new List<IEvent>();
-        
+
         public Parcel(Guid id, Guid expressProviderId, string trackingNumber, Guid userId)
         {
             Id = id;
@@ -40,35 +40,51 @@ namespace ParcelTracking
         public string ChineseExpressProviderTrackingNumber { get; set; }
         public string ChineseExpressProvider { get; set; }
         public DateTime LastUpdated { get; set; }
-        public IEnumerable<IEvent> Events { get { return _events; }}
+        public int StateValue { get; set; }
+
+        [NotMapped]
+        public ParcelState State
+        {
+            get { return (ParcelState) StateValue; }
+            set { StateValue = (int) value; }
+        }
+        public IEnumerable<IEvent> Events { get { return _events; } }
 
         public void RefreshParcelStatus()
         {
-            LastUpdated = DateTimeUtil.Now();
+            LastUpdated = DateTimeUtil.Now;
         }
-     
-        public void UpdateParcelStatus(TrackInfo trackInfo, IInterpreter interpreter)
+
+        public void ProcessTrackInfo(TrackInfo trackInfo, IInterpreter interpreter)
         {
             if (trackInfo.Origin != Origin)
                 AddEvent(new ParcelOriginUpdated
                 {
-                    SourceId = Id, 
+                    SourceId = Id,
                     Origin = trackInfo.Origin
                 });
 
-            if(trackInfo.Destination != Destination)
+            if (trackInfo.Destination != Destination)
                 AddEvent(new ParcelDestinationUpdated
-                { 
-                    SourceId = Id, 
+                {
+                    SourceId = Id,
                     Destination = trackInfo.Destination
                 });
 
-            if(trackInfo.ChineseExpressProvider != ChineseExpressProvider)
+            if (trackInfo.ChineseExpressProvider != ChineseExpressProvider)
+            {                
                 AddEvent(new ChineseExpressProviderUpdated
                 {
                     SourceId = Id,
                     ChineseExpressProvider = trackInfo.ChineseExpressProvider
                 });
+
+                AddEvent(new ParcelStatusUpdated
+                {
+                    SourceId = Id,
+                    State = ParcelState.Registered
+                });
+            }
 
             if (trackInfo.ChineseExpressProviderTrackingNumber != ChineseExpressProviderTrackingNumber)
                 AddEvent(new ChineseExpressProviderTrackingNumberUpdated
@@ -77,23 +93,39 @@ namespace ParcelTracking
                     ChineseExpressProviderTrackingNumber = trackInfo.ChineseExpressProviderTrackingNumber
                 });
 
-            for (int i = MessageReceived; i < trackInfo.TrackDetails.Count(); i++)
-            {
-                var trackDetail = trackInfo.TrackDetails.ToList()[i];
+            var newMessageCount = trackInfo.TrackMessages.Count() - MessageReceived;
 
+            if (newMessageCount <= 0) return;
+
+            var newState = ParcelState.Created;
+
+            for (int i = MessageReceived; i < trackInfo.TrackMessages.Count(); i++)
+            {
+                var message = trackInfo.TrackMessages.ToList()[i];
+                newState = interpreter.Translate(message.Message);
+
+                AddEvent(new ParcelStatusRecordReceived()
+                {
+                    SourceId = Id,
+                    Location = message.Location,
+                    Message = message.Message,
+                    TimeStamp = message.TimeStamp
+                });
+
+                MessageReceived = i;
+            }
+
+            if (State < newState)
+            {
+                State = newState;
                 AddEvent(new ParcelStatusUpdated
                 {
                     SourceId = Id,
-                    Location = trackDetail.Location,
-                    Message = trackDetail.Message,
-                    State = interpreter.Translate(trackDetail.Message),
-                    TimeStamp = trackDetail.TimeStamp
+                    State = newState
                 });
             }
-
-            MessageReceived += Events.Count(e => e is ParcelStatusUpdated);
         }
-        
+
         protected void AddEvent(IEvent @event)
         {
             _events.Add(@event);

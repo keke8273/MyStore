@@ -50,6 +50,7 @@
     <Compile Include="Events\ParcelOriginUpdated.cs" />
     <Compile Include="ParcelState.cs" />
     <Compile Include="Events\ParcelStatusUpdated.cs" />
+    <Compile Include="Events\ParcelStatusUpdateCompleted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

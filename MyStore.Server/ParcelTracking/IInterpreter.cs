@@ -1,4 +1,6 @@
-﻿namespace ParcelTracking
+﻿using ParcelTracking.Contacts;
+
+namespace ParcelTracking
 {
     public interface IInterpreter
     {

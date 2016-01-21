@@ -1,45 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using FluentAssertions;
-using HtmlAgilityPack;
-using ParcelTracking.Parsers;
+﻿using FluentAssertions;
+using ParcelTracking.Contacts;
+using ParcelTracking.Interpreters;
 using Xunit;
 
-namespace ParcelTracking.Tests.Parsers
+namespace ParcelTracking.Tests.Interpreters
 {
-    public class given_ems_success
+    public class given_warehoused_message_received
     {
-        private TrackDetail _trackDetail;
+        private string _message;
+        private EmmsInterpreter _sut;
 
-        public given_warehoused_trackDetail()
+        public given_warehoused_message_received()
         {
-            _trackDetail = new TrackDetail
-            {
-                TimeStamp = new DateTime(2016, 01, 04, 20, 30, 00),
-                Location = "澳洲",
-                Message = "快件已入澳洲仓库....",
-            };
+            _message = "快件已入澳洲仓库....";
         }
 
         [Fact()]
         public void when_interprete_trackDetail_then_update_parcel_state()
         {
-            var expected = new UpdateParcelStatus
-            {
-                TrackingNumber = "H6000042536",
-                Origin = "澳洲",
-                Destination = "四川省",
-                ChineseExpressProvider = "EMS",
-                ChineseExpressProviderTrackingNumber = "BE993634263AU",
-            };
+            _sut = new EmmsInterpreter();
 
-            _sut = new EmmsHtmlParser();
+            var actual = _sut.Translate(_message);
 
-            var actual = _sut.GetTrackInfo(_htmlDoc);
-
-            actual.ShouldBeEquivalentTo(expected);
+            actual.ShouldBeEquivalentTo(ParcelState.Warehoused);
         }
 
     }

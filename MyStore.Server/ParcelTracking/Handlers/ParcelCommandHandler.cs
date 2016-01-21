@@ -3,6 +3,7 @@ using CQRS.Infrastructure.Database;
 using CQRS.Infrastructure.Messaging.Handling;
 using ParcelTracking.Commands;
 using ParcelTracking.Contacts.Commands;
+using ParcelTracking.Interpreters;
 using ParcelTracking.Trackers;
 
 namespace ParcelTracking.Handlers
@@ -35,13 +36,14 @@ namespace ParcelTracking.Handlers
 
         public void Handle(RefreshParcelStatus command)
         {
+            //todo::start tracker depends on the lastUpdated time. and defferent command source.
             using (var context = _contextFactory.Invoke())
             {
                 var parcel = context.Find(command.ParcelId);
 
                 var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
 
-                var trackInfo = tracker.TrackAsync(parcel.TrackingNumber);
+                tracker.TrackAsync(parcel);
 
                 context.Save(parcel);
             }
@@ -55,7 +57,7 @@ namespace ParcelTracking.Handlers
 
                 var interpreter = _interpretingService.FindInterpreter(parcel.ExpressProviderId);
 
-                parcel.UpdateParcelStatus(command.TrackInfo, interpreter);
+                parcel.ProcessTrackInfo(command.TrackInfo, interpreter);
 
                 context.Save(parcel);
             }

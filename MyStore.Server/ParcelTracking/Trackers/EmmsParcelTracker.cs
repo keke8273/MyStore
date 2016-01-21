@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ParcelTracking.Trackers
 {
-    public class EmmsTracker : BaseParcelTracker
+    public class EmmsTracker : IParcelTracker
     {
         private const string _name = "Emms";
         private const string Provider = "auexp";
@@ -18,11 +18,14 @@ namespace ParcelTracking.Trackers
         private const string BaseAddress = @"http://120.25.248.148";
         private const string RequestUri = @"/cgi-bin/GInfo.dll?EmmisTrack";
 
-        public EmmsTracker(ICommandBus commandBus) : base(commandBus)
+        private  readonly ICommandBus _commandBus;
+
+        public EmmsTracker(ICommandBus commandBus)
         {
+            _commandBus = commandBus;
         }
 
-        public override async Task TrackAsync(Parcel parcel)
+        public async Task TrackAsync(Parcel parcel)
         {
             using (var httpClient = new HttpClient())
             {
@@ -51,9 +54,9 @@ namespace ParcelTracking.Trackers
             }
         }
 
-        public override string GetName()
+        public string Name
         {
-            return _name;
+            get { return _name; }
         }
     }
 }

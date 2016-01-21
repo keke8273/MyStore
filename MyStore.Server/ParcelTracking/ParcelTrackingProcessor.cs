@@ -45,7 +45,7 @@ namespace ParcelTracking
             }
         }
 
-        private object TrackParcels(CancellationToken cancellationToken)
+        private void TrackParcels(CancellationToken cancellationToken)
         {
             while (!cancellationSource.IsCancellationRequested)
             {

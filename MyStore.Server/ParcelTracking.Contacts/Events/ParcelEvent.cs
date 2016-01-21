@@ -9,7 +9,7 @@ namespace ParcelTracking.Contacts.Events
     {
         protected ParcelEvent()
         {
-            TimeStamp = DateTimeUtil.Now();
+            TimeStamp = DateTimeUtil.Now;
         }
 
         public DateTime TimeStamp { get; private set; }

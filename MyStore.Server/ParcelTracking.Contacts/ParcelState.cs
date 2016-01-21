@@ -2,8 +2,8 @@
 {
     public enum ParcelState
     {
-        Created = 0,
-        Unregistered = 1,
+        Unknown = 0,
+        Created = 1,
         Registered = 2,
         Warehoused = 3,
         InTransitAutralian = 4,

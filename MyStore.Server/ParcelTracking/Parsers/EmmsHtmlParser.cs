@@ -17,7 +17,7 @@ namespace ParcelTracking.Parsers
             trackInfo.Destination = trackInfoNode.SelectSingleNode("//span[@id='HeaderDes']").InnerText.Extract(@"([^\uff1a]+)$");
             trackInfo.ChineseExpressProvider = trackInfoNode.SelectSingleNode("//span[@id='HeaderEmsKind']").InnerText.Extract(@"\[(.*?)\]");
             trackInfo.ChineseExpressProviderTrackingNumber = trackInfoNode.SelectSingleNode("//span[@id='HeaderEmsKind']").InnerText.Extract(@"([^\]]+)$").Trim();
-            trackInfo.TrackDetails = GetTrackDetail(htmlDoc);
+            trackInfo.TrackMessages = GetTrackDetail(htmlDoc);
 
             return trackInfo;
         }

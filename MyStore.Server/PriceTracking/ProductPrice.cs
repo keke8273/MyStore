@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CQRS.Infrastructure.EventSourcing;
+using CQRS.Infrastructure.Utils;
 using MyStore.Common;
 using ProductTracking.Contracts.Events;
 
@@ -22,7 +23,7 @@ namespace ProductTracking
             LoadFrom(history);
         }
 
-        public void UpdatePrice(Guid productSourceId, decimal value, IDateTimeService dateTimeService)
+        public void UpdatePrice(Guid productSourceId, decimal value)
         {
             decimal currentPrice;
 
@@ -41,7 +42,7 @@ namespace ProductTracking
                 ProductSourceId = productSourceId,
                 NewPrice = value,
                 PreviousPrice = currentPrice,
-                TimeStamp = dateTimeService.GetCurrentDateTimeUtc()
+                TimeStamp = DateTimeUtil.Now()
             });
         }
 

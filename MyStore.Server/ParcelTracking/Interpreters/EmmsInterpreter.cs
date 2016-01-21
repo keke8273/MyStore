@@ -1,28 +1,24 @@
-﻿using ParcelTracking.Contacts.Commands;
-using ParcelTracking.Contacts.Events;
-using ParcelTracking.Events;
-using ParcelTracking.Parsers;
+﻿using ParcelTracking.Contacts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ParcelTracking.Interpreters
 {
     public class EmmsInterpreter : IInterpreter
     {
-        private const string _name = "Emms";
+        private const string name = "Emms";
+        private const string WarehousePhase = "澳洲仓库";
 
-        public State Translate(string message)
+        public ParcelState Translate(string message)
         {
+            if(message.Contains(WarehousePhase))
+                return ParcelState.Warehoused;
 
+            return ParcelState.Unknown;
         }
-
 
         public string Name
         {
-            get { throw new NotImplementedException(); }
+            get { return name; }
         }
     }
 }

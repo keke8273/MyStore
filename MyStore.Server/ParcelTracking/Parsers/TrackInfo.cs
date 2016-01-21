@@ -11,6 +11,6 @@ namespace ParcelTracking.Parsers
         public string Destination { get; set; }
         public string ChineseExpressProvider { get; set; }
         public string ChineseExpressProviderTrackingNumber { get; set; }
-        public IEnumerable<TrackDetail> TrackDetails { get; set; }
+        public IEnumerable<TrackDetail> TrackMessages { get; set; }
     }
 }

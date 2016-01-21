@@ -11,6 +11,6 @@ namespace ParcelTracking
     {
         Task TrackAsync(Parcel parcel);
 
-        string GetName();
+        string Name { get; }
     }
 }
