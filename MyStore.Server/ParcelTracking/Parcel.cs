@@ -39,7 +39,13 @@ namespace ParcelTracking
         public string Destination { get; set; }
         public string ChineseExpressProviderTrackingNumber { get; set; }
         public string ChineseExpressProvider { get; set; }
+        public DateTime LastUpdated { get; set; }
         public IEnumerable<IEvent> Events { get { return _events; }}
+
+        public void RefreshParcelStatus()
+        {
+            LastUpdated = DateTimeUtil.Now();
+        }
      
         public void UpdateParcelStatus(TrackInfo trackInfo, IInterpreter interpreter)
         {
