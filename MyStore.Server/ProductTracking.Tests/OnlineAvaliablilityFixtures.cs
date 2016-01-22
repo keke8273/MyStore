@@ -6,6 +6,7 @@ using ProductTracking.Contracts.Commands;
 using ProductTracking.Contracts.Events;
 using ProductTracking.Handlers;
 using Xunit;
+using CQRS.Infrastructure.Utils;
 
 namespace ProductTracking.Tests
 {
@@ -22,8 +23,10 @@ namespace ProductTracking.Tests
         {
             _dateTimeSerive = new Mock<IDateTimeService>();
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_testTime);
+            DateTimeUtil.SetDateTimeService(_dateTimeSerive.Object);
+
             sut = new EventSourcingTestHelper<ProductOnlineAvailability>();
-            sut.Setup(new OnlineAvailabilityCommandHandler(sut.Repository, _dateTimeSerive.Object));
+            sut.Setup(new OnlineAvailabilityCommandHandler(sut.Repository));
         }
 
         [Fact]
@@ -53,17 +56,18 @@ namespace ProductTracking.Tests
         {
             _dateTimeSerive = new Mock<IDateTimeService>();
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_testTime);
+            DateTimeUtil.SetDateTimeService(_dateTimeSerive.Object);
+
             sut = new EventSourcingTestHelper<ProductOnlineAvailability>();
-            sut.Setup(new OnlineAvailabilityCommandHandler(sut.Repository, _dateTimeSerive.Object));
+            sut.Setup(new OnlineAvailabilityCommandHandler(sut.Repository));
 
             sut.Given(
-                new OnlineAvailabilityUpdated
+                new OnlineAvailabilityUpdated(_testTime.AddHours(-1))
                 {
                     SourceId = ProductId,
                     NewAvailability = true,
                     PreviousAvailability = false,
-                    ProductSourceId = ProductSourceId,
-                    TimeStamp = _testTime.AddHours(-1)
+                    ProductSourceId = ProductSourceId
                 }
                 );
         }

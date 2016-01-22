@@ -39,7 +39,7 @@ namespace ParcelTracking
         public string Destination { get; set; }
         public string ChineseExpressProviderTrackingNumber { get; set; }
         public string ChineseExpressProvider { get; set; }
-        public DateTime LastUpdated { get; set; }
+        //public DateTime LastUpdated { get; set; }
         public int StateValue { get; set; }
 
         [NotMapped]
@@ -50,10 +50,10 @@ namespace ParcelTracking
         }
         public IEnumerable<IEvent> Events { get { return _events; } }
 
-        public void RefreshParcelStatus()
-        {
-            LastUpdated = DateTimeUtil.Now;
-        }
+        //public void RefreshParcelStatus()
+        //{
+        //    LastUpdated = DateTimeUtil.Now;
+        //}
 
         public void ProcessTrackInfo(TrackInfo trackInfo, IInterpreter interpreter)
         {
@@ -93,15 +93,15 @@ namespace ParcelTracking
                     ChineseExpressProviderTrackingNumber = trackInfo.ChineseExpressProviderTrackingNumber
                 });
 
-            var newMessageCount = trackInfo.TrackMessages.Count() - MessageReceived;
+            var newMessageCount = trackInfo.Messages.Count() - MessageReceived;
 
             if (newMessageCount <= 0) return;
 
             var newState = ParcelState.Created;
 
-            for (int i = MessageReceived; i < trackInfo.TrackMessages.Count(); i++)
+            for (int i = MessageReceived; i < trackInfo.Messages.Count(); i++)
             {
-                var message = trackInfo.TrackMessages.ToList()[i];
+                var message = trackInfo.Messages.ToList()[i];
                 newState = interpreter.Translate(message.Message);
 
                 AddEvent(new ParcelStatusRecordReceived()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CQRS.Infrastructure.EventSourcing;
 using MyStore.Common;
 using ProductTracking.Contracts.Events;
+using CQRS.Infrastructure.Utils;
 
 namespace ProductTracking
 {
@@ -36,12 +37,11 @@ namespace ProductTracking
                 _availabilities.Add(productSourceId, isAvailable);
             }
 
-            Update(new OnlineAvailabilityUpdated
+            Update(new OnlineAvailabilityUpdated(DateTimeUtil.Now)
             {
                 ProductSourceId = productSourceId,
                 NewAvailability = isAvailable,
-                PreviousAvailability = currentAvailability,
-                TimeStamp = dateTimeService.GetCurrentDateTimeUtc()
+                PreviousAvailability = currentAvailability
             });
         }
 

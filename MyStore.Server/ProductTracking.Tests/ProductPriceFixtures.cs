@@ -6,6 +6,7 @@ using ProductTracking.Contracts.Commands;
 using ProductTracking.Contracts.Events;
 using ProductTracking.Handlers;
 using Xunit;
+using CQRS.Infrastructure.Utils;
 
 namespace ProductTracking.Tests
 {
@@ -22,8 +23,10 @@ namespace ProductTracking.Tests
         {
             _dateTimeSerive = new Mock<IDateTimeService>();
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_testTime);
+            DateTimeUtil.SetDateTimeService(_dateTimeSerive.Object);
+
             sut = new EventSourcingTestHelper<ProductPrice>();
-            sut.Setup(new ProductPriceCommandHandler(sut.Repository, _dateTimeSerive.Object));
+            sut.Setup(new ProductPriceCommandHandler(sut.Repository));
         }
 
         [Fact]
@@ -68,8 +71,10 @@ namespace ProductTracking.Tests
         {
             _dateTimeSerive = new Mock<IDateTimeService>();
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_testTime);
+            DateTimeUtil.SetDateTimeService(_dateTimeSerive.Object);
+
             sut = new EventSourcingTestHelper<ProductPrice>();
-            sut.Setup(new ProductPriceCommandHandler(sut.Repository, _dateTimeSerive.Object));
+            sut.Setup(new ProductPriceCommandHandler(sut.Repository));
 
             sut.Given(
                 new ProductPriceUpdated

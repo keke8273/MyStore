@@ -42,7 +42,7 @@ namespace ProductTracking
                 ProductSourceId = productSourceId,
                 NewPrice = value,
                 PreviousPrice = currentPrice,
-                TimeStamp = DateTimeUtil.Now()
+                TimeStamp = DateTimeUtil.Now
             });
         }
 

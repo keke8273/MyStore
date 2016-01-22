@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace ParcelTracking.Parsers
 {
     [DebuggerDisplay("TimeStamp = {TimeStamp}, Location = {Location}, Message = {Message}" )]
-    public class TrackDetail
+    public class TrackMessage
     {
         public DateTime TimeStamp { get; set; }
 

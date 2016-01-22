@@ -7,9 +7,9 @@ namespace ProductTracking.Contracts.Events
 {
     public class OnlineAvailabilityUpdated : VersionedEvent, ITimeStampedEvent
     {
-        public OnlineAvailabilityUpdated()
+        public OnlineAvailabilityUpdated(DateTime timeStamp)
         {
-            TimeStamp = DateTimeUtil.Now();
+            TimeStamp = timeStamp;
         }
 
         public Guid ProductSourceId { get; set; }

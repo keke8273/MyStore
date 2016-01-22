@@ -17,14 +17,14 @@ namespace ParcelTracking.Parsers
             trackInfo.Destination = trackInfoNode.SelectSingleNode("//span[@id='HeaderDes']").InnerText.Extract(@"([^\uff1a]+)$");
             trackInfo.ChineseExpressProvider = trackInfoNode.SelectSingleNode("//span[@id='HeaderEmsKind']").InnerText.Extract(@"\[(.*?)\]");
             trackInfo.ChineseExpressProviderTrackingNumber = trackInfoNode.SelectSingleNode("//span[@id='HeaderEmsKind']").InnerText.Extract(@"([^\]]+)$").Trim();
-            trackInfo.TrackMessages = GetTrackDetail(htmlDoc);
+            trackInfo.Messages = GetTrackDetail(htmlDoc);
 
             return trackInfo;
         }
 
-        private static IEnumerable<TrackDetail> GetTrackDetail(HtmlDocument htmlDoc)
+        private static IEnumerable<TrackMessage> GetTrackDetail(HtmlDocument htmlDoc)
         {
-            var trackDetails = new List<TrackDetail>();
+            var trackDetails = new List<TrackMessage>();
 
             var trackDetailTable = htmlDoc.DocumentNode.SelectSingleNode("//table[@id='oTHtable']");
 
@@ -34,7 +34,7 @@ namespace ParcelTracking.Parsers
             {
                 var cells = trackDetailRows[i].SelectNodes("td");
 
-                trackDetails.Add(new TrackDetail
+                trackDetails.Add(new TrackMessage
                 {
                     TimeStamp = DateTime.Parse(cells[0].InnerText),
                     Location = cells[1].InnerText.Trim(),

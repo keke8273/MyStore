@@ -18,7 +18,7 @@ namespace ParcelTracking.Trackers
         private const string BaseAddress = @"http://120.25.248.148";
         private const string RequestUri = @"/cgi-bin/GInfo.dll?EmmisTrack";
 
-        private  readonly ICommandBus _commandBus;
+        private readonly ICommandBus _commandBus;
 
         public EmmsTracker(ICommandBus commandBus)
         {

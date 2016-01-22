@@ -5,6 +5,7 @@ using CQRS.Infrastructure.Processes;
 using CQRS.Infrastructure.Utils;
 using ParcelTracking.Contacts.Commands;
 using Subscription.Contracts;
+using ParcelTracking.Contacts.Events;
 
 namespace ParcelTracking
 {
@@ -34,6 +35,12 @@ namespace ParcelTracking
                 };
 
             AddCommand(new Envelope<ICommand>(createParcelCommand));
+        }
+
+        public void Handle(ParcelStatusUpdated @event)
+        {
+            if (@event.State == Contacts.ParcelState.Delivered)
+                Completed = true;
         }
 
         private void AddCommand<T>(T command)

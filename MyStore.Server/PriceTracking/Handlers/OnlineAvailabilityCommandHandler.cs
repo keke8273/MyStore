@@ -13,7 +13,6 @@ namespace ProductTracking.Handlers
         public OnlineAvailabilityCommandHandler(IEventSourcedRepository<ProductOnlineAvailability> repository)
         {
             this._repository = repository;
-            _dateTimeService = dateTimeService;
         }
 
         public void Handle(UpdateProductOnlineAvailability command)

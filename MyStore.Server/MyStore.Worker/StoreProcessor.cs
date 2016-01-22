@@ -3,8 +3,6 @@ using CQRS.Infrastructure.Messaging.Handling;
 using CQRS.Infrastructure.Misc;
 using CQRS.Infrastructure.Serialization;
 using Microsoft.Practices.Unity;
-using MyStore.Common;
-using MyStore.Common.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,6 +11,7 @@ using System.Threading;
 using ProductTracking.Handlers;
 using Store.ReadModel;
 using Store.ReadModel.Implementation;
+using CQRS.Infrastructure.Utils;
 
 namespace MyStore.Worker
 {
