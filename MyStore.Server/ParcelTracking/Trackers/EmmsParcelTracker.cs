@@ -25,7 +25,7 @@ namespace ParcelTracking.Trackers
             _commandBus = commandBus;
         }
 
-        public async Task TrackAsync(Parcel parcel)
+        public async Task TrackAsync(Guid parcelId, string trackingNumber)
         {
             using (var httpClient = new HttpClient())
             {
@@ -35,7 +35,7 @@ namespace ParcelTracking.Trackers
                 {
                     new KeyValuePair<string, string>("w", Provider),
                     new KeyValuePair<string, string>("cmodel", string.Empty),
-                    new KeyValuePair<string, string>("cno", parcel.TrackingNumber),
+                    new KeyValuePair<string, string>("cno", trackingNumber),
                     new KeyValuePair<string, string>("ntype", Type)
                 });
 
@@ -50,7 +50,7 @@ namespace ParcelTracking.Trackers
 
                 var trackInfo = EmmsHtmlParser.GetTrackInfo(htmlDoc);
 
-                _commandBus.Send(new UpdateParcelStatus(parcel.Id, trackInfo));
+                _commandBus.Send(new UpdateParcelStatus(parcelId, trackInfo));
             }
         }
 

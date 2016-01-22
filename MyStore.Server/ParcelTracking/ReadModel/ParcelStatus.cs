@@ -19,14 +19,13 @@ namespace ParcelTracking.ReadModel
         public Guid ExpressProviderId { get; private set; }
         public Guid UserId { get; private set; }
         public string TrackingNumber { get; private set; }
-        public int StateValue { get; private set; }
         public DateTime LastUpdated { get; set; }
         public string LastKnownLocation { get; set; }
         public string ChineseExpressProviderTrackingNumber { get; set; }
         public string ChineseExpressProvider { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
-        public ICollection<ParcelStatusRecord> ParcelStatusHistory { get; set; }
+        public int StateValue { get; private set; }
         
         [NotMapped]
         public ParcelState State
@@ -35,6 +34,7 @@ namespace ParcelTracking.ReadModel
             set{ this.StateValue = (int)value;}
         }
 
+        public virtual ICollection<ParcelStatusRecord> ParcelStatusHistory { get; set; }
         virtual public ExpressProvider ExpressProvider { get; set; }
     }
 }

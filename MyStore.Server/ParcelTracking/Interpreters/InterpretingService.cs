@@ -32,4 +32,11 @@ namespace ParcelTracking.Interpreters
             _interpreters.Add(interpreter);
         }
     }
+
+    public interface IInterpretingService
+    {
+        IInterpreter FindInterpreter(Guid expressProviderId);
+
+        void RegisterInterpreter(IInterpreter interpreter);
+    }
 }

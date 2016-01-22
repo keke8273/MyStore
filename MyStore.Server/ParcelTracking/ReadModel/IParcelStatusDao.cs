@@ -19,7 +19,5 @@ namespace ParcelTracking.ReadModel
         ParcelStatus GetParcel(Guid id);
 
         ExpressProvider FindExpressProvider(Guid expressProviderId);
-
-        IList<ParcelStatus> FindUndeliveredParcels()
     }
 }

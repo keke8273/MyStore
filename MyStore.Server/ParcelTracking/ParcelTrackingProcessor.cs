@@ -15,7 +15,7 @@ namespace ParcelTracking
     {
         private readonly ITrackingService _trackingService;
         private readonly IParcelStatusDao _parcelStatusDao;
-        private CancellationTokenSource cancellationSource;
+        private CancellationTokenSource _cancellationSource;
         private readonly TimeSpan _refreshDelay = new TimeSpan(1, 0, 0);
 
         public ParcelTrackingProcessor(ITrackingService trackingService, IParcelStatusDao parcelStatusDao)
@@ -26,12 +26,12 @@ namespace ParcelTracking
 
         public void Start()
         {
-            if (cancellationSource == null)
+            if (_cancellationSource == null)
             {
-                cancellationSource = new CancellationTokenSource();
+                _cancellationSource = new CancellationTokenSource();
                 Task.Factory.StartNew(
-                    () => TrackParcels(cancellationSource.Token),
-                    cancellationSource.Token,
+                    () => TrackParcels(_cancellationSource.Token),
+                    _cancellationSource.Token,
                     TaskCreationOptions.LongRunning,
                     TaskScheduler.Current);
             }
@@ -39,19 +39,19 @@ namespace ParcelTracking
 
         public void Stop()
         {
-            using (cancellationSource)
+            using (_cancellationSource)
             {
-                if (cancellationSource != null)
+                if (_cancellationSource != null)
                 {
-                    cancellationSource.Cancel();
-                    cancellationSource = null;
+                    _cancellationSource.Cancel();
+                    _cancellationSource = null;
                 }
             }
         }
 
         private void TrackParcels(CancellationToken cancellationToken)
         {
-            while (!cancellationSource.IsCancellationRequested)
+            while (!_cancellationSource.IsCancellationRequested)
             {
                 //todo:: should we put a sleep in there to avoid too many database read?
                 var parcels = _parcelStatusDao.FindUndeliveredParcels();
@@ -62,7 +62,7 @@ namespace ParcelTracking
                     {
                         var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
 
-                        tracker.TrackAsync();
+                        tracker.TrackAsync(parcel.Id, parcel.TrackingNumber);
                     }
                 }
             }

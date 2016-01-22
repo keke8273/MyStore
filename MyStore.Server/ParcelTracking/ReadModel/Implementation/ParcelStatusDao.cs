@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ParcelTracking.Contacts;
 
 namespace ParcelTracking.ReadModel.Implementation
 {
@@ -17,27 +16,58 @@ namespace ParcelTracking.ReadModel.Implementation
 
         public IList<ParcelStatusRecord> GetParcelHistory(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = _contextFactory.Invoke())
+            {
+                return context.Query<ParcelStatusRecord>()
+                    .Where(dto => dto.ParcelId == id)
+                    .ToList();
+            }
         }
 
         public IList<ParcelStatus> FindParcelByUser(Guid userId)
         {
-            throw new NotImplementedException();
+            using (var context = _contextFactory.Invoke())
+            {
+                return context.Query<ParcelStatus>()
+                    .Where(dto => dto.UserId == userId)
+                    .ToList();
+            }
         }
 
         public IList<ParcelStatus> FindParcelByExpressProvider(string providerName)
         {
-            throw new NotImplementedException();
+            using (var context = _contextFactory.Invoke())
+            {
+                return context.Query<ParcelStatus>()
+                    .Where(dto => dto.ExpressProvider.Name == providerName)
+                    .ToList();
+            }
+        }
+
+        public IList<ParcelStatus> FindUndeliveredParcels()
+        {
+            using (var context = _contextFactory.Invoke())
+            {
+                return context.Query<ParcelStatus>()
+                    .Where(dto => dto.State != ParcelState.Delivered)
+                    .ToList();
+            }
         }
 
         public ParcelStatus GetParcel(Guid id)
         {
-            throw new NotImplementedException();
+            using (var context = _contextFactory.Invoke())
+            {
+                return context.Query<ParcelStatus>().FirstOrDefault(dto => dto.Id == id);
+            }
         }
 
         public ExpressProvider FindExpressProvider(Guid expressProviderId)
         {
-            throw new NotImplementedException();
+            using (var context = _contextFactory.Invoke())
+            {
+                return context.Query<ExpressProvider>().FirstOrDefault(dto => dto.Id == expressProviderId);
+            }
         }
     }
 }

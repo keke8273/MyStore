@@ -54,14 +54,13 @@
     <Compile Include="Handlers\ParcelCommandHandler.cs" />
     <Compile Include="Handlers\ParcelViewModelGenerator.cs" />
     <Compile Include="Interpreters\EmmsInterpreter.cs" />
-    <Compile Include="Interpreters\IInterpretingService.cs" />
     <Compile Include="Interpreters\InterpretingService.cs" />
     <Compile Include="IInterpreter.cs" />
     <Compile Include="Parcel.cs" />
     <Compile Include="ParcelTrackingProcessManager.cs" />
     <Compile Include="ParcelTrackingProcessManagerRouter.cs" />
     <Compile Include="Parsers\EmmsHtmlParser.cs" />
-    <Compile Include="Parsers\TrackDetail.cs" />
+    <Compile Include="Parsers\TrackMessage.cs" />
     <Compile Include="Parsers\TrackInfo.cs" />
     <Compile Include="ReadModel\ExpressProvider.cs" />
     <Compile Include="ReadModel\Implementation\ParcelStatusDbContext.cs" />

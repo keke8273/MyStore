@@ -13,7 +13,7 @@ namespace ParcelTracking.Handlers
         ICommandHandler<RefreshParcelStatus>,
         ICommandHandler<UpdateParcelStatus>
     {
-        private Func<IDataContext<Parcel>> _contextFactory;
+        private readonly Func<IDataContext<Parcel>> _contextFactory;
         private readonly ITrackingService _trackingService;
         private readonly IInterpretingService _interpretingService;
 
@@ -43,7 +43,7 @@ namespace ParcelTracking.Handlers
 
                 var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
 
-                tracker.TrackAsync(parcel);
+                tracker.TrackAsync(parcel.Id, parcel.TrackingNumber);
 
                 context.Save(parcel);
             }
