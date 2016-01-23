@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CQRS.Infrastructure.Messaging.Handling;
 using ParcelTracking.Contacts;
 using ParcelTracking.Contacts.Events;
@@ -31,7 +32,10 @@ namespace ParcelTracking.Handlers
 
                 if (parcel == null)
                 {
-                    parcel = new ParcelStatus(@event.SourceId, @event.ExpressProviderId, @event.UserId,
+                    var expressProvider =
+                        context.Query<ExpressProvider>().FirstOrDefault(ep => ep.Name == @event.ExpressProvider);
+
+                    parcel = new ParcelStatus(@event.SourceId, expressProvider.Id, @event.UserId,
                         @event.TrackingNumber)
                     {
                         State = ParcelState.Created,

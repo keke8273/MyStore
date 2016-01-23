@@ -27,9 +27,9 @@ namespace ParcelTracking
         {
             ParcelId = @event.SourceId;
 
-            var createParcelCommand = new CreateParcel(@event.SourceId)
+            var createParcelCommand = new CreateParcel(@event.ParceId)
                 {
-                    ExpressProviderId = @event.ExpressProviderId,
+                    ExpressProvider = @event.ExpressProvider,
                     TrackingNumber = @event.TrackingNumber,
                     UserId = @event.UserId
                 };

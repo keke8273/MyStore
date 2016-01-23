@@ -8,7 +8,7 @@ namespace ParcelTracking.Contacts.Commands
         {
         }
 
-        public Guid ExpressProviderId { get; set; }
+        public string ExpressProvider { get; set; }
         public string TrackingNumber { get; set; }
         public Guid UserId { get; set; }
     }

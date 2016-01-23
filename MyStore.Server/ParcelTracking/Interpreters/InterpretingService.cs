@@ -17,11 +17,11 @@ namespace ParcelTracking.Interpreters
             this._parcelStatusDao = parcelStatusDao;
         }
 
-        public IInterpreter FindInterpreter(Guid expressProviderId)
+        public IInterpreter FindInterpreter(string expressProvider)
         {
-            var expressProvider = _parcelStatusDao.FindExpressProvider(expressProviderId);
+            //var expressProvider = _parcelStatusDao.FindExpressProvider(expressProviderId);
 
-            return _interpreters.FirstOrDefault(pt => pt.Name == expressProvider.Name);
+            return _interpreters.FirstOrDefault(pt => pt.Name == expressProvider);
         }
 
         public void RegisterInterpreter(IInterpreter interpreter)
@@ -35,7 +35,7 @@ namespace ParcelTracking.Interpreters
 
     public interface IInterpretingService
     {
-        IInterpreter FindInterpreter(Guid expressProviderId);
+        IInterpreter FindInterpreter(string expressProvider);
 
         void RegisterInterpreter(IInterpreter interpreter);
     }

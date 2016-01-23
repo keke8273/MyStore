@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using CQRS.Infrastructure.Database;
 using CQRS.Infrastructure.Messaging;
-using CQRS.Infrastructure.Utils;
 using ParcelTracking.Contacts;
 using ParcelTracking.Contacts.Events;
 using ParcelTracking.Parsers;
@@ -15,23 +14,23 @@ namespace ParcelTracking
     {
         private readonly List<IEvent> _events = new List<IEvent>();
 
-        public Parcel(Guid id, Guid expressProviderId, string trackingNumber, Guid userId)
+        public Parcel(Guid id, string expressProvider, string trackingNumber, Guid userId)
         {
             Id = id;
-            ExpressProviderId = expressProviderId;
+            ExpressProvider = expressProvider;
             TrackingNumber = trackingNumber;
             UserId = userId;
 
             AddEvent(new ParcelCreated
             {
                 SourceId = id,
-                ExpressProviderId = expressProviderId,
+                ExpressProvider = expressProvider,
                 TrackingNumber = trackingNumber,
                 UserId = userId,
             });
         }
         public Guid Id { get; private set; }
-        public Guid ExpressProviderId { get; set; }
+        public string ExpressProvider { get; set; }
         public string TrackingNumber { get; set; }
         public Guid UserId { get; set; }
         public int MessageReceived { get; set; }

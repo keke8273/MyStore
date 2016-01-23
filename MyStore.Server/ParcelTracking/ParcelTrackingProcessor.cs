@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CQRS.Infrastructure;
 using ParcelTracking.Trackers;
@@ -17,6 +14,7 @@ namespace ParcelTracking
         private readonly IParcelStatusDao _parcelStatusDao;
         private CancellationTokenSource _cancellationSource;
         private readonly TimeSpan _refreshDelay = new TimeSpan(1, 0, 0);
+        private readonly int _pollDelayMs = 1000;
 
         public ParcelTrackingProcessor(ITrackingService trackingService, IParcelStatusDao parcelStatusDao)
         {
@@ -60,11 +58,13 @@ namespace ParcelTracking
                 {
                     if (parcel.LastUpdated - DateTimeUtil.Now > _refreshDelay)
                     {
-                        var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
+                        var tracker = _trackingService.FindParcelTracker(parcel.ExpressProvider.Name);
 
                         tracker.TrackAsync(parcel.Id, parcel.TrackingNumber);
                     }
                 }
+
+                Thread.Sleep(_pollDelayMs);
             }
         }
     }

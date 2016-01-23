@@ -28,7 +28,7 @@ namespace ParcelTracking.Handlers
         {
             using (var context = _contextFactory.Invoke())
             {
-                var parcel = new Parcel(command.ParcelId, command.ExpressProviderId, command.TrackingNumber, command.UserId);
+                var parcel = new Parcel(command.ParcelId, command.ExpressProvider, command.TrackingNumber, command.UserId);
 
                 context.Save(parcel);
             }
@@ -41,7 +41,7 @@ namespace ParcelTracking.Handlers
             {
                 var parcel = context.Find(command.ParcelId);
 
-                var tracker = _trackingService.FindParcelTracker(parcel.ExpressProviderId);
+                var tracker = _trackingService.FindParcelTracker(parcel.ExpressProvider);
 
                 tracker.TrackAsync(parcel.Id, parcel.TrackingNumber);
 
@@ -55,7 +55,7 @@ namespace ParcelTracking.Handlers
             {
                 var parcel = context.Find(command.ParcelId);
 
-                var interpreter = _interpretingService.FindInterpreter(parcel.ExpressProviderId);
+                var interpreter = _interpretingService.FindInterpreter(parcel.ExpressProvider);
 
                 parcel.ProcessTrackInfo(command.TrackInfo, interpreter);
 

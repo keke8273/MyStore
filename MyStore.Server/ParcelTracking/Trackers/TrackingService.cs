@@ -17,11 +17,11 @@ namespace ParcelTracking.Trackers
             this._parcelStatusDao = parcelStatusDao;
         }
 
-        public IParcelTracker FindParcelTracker(Guid expressProviderId)
+        public IParcelTracker FindParcelTracker(string expressProvider)
         {
-            var expressProvider = _parcelStatusDao.FindExpressProvider(expressProviderId);
+            //var expressProvider = _parcelStatusDao.FindExpressProvider(expressProviderId);
 
-            return _trackers.FirstOrDefault(pt => pt.Name == expressProvider.Name);
+            return _trackers.FirstOrDefault(pt => pt.Name == expressProvider);
         }
 
         public void RegisterTrackers(IParcelTracker tracker)
@@ -35,7 +35,7 @@ namespace ParcelTracking.Trackers
 
     public interface ITrackingService
     {
-        IParcelTracker FindParcelTracker(Guid expressProviderId);
+        IParcelTracker FindParcelTracker(string expressProvider);
 
         void RegisterTrackers(IParcelTracker tracker);
     }
