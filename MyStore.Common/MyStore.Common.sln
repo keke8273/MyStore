@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "Store.Dto\Stor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscription.Dto", "Subscription.Dto\Subscription.Dto.csproj", "{54509E43-3FFF-4848-B1ED-BD98453B1529}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parcel.Dto", "Parcel.Dto\Parcel.Dto.csproj", "{21C7826D-E142-40EF-A397-9B14905D64A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{54509E43-3FFF-4848-B1ED-BD98453B1529}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54509E43-3FFF-4848-B1ED-BD98453B1529}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54509E43-3FFF-4848-B1ED-BD98453B1529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21C7826D-E142-40EF-A397-9B14905D64A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C7826D-E142-40EF-A397-9B14905D64A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C7826D-E142-40EF-A397-9B14905D64A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C7826D-E142-40EF-A397-9B14905D64A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
