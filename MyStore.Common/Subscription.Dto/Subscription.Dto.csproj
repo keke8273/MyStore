@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21958ECF-B5CD-4BEB-AF8A-38188B1D63A2}</ProjectGuid>
+    <ProjectGuid>{54509E43-3FFF-4848-B1ED-BD98453B1529}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyStore.PriceTracker</RootNamespace>
-    <AssemblyName>MyStore.PriceTracker</AssemblyName>
+    <RootNamespace>Subscription.Dto</RootNamespace>
+    <AssemblyName>Subscription.Dto</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Price.cs" />
+    <Compile Include="ParcelTrackingSubscriptionDto.cs" />
+    <Compile Include="SubscriptionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
