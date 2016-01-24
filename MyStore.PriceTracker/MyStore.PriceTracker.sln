@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.PriceTracker.Client
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStore.PriceTracker.ClientTests", "MyStore.PriceTracker.ClientTests\MyStore.PriceTracker.ClientTests.csproj", "{C9F007D1-5C0F-4D4B-8237-2E0BF076088E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "..\MyStore.Server\Product.Dto\Store.Dto.csproj", "{A2BBC0FD-9259-429A-8163-2B622D57C157}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "..\MyStore.Common\Store.Dto\Store.Dto.csproj", "{A2BBC0FD-9259-429A-8163-2B622D57C157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

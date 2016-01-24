@@ -1,11 +1,5 @@
-﻿using System;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using MyStore.PriceTracker.Client.PriceTrackers;
+﻿using MyStore.PriceTracker.Client.PriceTrackers;
 using MyStore.PriceTracker.Client.Services;
-using MyStore.PriceTracker.Client.Services.Implementation;
-using Store.Dto;
 
 namespace MyStore.PriceTracker.Client
 {

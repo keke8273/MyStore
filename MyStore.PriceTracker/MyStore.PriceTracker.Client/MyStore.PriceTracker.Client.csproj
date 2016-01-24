@@ -63,7 +63,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyStore.Server\Product.Dto\Store.Dto.csproj">
+    <ProjectReference Include="..\..\MyStore.Common\Store.Dto\Store.Dto.csproj">
       <Project>{A2BBC0FD-9259-429A-8163-2B622D57C157}</Project>
       <Name>Store.Dto</Name>
     </ProjectReference>
