@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "Store.Dto\Stor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscription.Dto", "Subscription.Dto\Subscription.Dto.csproj", "{54509E43-3FFF-4848-B1ED-BD98453B1529}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parcel.Dto", "Parcel.Dto\Parcel.Dto.csproj", "{21C7826D-E142-40EF-A397-9B14905D64A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking.Dto", "Parcel.Dto\ParcelTracking.Dto.csproj", "{21C7826D-E142-40EF-A397-9B14905D64A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
