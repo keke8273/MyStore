@@ -23,7 +23,7 @@ namespace MyStore.PriceTracker.Client.Services
             using (var client = new HttpClient())
             {
                 SetupHttpClient(client);
-                var response = await client.GetAsync(@"api/product" + name);
+                var response = await client.GetAsync(@"api/product/" + name);
 
                 if (response.IsSuccessStatusCode)
                 {
