@@ -47,6 +47,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyStore.Common\ParcelTracking.Dto\ParcelTracking.Dto.csproj">
+      <Project>{21C7826D-E142-40EF-A397-9B14905D64A4}</Project>
+      <Name>ParcelTracking.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyStore.Common\Subscription.Dto\Subscription.Dto.csproj">
+      <Project>{54509E43-3FFF-4848-B1ED-BD98453B1529}</Project>
+      <Name>Subscription.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyStore.Client.Common\MyStore.Client.Common.csproj">
+      <Project>{660807BB-9D9B-466E-89B2-61B46ABEC755}</Project>
+      <Name>MyStore.Client.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

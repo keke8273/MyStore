@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using ParcelTracking.Dto;
 using Subscription.Dto;
 
 namespace MyStore.Client.Common
@@ -17,8 +19,8 @@ namespace MyStore.Client.Common
             _mediaType = mediaType;
         }
 
-        //Register new parcel
-        public async Task<Guid> SubscribeParcelTracking(ParcelTrackingSubscriptionDto dto)
+        //Subscription
+        public async Task<Guid> SubscribeParcelTrackingAsync(SubscriptionDto dto)
         {
             using (var client = new HttpClient())
             {
@@ -33,15 +35,60 @@ namespace MyStore.Client.Common
             }
         }
 
-        //Check for parcel status
-        public async Task<ParcelStatusDto> GetParcelStatus(Guid id)
+
+        //Parcel
+        public async Task<ParcelStatusDto> GetParcelStatusAsync(Guid id)
         {
             using (var client = new HttpClient())
             {
                 SetupHttpClient(client);
 
                 var response = await client.GetAsync(@"api/parcel/" + id);
+
+                if (response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsAsync<ParcelStatusDto>();
+
+                return null;
             }
+        }
+
+        public async Task<Guid> FindOrCreateParcelAsync(string expressProvider, string trackingNumber)
+        {
+            using (var client = new HttpClient())
+            {
+                SetupHttpClient(client);
+
+                var response = await client.GetAsync(@"api/parcel/" + expressProvider + "/" + trackingNumber);
+
+                if (response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsAsync<Guid>();
+                
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    response = await client.PostAsJsonAsync(@"api/parcel", new ParcelDto
+                    {
+                        ExpressionProvider = expressProvider,
+                        TrackingNumber = trackingNumber
+                    });
+
+                    if(response.IsSuccessStatusCode)
+                        return await response.Content.ReadAsAsync<Guid>();                        
+                }
+
+                return Guid.Empty;
+            }
+        }
+
+        //User
+        public async Task<Guid> Login()
+        {
+            using (var client = new HttpClient())
+            {
+                SetupHttpClient(client);
+            }
+
+            //dummy implementation to be replaced 
+            return Guid.NewGuid();
         }
 
         private void SetupHttpClient(HttpClient client)
