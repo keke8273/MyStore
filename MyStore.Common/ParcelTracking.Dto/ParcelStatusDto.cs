@@ -23,7 +23,7 @@ namespace ParcelTracking.Dto
 
             stringBuilder.AppendLine(String.Format("Parcel:{0}", TrackingNumber));
             stringBuilder.AppendLine(String.Format("LastUpdated:{0:G}", LastUpdated));
-            stringBuilder.AppendLine(String.Format("LastKnownLocation: {0}", LastUpdated));
+            stringBuilder.AppendLine(String.Format("LastKnownLocation: {0}", LastKnownLocation));
             stringBuilder.AppendLine(String.Format("State:{0}", State));
 
             foreach (var record in ParcelStatusHistory)

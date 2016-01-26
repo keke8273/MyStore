@@ -2,8 +2,9 @@
 
 namespace Subscription.Dto
 {
-    public abstract class SubscriptionDto
+    public class SubscriptionDto
     {
-        public Guid UserId { get; set; }
+        public Guid SubscriberId { get; set; }
+        public Guid SubscribeeId { get; set; }
     }
 }
