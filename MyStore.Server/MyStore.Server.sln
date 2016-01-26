@@ -77,6 +77,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dto", "..\MyStore.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelTracking.Dto", "..\MyStore.Common\ParcelTracking.Dto\ParcelTracking.Dto.csproj", "{21C7826D-E142-40EF-A397-9B14905D64A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserManagement", "UserManagement", "{6FB75617-3A95-429C-9886-9CF016912A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement", "UserManagement\UserManagement.csproj", "{7E219CEE-CB80-4837-B23E-971F8B28BD7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +171,10 @@ Global
 		{21C7826D-E142-40EF-A397-9B14905D64A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21C7826D-E142-40EF-A397-9B14905D64A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21C7826D-E142-40EF-A397-9B14905D64A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E219CEE-CB80-4837-B23E-971F8B28BD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E219CEE-CB80-4837-B23E-971F8B28BD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E219CEE-CB80-4837-B23E-971F8B28BD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E219CEE-CB80-4837-B23E-971F8B28BD7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,5 +199,6 @@ Global
 		{54509E43-3FFF-4848-B1ED-BD98453B1529} = {8FF5582A-6C8C-4B4D-87C6-3D76320BDEC7}
 		{A2BBC0FD-9259-429A-8163-2B622D57C157} = {2197F897-C157-49EF-BCCB-9F2BDF226681}
 		{21C7826D-E142-40EF-A397-9B14905D64A4} = {4DDE8565-B129-4BFA-A73D-C5F9CC5606B0}
+		{7E219CEE-CB80-4837-B23E-971F8B28BD7F} = {6FB75617-3A95-429C-9886-9CF016912A73}
 	EndGlobalSection
 EndGlobal

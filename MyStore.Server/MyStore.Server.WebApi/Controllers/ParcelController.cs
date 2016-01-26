@@ -23,7 +23,7 @@ namespace MyStore.Server.WebApi.Controllers
             _commandBus = commandBus;
         }
 
-        [Route("{id}")]
+        [Route("{id:guid}")]
         [HttpGet]
         [ResponseType(typeof (ParcelStatusDto))]
         public IHttpActionResult GetParcelStatus(Guid id)
