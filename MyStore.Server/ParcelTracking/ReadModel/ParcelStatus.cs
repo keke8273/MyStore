@@ -7,17 +7,20 @@ namespace ParcelTracking.ReadModel
 {
     public class ParcelStatus
     {
-        public ParcelStatus(Guid id, Guid expressProviderId, Guid userId, string trackingNumber)
+        public ParcelStatus(Guid id, Guid expressProviderId, string trackingNumber)
+            : this()
         {
             TrackingNumber = trackingNumber;
-            UserId = userId;
             ExpressProviderId = expressProviderId;
             Id = id;
         }
 
+        protected ParcelStatus()
+        {
+        }
+
         public Guid Id { get; private set; }
         public Guid ExpressProviderId { get; private set; }
-        public Guid UserId { get; private set; }
         public string TrackingNumber { get; private set; }
         public DateTime LastUpdated { get; set; }
         public string LastKnownLocation { get; set; }
@@ -34,7 +37,7 @@ namespace ParcelTracking.ReadModel
             set{ this.StateValue = (int)value;}
         }
 
-        public virtual ICollection<ParcelStatusRecord> ParcelStatusHistory { get; set; }
+        virtual public ICollection<ParcelStatusRecord> ParcelStatusHistory { get; set; }
         virtual public ExpressProvider ExpressProvider { get; set; }
     }
 }

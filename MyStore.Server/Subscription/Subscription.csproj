@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Subscription</RootNamespace>
     <AssemblyName>Subscription</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,7 +52,7 @@
     <Compile Include="SubscriptionServcie.cs" />
     <Compile Include="Subscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubscriptionContext.cs" />
+    <Compile Include="SubscriptionDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">

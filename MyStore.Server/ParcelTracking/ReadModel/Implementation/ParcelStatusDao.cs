@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using ParcelTracking.Contacts;
 
@@ -19,17 +20,7 @@ namespace ParcelTracking.ReadModel.Implementation
             using (var context = _contextFactory.Invoke())
             {
                 return context.Query<ParcelStatusRecord>()
-                    .Where(dto => dto.ParcelId == id)
-                    .ToList();
-            }
-        }
-
-        public IList<ParcelStatus> FindParcelByUser(Guid userId)
-        {
-            using (var context = _contextFactory.Invoke())
-            {
-                return context.Query<ParcelStatus>()
-                    .Where(dto => dto.UserId == userId)
+                    .Where(dto => dto.ParcelStatusId == id)
                     .ToList();
             }
         }
@@ -49,7 +40,7 @@ namespace ParcelTracking.ReadModel.Implementation
             using (var context = _contextFactory.Invoke())
             {
                 return context.Query<ParcelStatus>()
-                    .Where(dto => dto.State != ParcelState.Delivered)
+                    .Where(dto => dto.StateValue != (int)ParcelState.Delivered)
                     .ToList();
             }
         }
@@ -58,7 +49,7 @@ namespace ParcelTracking.ReadModel.Implementation
         {
             using (var context = _contextFactory.Invoke())
             {
-                return context.Query<ParcelStatus>().FirstOrDefault(dto => dto.Id == id);
+                return context.Query<ParcelStatus>().Include(p => p.ParcelStatusHistory).FirstOrDefault(dto => dto.Id == id);
             }
         }
 

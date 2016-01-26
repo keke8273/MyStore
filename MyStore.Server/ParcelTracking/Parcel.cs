@@ -14,25 +14,28 @@ namespace ParcelTracking
     {
         private readonly List<IEvent> _events = new List<IEvent>();
 
-        public Parcel(Guid id, string expressProvider, string trackingNumber, Guid userId)
+        public Parcel(Guid id, string expressProvider, string trackingNumber)
+            :this()
         {
             Id = id;
             ExpressProvider = expressProvider;
             TrackingNumber = trackingNumber;
-            UserId = userId;
 
             AddEvent(new ParcelCreated
             {
                 SourceId = id,
                 ExpressProvider = expressProvider,
                 TrackingNumber = trackingNumber,
-                UserId = userId,
             });
         }
+
+        protected Parcel()
+        {
+        }
+
         public Guid Id { get; private set; }
         public string ExpressProvider { get; set; }
         public string TrackingNumber { get; set; }
-        public Guid UserId { get; set; }
         public int MessageReceived { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }

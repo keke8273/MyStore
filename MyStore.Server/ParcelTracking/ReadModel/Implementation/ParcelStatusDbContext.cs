@@ -6,7 +6,7 @@ namespace ParcelTracking.ReadModel.Implementation
 {
     public class ParcelStatusDbContext : DbContext
     {
-        public const string SchemaName = "ParcelTracking";
+        public const string SchemaName = "ParcelStatus";
 
         public ParcelStatusDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
@@ -19,8 +19,9 @@ namespace ParcelTracking.ReadModel.Implementation
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ParcelStatus>().ToTable("ParcelView", SchemaName);
-            modelBuilder.Entity<ParcelStatus>().HasMany(p => p.ParcelStatusHistory).WithRequired();
+            modelBuilder.Entity<ParcelStatus>().HasMany(p => p.ParcelStatusHistory).WithRequired(p => p.ParcelStatus);
             modelBuilder.Entity<ParcelStatusRecord>().ToTable("ParcelStatusRecord", SchemaName);
+            modelBuilder.Entity<ExpressProvider>().ToTable("ExpressProvider", SchemaName);
         }
 
         public T Find<T>(Guid id) where T: class

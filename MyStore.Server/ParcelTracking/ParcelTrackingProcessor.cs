@@ -14,7 +14,7 @@ namespace ParcelTracking
         private readonly IParcelStatusDao _parcelStatusDao;
         private CancellationTokenSource _cancellationSource;
         private readonly TimeSpan _refreshDelay = new TimeSpan(1, 0, 0);
-        private readonly int _pollDelayMs = 1000;
+        private readonly int _pollDelayMs = 60000;
 
         public ParcelTrackingProcessor(ITrackingService trackingService, IParcelStatusDao parcelStatusDao)
         {
@@ -56,7 +56,7 @@ namespace ParcelTracking
 
                 foreach (var parcel in parcels)
                 {
-                    if (parcel.LastUpdated - DateTimeUtil.Now > _refreshDelay)
+                    if (DateTimeUtil.Now - parcel.LastUpdated > _refreshDelay)
                     {
                         var tracker = _trackingService.FindParcelTracker(parcel.ExpressProvider.Name);
 

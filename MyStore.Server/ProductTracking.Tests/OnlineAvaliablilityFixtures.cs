@@ -23,7 +23,7 @@ namespace ProductTracking.Tests
         {
             _dateTimeSerive = new Mock<IDateTimeService>();
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_testTime);
-            DateTimeUtil.SetDateTimeService(_dateTimeSerive.Object);
+            DateTimeUtil.RegisterDateTimeService(_dateTimeSerive.Object);
 
             sut = new EventSourcingTestHelper<ProductOnlineAvailability>();
             sut.Setup(new OnlineAvailabilityCommandHandler(sut.Repository));
@@ -56,7 +56,7 @@ namespace ProductTracking.Tests
         {
             _dateTimeSerive = new Mock<IDateTimeService>();
             _dateTimeSerive.Setup(x => x.GetCurrentDateTimeUtc()).Returns(_testTime);
-            DateTimeUtil.SetDateTimeService(_dateTimeSerive.Object);
+            DateTimeUtil.RegisterDateTimeService(_dateTimeSerive.Object);
 
             sut = new EventSourcingTestHelper<ProductOnlineAvailability>();
             sut.Setup(new OnlineAvailabilityCommandHandler(sut.Repository));

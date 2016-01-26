@@ -131,6 +131,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AutomapperConfiguration.cs" />
+    <Compile Include="Controllers\ParcelController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="DatabaseSetup.cs" />
     <Compile Include="Global.asax.Local.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,17 +168,33 @@
       <Project>{4C05D755-5060-4CAD-941B-EE33FEEA9914}</Project>
       <Name>CQRS.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MyStore.Common\ParcelTracking.Dto\ParcelTracking.Dto.csproj">
+      <Project>{21C7826D-E142-40EF-A397-9B14905D64A4}</Project>
+      <Name>ParcelTracking.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyStore.Common\Store.Dto\Store.Dto.csproj">
+      <Project>{A2BBC0FD-9259-429A-8163-2B622D57C157}</Project>
+      <Name>Store.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyStore.Common\Subscription.Dto\Subscription.Dto.csproj">
+      <Project>{54509E43-3FFF-4848-B1ED-BD98453B1529}</Project>
+      <Name>Subscription.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyStore.Common\MyStore.Common.csproj">
       <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
       <Name>MyStore.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParcelTracking.Contacts\ParcelTracking.Contacts.csproj">
+      <Project>{41EDE6BA-A318-4B77-891B-65B98E96D836}</Project>
+      <Name>ParcelTracking.Contacts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParcelTracking\ParcelTracking.csproj">
+      <Project>{FC76D51C-F02D-4765-A4CF-9A77FE855286}</Project>
+      <Name>ParcelTracking</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
       <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
       <Name>ProductTracking</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Product.Dto\Store.Dto.csproj">
-      <Project>{A2BBC0FD-9259-429A-8163-2B622D57C157}</Project>
-      <Name>Store.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProductTracking.Contracts\ProductTracking.Contracts.csproj">
       <Project>{D86EF8DD-4881-456F-BA9A-647BC7B56562}</Project>
@@ -185,6 +203,10 @@
     <ProjectReference Include="..\Product\Store.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
       <Name>Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Subscription\Subscription.csproj">
+      <Project>{BBF52F8B-E061-4CDB-8885-EB589EE452BF}</Project>
+      <Name>Subscription</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

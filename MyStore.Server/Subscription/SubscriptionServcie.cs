@@ -10,15 +10,15 @@ namespace Subscription
         private readonly IEventBus _eventBus;
         private readonly string _nameOrConnectionString;
 
-        public SubscriptionServcie(IEventBus eventBus, string nameOrConnectionString)
+        public SubscriptionServcie(IEventBus eventBus, string nameOrConnectionString = "Subscription")
         {
             _eventBus = eventBus;
             _nameOrConnectionString = nameOrConnectionString;
         }
 
-        public void CreateParcelSubscription(Guid parcelId, Guid userId, string expressProvider, string trackingNumber)
+        public void CreateParcelSubscription(Guid parcelId, Guid userId)
         {
-            using (var context = new SubscriptionContext(_nameOrConnectionString))
+            using (var context = new SubscriptionDbContext(_nameOrConnectionString))
             {
                 var parcelSubscription = context.FindSubscription(parcelId, userId);
 
@@ -35,9 +35,7 @@ namespace Subscription
                 _eventBus.Publish(new ParcelSubscriptionCreated
                 {
                     SourceId = parcelSubscription.Id,
-                    ExpressProvider = expressProvider,
                     ParceId = parcelId,
-                    TrackingNumber = trackingNumber,
                     UserId = userId
                 });
             }

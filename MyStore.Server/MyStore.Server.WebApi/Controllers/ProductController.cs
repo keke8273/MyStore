@@ -12,11 +12,11 @@ using Store.ReadModel;
 
 namespace MyStore.Server.WebApi.Controllers
 {
-    [RoutePrefix("api/productDto")]
+    [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
         private readonly IProductDao _productDao;
-        private readonly ICommandBus _bus;
+        private readonly ICommandBus _commandBus;
         private readonly IEventBus _eventBus;
 
         private ProductService _productService;
@@ -26,9 +26,9 @@ namespace MyStore.Server.WebApi.Controllers
             get { return _productService ?? (_productService = new ProductService(_eventBus)); }
         }
 
-        public ProductController(IProductDao productDao, ICommandBus bus, IEventBus eventBus)
+        public ProductController(IProductDao productDao, ICommandBus commandBus, IEventBus eventBus)
         {
-            _bus = bus;
+            _commandBus = commandBus;
             _eventBus = eventBus;
             _productDao = productDao;
         }
@@ -90,7 +90,7 @@ namespace MyStore.Server.WebApi.Controllers
                 }
             };
 
-            _bus.Send(commands);
+            _commandBus.Send(commands);
 
             return Ok();
         }

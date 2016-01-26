@@ -11,6 +11,8 @@ using CQRS.Infrastructure.Sql.Messaging.Handling;
 using CQRS.Infrastructure.Sql.Messaging.Implementation;
 using Microsoft.Practices.Unity;
 using System.Data.Entity;
+using ParcelTracking;
+using ParcelTracking.Handlers;
 using ProductTracking.Handlers;
 
 namespace MyStore.Worker
@@ -56,6 +58,9 @@ namespace MyStore.Worker
         private void RegisterEventHandlers(UnityContainer container, EventProcessor eventProcessor)
         {
             eventProcessor.Register(container.Resolve<ProductStatusViewModelGenerator>());
+            eventProcessor.Register(container.Resolve<ParcelStatusViewModelGenerator>());
+            //eventProcessor.Register(container.Resolve<ParcelTrackingProcessManagerRouter>());
+            eventProcessor.Register(container.Resolve<SqlMessageLogHandler>());
         }
 
         private void RegisterCommandHandlers(UnityContainer container)

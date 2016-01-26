@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using MyStore.Common;
+using ParcelTracking.Dto;
+using ParcelTracking.ReadModel;
 using Store;
 using Store.Dto;
 using Store.ReadModel;
@@ -14,9 +16,19 @@ namespace MyStore.Server.WebApi
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new StoreManagementProfile());
+                cfg.AddProfile(new ParcelTrackingProfile());
             });
             
             Mapper.AssertConfigurationIsValid();
+        }
+    }
+
+    public class ParcelTrackingProfile : Profile
+    {
+        protected override void Configure()
+        {
+            Mapper.CreateMap<ParcelStatusRecord, ParcelStatusRecordDto>();
+            Mapper.CreateMap<ParcelStatus, ParcelStatusDto>().ForMember(p => p.State, y => y.ResolveUsing(src => src.StateValue.ToString()));
         }
     }
 

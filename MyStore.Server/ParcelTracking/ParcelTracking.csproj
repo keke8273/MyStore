@@ -51,14 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\UpdateParcelStatus.cs" />
+    <Compile Include="Database\ParcelDbContext.cs" />
     <Compile Include="Handlers\ParcelCommandHandler.cs" />
-    <Compile Include="Handlers\ParcelViewModelGenerator.cs" />
+    <Compile Include="Handlers\ParcelStatusViewModelGenerator.cs" />
     <Compile Include="Interpreters\EmmsInterpreter.cs" />
     <Compile Include="Interpreters\InterpretingService.cs" />
     <Compile Include="IInterpreter.cs" />
     <Compile Include="Parcel.cs" />
-    <Compile Include="ParcelTrackingProcessManager.cs" />
-    <Compile Include="ParcelTrackingProcessManagerRouter.cs" />
     <Compile Include="Parsers\EmmsHtmlParser.cs" />
     <Compile Include="Parsers\TrackMessage.cs" />
     <Compile Include="Parsers\TrackInfo.cs" />
@@ -75,6 +74,10 @@
     <Compile Include="Trackers\TrackingService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure.Sql\CQRS.Infrastructure.Sql.csproj">
+      <Project>{55E3A5A1-41C6-470F-82D4-3DBB93578181}</Project>
+      <Name>CQRS.Infrastructure.Sql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\CQSR\CQRS\CQRS.Infrastructure\CQRS.Infrastructure.csproj">
       <Project>{4C05D755-5060-4CAD-941B-EE33FEEA9914}</Project>
       <Name>CQRS.Infrastructure</Name>

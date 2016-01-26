@@ -28,7 +28,7 @@ namespace ParcelTracking.Parsers
 
             var trackDetailTable = htmlDoc.DocumentNode.SelectSingleNode("//table[@id='oTHtable']");
 
-            var trackDetailRows = trackDetailTable.SelectSingleNode("tbody").SelectNodes("./tr");
+            var trackDetailRows = trackDetailTable.SelectSingleNode("tbody") == null ? trackDetailTable.SelectNodes("./tr") : trackDetailTable.SelectSingleNode("tbody").SelectNodes("./tr");
 
             for (int i = 1; i < trackDetailRows.Count; i++)
             {

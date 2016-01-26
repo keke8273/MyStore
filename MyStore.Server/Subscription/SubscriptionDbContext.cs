@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Subscription
 {
-    public class SubscriptionContext : DbContext
+    public class SubscriptionDbContext : DbContext
     {
-        public const string SchemaName = "SubscriptionRegistration";
+        public const string SchemaName = "Subscription";
 
-        public SubscriptionContext(string nameOrConnectionString)
+        public SubscriptionDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
         }
@@ -18,7 +18,7 @@ namespace Subscription
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<global::Subscription.Subscription>().ToTable("Subscription", SchemaName);
+            modelBuilder.Entity<Subscription>().ToTable("Subscription", SchemaName);
 
             //Conventions
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
@@ -26,7 +26,7 @@ namespace Subscription
 
         public virtual DbSet<Subscription> Subscriptions { get; set; }
 
-        public global::Subscription.Subscription FindSubscription(Guid subscribeeId, Guid subscriberId)
+        public Subscription FindSubscription(Guid subscribeeId, Guid subscriberId)
         {
             return Subscriptions.FirstOrDefault(s => s.SubscribeeId == subscribeeId && s.SubscriberId == subscriberId);
         }

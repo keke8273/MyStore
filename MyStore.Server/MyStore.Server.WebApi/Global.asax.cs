@@ -3,6 +3,8 @@ using System.Web;
 using System.Web.Http;
 using CQRS.Infrastructure.Messaging;
 using Microsoft.Practices.Unity;
+using ParcelTracking.ReadModel;
+using ParcelTracking.ReadModel.Implementation;
 using Store.ReadModel;
 using Store.ReadModel.Implementation;
 
@@ -41,9 +43,11 @@ namespace MyStore.Server.WebApi
             var container = new UnityContainer();
             try
             {
-                container.RegisterType<ProductDbContext>(new TransientLifetimeManager(), new InjectionConstructor("StoreManagement"));
+                container.RegisterType<ProductDbContext>(new TransientLifetimeManager(), new InjectionConstructor(ProductDbContext.SchemaName));
+                container.RegisterType<ParcelStatusDbContext>(new TransientLifetimeManager(), new InjectionConstructor(ParcelStatusDbContext.SchemaName));
 
                 container.RegisterType<IProductDao, ProductDao>();
+                container.RegisterType<IParcelStatusDao, ParcelStatusDao>();
 
                 OnCreateContainer(container);
             }

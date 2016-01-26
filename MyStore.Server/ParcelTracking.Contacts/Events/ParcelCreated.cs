@@ -6,6 +6,5 @@ namespace ParcelTracking.Contacts.Events
     {
         public string ExpressProvider { get; set; }
         public string TrackingNumber { get; set; }
-        public Guid UserId { get; set; }
     }
 }

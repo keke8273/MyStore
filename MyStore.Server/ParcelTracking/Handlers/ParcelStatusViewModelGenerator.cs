@@ -8,7 +8,7 @@ using ParcelTracking.ReadModel.Implementation;
 
 namespace ParcelTracking.Handlers
 {
-    public class ParcelViewModelGenerator : 
+    public class ParcelStatusViewModelGenerator : 
         IEventHandler<ParcelCreated>,
         IEventHandler<ParcelStatusUpdated>,
         IEventHandler<ChineseExpressProviderTrackingNumberUpdated>,
@@ -19,7 +19,7 @@ namespace ParcelTracking.Handlers
     {
         private readonly Func<ParcelStatusDbContext> _contextFactory;
 
-        public ParcelViewModelGenerator(Func<ParcelStatusDbContext> contextFactory)
+        public ParcelStatusViewModelGenerator(Func<ParcelStatusDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }
@@ -35,8 +35,7 @@ namespace ParcelTracking.Handlers
                     var expressProvider =
                         context.Query<ExpressProvider>().FirstOrDefault(ep => ep.Name == @event.ExpressProvider);
 
-                    parcel = new ParcelStatus(@event.SourceId, expressProvider.Id, @event.UserId,
-                        @event.TrackingNumber)
+                    parcel = new ParcelStatus(@event.SourceId, expressProvider.Id, @event.TrackingNumber)
                     {
                         State = ParcelState.Created,
                         LastUpdated = @event.TimeStamp
@@ -125,9 +124,13 @@ namespace ParcelTracking.Handlers
         {
             using (var context = _contextFactory.Invoke())
             {
+                var parcelStatus = context.Find<ParcelStatus>(@event.SourceId);
+                if (!String.IsNullOrEmpty(@event.Location))
+                    parcelStatus.LastKnownLocation = @event.Location;
+
                 var parcelRecord = new ParcelStatusRecord
                 {
-                    ParcelId = @event.SourceId,
+                    ParcelStatusId = @event.SourceId,
                     Location = @event.Location,
                     Message = @event.Message,
                     TimeStamp = @event.TimeStamp

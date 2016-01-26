@@ -66,6 +66,10 @@
       <Project>{55E3A5A1-41C6-470F-82D4-3DBB93578181}</Project>
       <Name>CQRS.Infrastructure.Sql</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParcelTracking\ParcelTracking.csproj">
+      <Project>{FC76D51C-F02D-4765-A4CF-9A77FE855286}</Project>
+      <Name>ParcelTracking</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
       <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
       <Name>ProductTracking</Name>
@@ -73,6 +77,10 @@
     <ProjectReference Include="..\Product\Store.csproj">
       <Project>{A7FB896E-A821-4117-BA47-1795AE190B08}</Project>
       <Name>Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Subscription\Subscription.csproj">
+      <Project>{BBF52F8B-E061-4CDB-8885-EB589EE452BF}</Project>
+      <Name>Subscription</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

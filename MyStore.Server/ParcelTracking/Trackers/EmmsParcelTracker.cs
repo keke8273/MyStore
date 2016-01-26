@@ -46,7 +46,7 @@ namespace ParcelTracking.Trackers
                 var htmlAsString = response.Content.ReadAsStringAsync().Result;
 
                 var htmlDoc = new HtmlDocument();
-                htmlDoc.Load(htmlAsString, Encoding.GetEncoding(936));
+                htmlDoc.LoadHtml(htmlAsString);
 
                 var trackInfo = EmmsHtmlParser.GetTrackInfo(htmlDoc);
 

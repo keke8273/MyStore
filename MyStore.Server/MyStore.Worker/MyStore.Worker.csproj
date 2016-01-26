@@ -86,6 +86,10 @@
       <Project>{727A4B0B-D605-4D67-87CC-BE06EB34B54A}</Project>
       <Name>MyStore.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParcelTracking\ParcelTracking.csproj">
+      <Project>{FC76D51C-F02D-4765-A4CF-9A77FE855286}</Project>
+      <Name>ParcelTracking</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PriceTracking\ProductTracking.csproj">
       <Project>{D73BA17E-F5D1-46C5-BB92-E33474B38113}</Project>
       <Name>ProductTracking</Name>

@@ -28,9 +28,13 @@ namespace ParcelTracking.Handlers
         {
             using (var context = _contextFactory.Invoke())
             {
-                var parcel = new Parcel(command.ParcelId, command.ExpressProvider, command.TrackingNumber, command.UserId);
+                var parcel = new Parcel(command.ParcelId, command.ExpressProvider, command.TrackingNumber);
 
                 context.Save(parcel);
+
+                var tracker = _trackingService.FindParcelTracker(parcel.ExpressProvider);
+
+                tracker.TrackAsync(parcel.Id, parcel.TrackingNumber);
             }
         }
 

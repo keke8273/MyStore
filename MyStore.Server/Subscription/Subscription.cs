@@ -14,6 +14,7 @@ namespace Subscription
         }
 
         public Subscription(Guid id, SubscriptionType type, Guid subscriberId, Guid subscribeeId)
+            : this()
         {
             Id = id;
             Type = type;
@@ -21,10 +22,14 @@ namespace Subscription
             SubscribeeId = subscribeeId;
         }
 
+        protected Subscription()
+        { }
+
         public Guid Id { get; private set; }
         public int TypeValue { get; set; }
         public Guid SubscriberId { get; set; }
         public Guid SubscribeeId { get; set; }
+
         [NotMapped]
         public SubscriptionType Type
         {
