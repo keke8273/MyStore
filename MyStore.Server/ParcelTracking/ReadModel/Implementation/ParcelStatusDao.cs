@@ -40,6 +40,7 @@ namespace ParcelTracking.ReadModel.Implementation
             using (var context = _contextFactory.Invoke())
             {
                 return context.Query<ParcelStatus>()
+                    .Include(p => p.ExpressProvider)
                     .Where(dto => dto.StateValue != (int)ParcelState.Delivered)
                     .ToList();
             }
@@ -49,7 +50,9 @@ namespace ParcelTracking.ReadModel.Implementation
         {
             using (var context = _contextFactory.Invoke())
             {
-                return context.Query<ParcelStatus>().Include(p => p.ParcelStatusHistory).FirstOrDefault(dto => dto.Id == id);
+                return context.Query<ParcelStatus>()
+                    .Include(p => p.ParcelStatusHistory)
+                    .FirstOrDefault(dto => dto.Id == id);
             }
         }
 

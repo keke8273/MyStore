@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using UserManagement;
 
 namespace MyStore.Server.WebApi.Controllers
@@ -17,14 +19,22 @@ namespace MyStore.Server.WebApi.Controllers
         {
         }
 
-        protected ApplicationUserManager AppUserManager { get { return _appUserManager ??  } }
+        protected ApplicationUserManager AppUserManager
+        {
+            get
+            {
+                return _appUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
 
         protected ModelFactory ModelFactory
         {
             get
             {
-                if(_modelFactory == null)
+                if (_modelFactory == null)
                     _modelFactory = new ModelFactory(this.Request, this.AppUserManager);
+
+                return _modelFactory;
             }
         }
 
