@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http.Formatting;
-using System.Web;
 using System.Web.Http;
+using Microsoft.Owin;
+using MyStore.Server.WebApi;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using UserManagement;
 
+[assembly: OwinStartup(typeof(Startup))]
+
 namespace MyStore.Server.WebApi
 {
+
     public class Startup
     {
         public void Configuration(IAppBuilder app)

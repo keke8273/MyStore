@@ -64,6 +64,7 @@
     <Compile Include="ReadModel\ExpressProvider.cs" />
     <Compile Include="ReadModel\Implementation\ParcelStatusDbContext.cs" />
     <Compile Include="ReadModel\Implementation\ParcelStatusDao.cs" />
+    <Compile Include="ReadModel\Implementation\ParcelStatusDbContextInitializer.cs" />
     <Compile Include="ReadModel\IParcelStatusDao.cs" />
     <Compile Include="ReadModel\ParcelStatus.cs" />
     <Compile Include="ReadModel\ParcelStatusRecord.cs" />

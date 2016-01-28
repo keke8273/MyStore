@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Microsoft.AspNet.Identity;
 using MyStore.Server.WebApi.Models;
 using UserManagement;
@@ -18,7 +17,7 @@ namespace MyStore.Server.WebApi.Controllers
             return Ok(this.AppUserManager.Users.ToList().Select(u => this.ModelFactory.Create(u)));
         }
 
-        [Route("user/{id:guid}")]
+        [Route("user/{id:guid}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUser(string id)
         {
             var user = await this.AppUserManager.FindByIdAsync(id);

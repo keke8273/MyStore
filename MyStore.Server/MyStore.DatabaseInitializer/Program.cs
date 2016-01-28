@@ -12,6 +12,7 @@ using ParcelTracking.ReadModel.Implementation;
 using ProductTracking.ReadModel.Implementation;
 using Store.ReadModel.Implementation;
 using Subscription;
+using UserManagement;
 
 namespace MyStore.DatabaseInitializer
 {
@@ -36,6 +37,7 @@ namespace MyStore.DatabaseInitializer
             Database.SetInitializer<ParcelStatusDbContext>(null);
             //Database.SetInitializer<ParcelTrackingProcessManagerDbContext>(null);
             Database.SetInitializer<ParcelDbContext>(null);
+            Database.SetInitializer<ApplicationDbContext>(null);
 
             var contexts =
                 new DbContext[]
@@ -47,6 +49,7 @@ namespace MyStore.DatabaseInitializer
                     new ParcelStatusDbContext(connectionString),
                     //new ParcelTrackingProcessManagerDbContext(connectionString),
                     new ParcelDbContext(connectionString),
+                    new ApplicationDbContext(connectionString), 
                 };
 
             foreach (var context in contexts)
@@ -54,24 +57,26 @@ namespace MyStore.DatabaseInitializer
                 var adapter = (IObjectContextAdapter)context;
 
                 var script = adapter.ObjectContext.CreateDatabaseScript();
+
                 context.Database.ExecuteSqlCommand(script);
+
+                context.Dispose();
             }
 
-            SeedDataBase(contexts);
+            //Seed Databases
+            using (var context = new ApplicationDbContext(connectionString))
+            {
+                ApplicationDbContextInitializer.CreateSuperUser(context);
+            }
+
+            using (var context = new ParcelStatusDbContext(connectionString))
+            {
+                ParcelStatusDbContextInitializer.CreateExpressProviders(context);
+            }
 
             MessagingDbInitializer.CreateDatabaseObjects(connectionString, "SqlBus");
 
         }
 
-        private static void SeedDataBase(DbContext[] contexts)
-        {
-            //Seed parcelStatus
-            var parcelStatusDbContext = contexts.FirstOrDefault(c => c.GetType() == typeof(ParcelStatusDbContext));
-            parcelStatusDbContext.Set<ExpressProvider>().Add(new ExpressProvider { Id = Guid.NewGuid(), Name = "Emms" });
-            parcelStatusDbContext.SaveChanges();
-
-            foreach (var context in contexts)
-                context.Dispose();
-        }
     }
 }
